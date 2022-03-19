@@ -30,6 +30,7 @@ public class 매출 {
 	}
 	
 	public 매출(int 매출금액) {
+		this.매출금액 = 매출금액;
 		Date date = new Date();
 		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년");
 		this.연도 = dateformat.format(date);
