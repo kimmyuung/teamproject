@@ -1,30 +1,49 @@
 /* 
- * 	1. 파일 저장
- * 		경로 : D:\java\주차장매출.txt
+ * 	1. 파일 저장 경로 : D:\java\주차장매출.txt
  * 	
  * 	2. 컨트롤러로 메서드들 이사시키기
  */
 
 package Day01_설계;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class 매출 {
 	
 	// 1. 필드
 	private int 매출금액;
-	private int 날짜;
+	private String 날짜;
 	private String 월;
 	private String 연도;
 
 	// 2. 생성자
-	public 매출() { }
 	
-	public 매출(int 매출금액, int 날짜, String 월,String 연도) {
+	public 매출() { }		// 깡통생성자
+	
+	// 컨트롤러.저장, 로딩 메서드가 사용할 풀 생성자
+	public 매출(int 매출금액, String 날짜, String 월,String 연도) {	
 		this.매출금액 = 매출금액;
 		this.날짜 = 날짜;
 		this.월 = 월;
 		this.연도 = 연도;
 	}
-
+	
+	public 매출(int 매출금액) {
+		Date date = new Date();
+		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년");
+		this.연도 = dateformat.format(date);
+		dateformat = new SimpleDateFormat("MM월");
+		this.월 = dateformat.format(date);
+		dateformat = new SimpleDateFormat("dd일");
+		this.날짜 = dateformat.format(date);
+	}
+	
+	// 컨트롤러.매출출력 메서드에서 리턴값 객체화용으로 쓸 생성자
+	public 매출(int 매출금액, String 날짜) {
+		this.매출금액 = 매출금액;
+		this.날짜 = 날짜;
+	}
 
 	// 3. 메서드
 	public int get매출금액() {
@@ -51,11 +70,11 @@ public class 매출 {
 		this.월 = 월;
 	}
 	
-	public int get날짜() {
+	public String get날짜() {
 		return 날짜;
 	}
 
-	public void set날짜(int 날짜) {
+	public void set날짜(String 날짜) {
 		this.날짜 = 날짜;
 	}
 

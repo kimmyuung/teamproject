@@ -12,7 +12,31 @@ public class 컨트롤러 {
 	매출 매출메서드 = new 매출();	// 객체선언하고 리스트선언 같이해도 되는건가?? 햇갈리네
 	public static ArrayList<매출> 총매출저장리스트 = new ArrayList<>();
 	
-	// txt파일에서 자바로 읽어들이는 메서드
+	
+	// 콘솔에서 입력받은 연도와 월을 바탕으로 일일 매출내역을 ArrayList로 리턴
+	public ArrayList<매출> 매출출력(int 연도, int 월) {	// main클래스 콘솔에서 연도와 월을 입력받아 전달받는다.
+		ArrayList<매출> 일일매출 = new ArrayList<>();
+		/*
+		 * 	1. int로 전달받은 연도와 월을 String으로 변환.
+		 *  2. 총매출저장리스트 ArrayList에서 연도와 월을 기준으로 검색.
+		 *  3. 일일매출 ArrayList에 날짜, 매출금액 객체화.
+		 *  4. main클래스로 리턴!
+		 */
+		
+		String 찾을연도 = 연도+"년";	// int -> String + 형식 변환	ex) 2020 -> "2020년"
+		String 찾을달 = 월+"월";	// 상동
+		
+		
+		if(총매출저장리스트.contains(찾을연도) && 총매출저장리스트.contains(찾을달)) {	
+			for(매출 tmp : 총매출저장리스트) {
+				
+			}
+		}
+		
+		return 일일매출;
+	}
+	
+	// txt파일에서 java로 읽어들이는 메서드
 	public void 매출파일로딩() {
 		try {	// FileInputStream 때문에 일반예외 발생
 			FileInputStream fileInputStream = new FileInputStream("D:/java/주차장매출.txt");
@@ -24,18 +48,18 @@ public class 컨트롤러 {
 			
 			for(String tmp : 파일내용배열) {
 				String[] 임시배열 = tmp.split("/t");
-					매출 매출 = new 매출(Integer.parseInt(임시배열[0]), Integer.parseInt(임시배열[1]), 임시배열[2], 임시배열[3]);
+					매출 매출 = new 매출(Integer.parseInt(임시배열[0]), 임시배열[1], 임시배열[2], 임시배열[3]);
 					총매출저장리스트.add(매출);	// 총매출저장리스트 리스트에 저장.
 			}
 		} catch (Exception e) {System.out.println("매출파일로딩 메서드 예외 발생");}
 	}	// 매출파일로딩 메서드 END
 	
-	// 하드에 저장된 txt파일 읽어들이는 메서드
+	// java에서 txt파일로 내보내는 메서드
 	public void 매출파일저장() {
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream("D:/java/주차장매출.txt");	// 1. 파일 출력 객체 생성
 			for(매출 tmp : 총매출저장리스트) {
-				String 저장파일에들어갈문자열 = tmp.get연도() + "," + tmp.get월() + "," + tmp.get날짜() + "," + tmp.get매출금액() + "\n";
+				String 저장파일에들어갈문자열 = tmp.get매출금액() + "," + tmp.get날짜() + "," + tmp.get월() + "," + tmp.get연도() + "\n";
 				fileOutputStream.write(저장파일에들어갈문자열.getBytes());
 			}
 		}catch(Exception e) {System.out.println("매출파일저장 메서드 예외 발생");}
