@@ -6,9 +6,6 @@
 
 package Day01_설계;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class 매출 {
 	
 	// 1. 필드
@@ -28,18 +25,7 @@ public class 매출 {
 		this.월 = 월;
 		this.연도 = 연도;
 	}
-	
-	public 매출(int 매출금액) {
-		this.매출금액 = 매출금액;
-		Date date = new Date();
-		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy년");
-		this.연도 = dateformat.format(date);
-		dateformat = new SimpleDateFormat("MM월");
-		this.월 = dateformat.format(date);
-		dateformat = new SimpleDateFormat("dd일");
-		this.날짜 = dateformat.format(date);
-	}
-	
+
 	// 컨트롤러.매출출력 메서드에서 리턴값 객체화용으로 쓸 생성자
 	public 매출(int 매출금액, String 날짜) {
 		this.매출금액 = 매출금액;

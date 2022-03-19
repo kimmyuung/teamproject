@@ -2,37 +2,46 @@ package Day01_설계;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class 컨트롤러 {
  
 	
 	
-	
-	매출 매출메서드 = new 매출();	// 객체선언하고 리스트선언 같이해도 되는건가?? 햇갈리네
+	// main에서 컨트롤러 객체 생성 수 리스트 사용해야함
 	public static ArrayList<매출> 총매출저장리스트 = new ArrayList<>();
 	
+	// 연월일을 자체적으로 찍은 뒤 인수로 받은 정산금과 같이 리스트에 저장하는 메서드
+	public void 정산금누적(int 정산금) {
+		int 매출금액 = 정산금;
+		Date date = new Date();
+		SimpleDateFormat dateformat = new SimpleDateFormat("yy년");
+		String 연도 = dateformat.format(date);
+		dateformat = new SimpleDateFormat("M월");	// 03월 : 3월, 12월 : 12월
+		String 월 = dateformat.format(date);
+		dateformat = new SimpleDateFormat("d일");
+		String 날짜 = dateformat.format(date);
+		매출 정산금누적 = new 매출(매출금액, 날짜, 월, 연도);
+		총매출저장리스트.add(정산금누적);
+		매출파일저장();
+	}
 	
 	// 콘솔에서 입력받은 연도와 월을 바탕으로 일일 매출내역을 ArrayList로 리턴
-	public ArrayList<매출> 매출출력(int 연도, int 월) {	// main클래스 콘솔에서 연도와 월을 입력받아 전달받는다.
+	public ArrayList<매출> 매출검색출력(int 연도, int 월) {	
 		ArrayList<매출> 일일매출 = new ArrayList<>();
-		/*
-		 * 	1. int로 전달받은 연도와 월을 String으로 변환.
-		 *  2. 총매출저장리스트 ArrayList에서 연도와 월을 기준으로 검색.
-		 *  3. 일일매출 ArrayList에 날짜, 매출금액 객체화.
-		 *  4. main클래스로 리턴!
-		 */
 		
-		String 찾을연도 = 연도+"년";	// int -> String + 형식 변환	ex) 2020 -> "2020년"
-		String 찾을달 = 월+"월";	// 상동
+		String 찾을연도 = 연도+"년";	
+		String 찾을달 = 월+"월";	
 		
-		
-		if(총매출저장리스트.contains(찾을연도) && 총매출저장리스트.contains(찾을달)) {	
-			for(매출 tmp : 총매출저장리스트) {
-				
+		for(매출 tmp : 총매출저장리스트) {	
+			if(총매출저장리스트.contains(찾을연도) && 총매출저장리스트.contains(찾을달)) {	
+				매출 임시객체 = new 매출(tmp.get매출금액(), tmp.get날짜());
+				일일매출.add(임시객체);
 			}
 		}
-		
 		return 일일매출;
 	}
 	
@@ -47,11 +56,11 @@ public class 컨트롤러 {
 			String[] 파일내용배열 = 파일내용.split("\n");	
 			
 			for(String tmp : 파일내용배열) {
-				String[] 임시배열 = tmp.split("/t");
+				String[] 임시배열 = tmp.split(",");
 					매출 매출 = new 매출(Integer.parseInt(임시배열[0]), 임시배열[1], 임시배열[2], 임시배열[3]);
 					총매출저장리스트.add(매출);	// 총매출저장리스트 리스트에 저장.
 			}
-		} catch (Exception e) {System.out.println("매출파일로딩 메서드 예외 발생");}
+		} catch (Exception e) { }
 	}	// 매출파일로딩 메서드 END
 	
 	// java에서 txt파일로 내보내는 메서드
@@ -64,5 +73,10 @@ public class 컨트롤러 {
 			}
 		}catch(Exception e) {System.out.println("매출파일저장 메서드 예외 발생");}
 	}	// 매출파일저장 END
+	
+	public void 테스트용일괄출력() {
+		for(매출 tmp : 총매출저장리스트)
+			System.out.println(tmp.get매출금액()+"원"+tmp.get날짜()+tmp.get월()+tmp.get연도());
+	}
 	
 }	// class END
