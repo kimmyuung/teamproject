@@ -2,38 +2,45 @@ package Day01_설계;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Formatter;
 
 
-public class 컨트롤러 {
+public class 컨트롤러 extends 메인{
 	public static String[][] 주차타워 = new String[12][3];
 	
 	// 차량이 차면 "[o]" 비면 "[ ]"
 	//입차 시간
-	ZonedDateTime parkStart = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+	LocalTime parkStart = LocalTime.now(ZoneId.of("Asia/Seoul"));
 	//출차 시간
-	ZonedDateTime parkEnd = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+	LocalTime parkEnd = LocalTime.now(ZoneId.of("Asia/Seoul"));
 	public static ArrayList<매출> 총매출저장리스트 = new ArrayList<>();
 	
-	public 컨트롤러(ZonedDateTime parkStart) {
+	public 컨트롤러(LocalTime parkStart) {
 		super();
 		this.parkStart = parkStart;
 	}
-	public 컨트롤러(ZonedDateTime parkStart, ZonedDateTime parkEnd) {
+	public 컨트롤러(LocalTime parkStart, LocalTime parkEnd) {
 		super();
 		this.parkStart = parkStart;
 		this.parkEnd = parkEnd;
 	}
 	public static String[] 차량등록(String carNumber) { // 차량등록 s
-		ZonedDateTime parkStart = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+		Date date = new Date();
+		DateFormat parkStart = new SimpleDateFormat("hh시 : mm분");
 		for(int i = 0; i<주차타워.length; i++) {
-			주차타워[i][0] = "[ ]";
+			if(주차타워[i][0] == null)  주차타워[i][0] = "[ ]";
 		}
-		for(int i = 0; i<12; i++) { // for s
+		for(int i = 0; i<주차타워.length; i++) { // for s
 		if(주차타워[i][0].equals("[ ]")) { // 주차공간 있으면
 		주차타워[i][0] = "[o]";
 		주차타워[i][1] = parkStart.toString();
@@ -43,15 +50,31 @@ public class 컨트롤러 {
 		} // for e
 		return null;
 		} // 차량등록 e
-	public static void 차량삭제(String carNumber) { // 차량삭제 s
-		for(int i=0; i<12; i++) { // for s
-		if(주차타워[i].equals(carNumber)) { // 차량번호 일치하면
-		주차타워[i] = "[ ]"; return;
-		}
-		} // for e
-		} // 차량삭제 e
+	
+	public static String 차량삭제(String carNumber) { // 차량삭제 s
+		Date date = new Date();
+		SimpleDateFormat parkEnd = new SimpleDateFormat("hh시 : mm분");
+		String 출차 = parkEnd.toString();
+		for(int i=0; i<주차타워.length; i++) { // for s
+		if(주차타워[i][0].equals("[o]") && 주차타워[i][2].equals(carNumber)) 
+			{ // 차량번호 일치하면
+		주차타워[i][0] = "[ ]";
+		//주차비용 계산(String으로)
+		int 주차시간 = Integer.parseInt(주차타워[i][1]);
+		int 출차시간 = Integer.parseInt(출차);
+		int 시간 = 출차시간 / 100 - 주차시간 / 100; // 시간의 차이
+		int 분 = 출차시간 % 100 - 주차시간 % 100; // 분의 차이
+		int 총주차시간 = 시간 * 60 + 분;
+		int 계산비율 = 1000;
+		int 계산 = 총주차시간 / 30 * 계산비율;
+		주차타워[i][2] = null;
+		System.out.println(계산);
 		
-	// main에서 컨트롤러 객체 생성 수 리스트 사용해야함
+			}
+			} // for e // 주차장 칸 비우기 끝
+		// 계산
+		return null;
+				} // 차량삭제 e
 	
 	
 	// 연월일을 자체적으로 찍은 뒤 인수로 받은 정산금과 같이 리스트에 저장하는 메서드

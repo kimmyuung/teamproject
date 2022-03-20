@@ -32,6 +32,7 @@ public static void main(String[] args) { // ms
 			System.out.println("차량번호를 입력해주세요");
 			String carNumber = sc.next();
 			컨트롤러.차량삭제(carNumber);
+					
 		}
 		
 		else if(select == 3) {
