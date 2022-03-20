@@ -32,7 +32,14 @@ public static void main(String[] args) { // ms
 			System.out.println("차량번호를 입력해주세요");
 			String carNumber = sc.next();
 			컨트롤러.차량삭제(carNumber);
-					
+			
+			System.out.println("금액을 입력해주세요");
+			int 금액 = sc.nextInt();
+			컨트롤러.주차계산(금액);
+			
+			int 정산금 = 컨트롤러.주차계산(금액);
+			컨트롤러.정산금누적(정산금);
+			
 		}
 		
 		else if(select == 3) {
