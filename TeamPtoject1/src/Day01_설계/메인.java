@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class 메인 { // c s
 public static void main(String[] args) { // ms
 	Scanner sc = new Scanner(System.in);
+	
 		try { // t s
 	while(true) { // w s
 		
@@ -18,14 +19,19 @@ public static void main(String[] args) { // ms
 		if(select == 1) {
 				System.out.println("차량번호를 입력해주세요");
 				String carNumber = sc.next();
+				컨트롤러.차량등록(carNumber);				
+				System.out.println("주차되었습니다.");
 				
-				컨트롤러.차량등록(String carNumber);
+				for(int i = 0; i < 컨트롤러.주차타워.length; i++) {
+					if(컨트롤러.주차타워[i][0] != null) {System.out.print(컨트롤러.주차타워[i][0]);}
+					if(i % 4 == 3) System.out.println();
+				}
 		}
 		
 		else if(select == 2) {
 			System.out.println("차량번호를 입력해주세요");
 			String carNumber = sc.next();
-			컨트롤러.차량삭제(String carNumber);
+			컨트롤러.차량삭제(carNumber);
 		}
 		
 		else if(select == 3) {

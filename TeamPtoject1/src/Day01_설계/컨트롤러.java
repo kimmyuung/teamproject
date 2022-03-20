@@ -10,9 +10,8 @@ import java.util.Date;
 
 
 public class 컨트롤러 {
-	public static String[] 주차타워 = {  "[    ]" , "[    ]" , "[    ]" , "[    ]" , 
-			"[ ]" , "[    ]" , "[    ]" , "[    ]" ,
-			"[ ]" , "[    ]" , "[    ]" , "[    ]" , };
+	public static String[][] 주차타워 = new String[12][3];
+	
 	// 차량이 차면 "[o]" 비면 "[ ]"
 	//입차 시간
 	ZonedDateTime parkStart = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
@@ -20,10 +19,25 @@ public class 컨트롤러 {
 	ZonedDateTime parkEnd = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
 	public static ArrayList<매출> 총매출저장리스트 = new ArrayList<>();
 	
-	public static String 차량등록(String carNumber) { // 차량등록 s
+	public 컨트롤러(ZonedDateTime parkStart) {
+		super();
+		this.parkStart = parkStart;
+	}
+	public 컨트롤러(ZonedDateTime parkStart, ZonedDateTime parkEnd) {
+		super();
+		this.parkStart = parkStart;
+		this.parkEnd = parkEnd;
+	}
+	public static String[] 차량등록(String carNumber) { // 차량등록 s
+		ZonedDateTime parkStart = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+		for(int i = 0; i<주차타워.length; i++) {
+			주차타워[i][0] = "[ ]";
+		}
 		for(int i = 0; i<12; i++) { // for s
-		if(주차타워[i].equals("[ ]")) { // 주차공간 있으면
-		주차타워[i] = "[" + carNumber + "]"; // 배열 안에 배열
+		if(주차타워[i][0].equals("[ ]")) { // 주차공간 있으면
+		주차타워[i][0] = "[o]";
+		주차타워[i][1] = parkStart.toString();
+		주차타워[i][2] = carNumber;  // 배열 안에 배열
 		return 주차타워[i];
 		} // 차량 채우고 입차시간 배열 중첩으로 넣기										
 		} // for e
