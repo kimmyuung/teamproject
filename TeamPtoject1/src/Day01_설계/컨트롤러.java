@@ -52,7 +52,7 @@ public class 컨트롤러 {
 		String 날짜 = dateformat.format(date);
 		매출 정산금누적 = new 매출(매출금액, 날짜, 월, 연도);
 		총매출저장리스트.add(정산금누적);
-		컨트롤러.매출파일저장(int sum);
+		매출파일저장();
 	}
 	
 	// 콘솔에서 입력받은 연도와 월을 바탕으로 일일 매출내역을 ArrayList로 리턴
@@ -90,7 +90,7 @@ public class 컨트롤러 {
 	}	// 매출파일로딩 메서드 END
 	
 	// java에서 txt파일로 내보내는 메서드
-	public static void 매출파일저장(String sum) {
+	public static void 매출파일저장() {
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream("D:/java/주차장매출.txt");	// 1. 파일 출력 객체 생성
 			for(매출 tmp : 총매출저장리스트) {
