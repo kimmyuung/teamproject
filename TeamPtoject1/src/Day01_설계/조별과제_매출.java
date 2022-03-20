@@ -1,4 +1,4 @@
-package 개인과제구상;
+package Day01_설계;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

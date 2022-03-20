@@ -3,19 +3,45 @@ package Day01_설계;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
 
 public class 컨트롤러 {
- 
-	
-	
-	// main에서 컨트롤러 객체 생성 수 리스트 사용해야함
+	public static String[] 주차타워 = {  "[    ]" , "[    ]" , "[    ]" , "[    ]" , 
+			"[ ]" , "[    ]" , "[    ]" , "[    ]" ,
+			"[ ]" , "[    ]" , "[    ]" , "[    ]" , };
+	// 차량이 차면 "[o]" 비면 "[ ]"
+	//입차 시간
+	ZonedDateTime parkStart = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+	//출차 시간
+	ZonedDateTime parkEnd = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
 	public static ArrayList<매출> 총매출저장리스트 = new ArrayList<>();
 	
+	public static String 차량등록(String carNumber) { // 차량등록 s
+		for(int i = 0; i<12; i++) { // for s
+		if(주차타워[i].equals("[ ]")) { // 주차공간 있으면
+		주차타워[i] = "[" + carNumber + "]"; // 배열 안에 배열
+		return 주차타워[i];
+		} // 차량 채우고 입차시간 배열 중첩으로 넣기										
+		} // for e
+		return null;
+		} // 차량등록 e
+	public static void 차량삭제(String carNumber) { // 차량삭제 s
+		for(int i=0; i<12; i++) { // for s
+		if(주차타워[i].equals(carNumber)) { // 차량번호 일치하면
+		주차타워[i] = "[ ]"; return;
+		}
+		} // for e
+		} // 차량삭제 e
+		
+	// main에서 컨트롤러 객체 생성 수 리스트 사용해야함
+	
+	
 	// 연월일을 자체적으로 찍은 뒤 인수로 받은 정산금과 같이 리스트에 저장하는 메서드
-	public void 정산금누적(int 정산금) {
+	public static void 정산금누적(int 정산금) {
 		int 매출금액 = 정산금;
 		Date date = new Date();
 		SimpleDateFormat dateformat = new SimpleDateFormat("yy년");
@@ -26,11 +52,11 @@ public class 컨트롤러 {
 		String 날짜 = dateformat.format(date);
 		매출 정산금누적 = new 매출(매출금액, 날짜, 월, 연도);
 		총매출저장리스트.add(정산금누적);
-		매출파일저장();
+		컨트롤러.매출파일저장(int sum);
 	}
 	
 	// 콘솔에서 입력받은 연도와 월을 바탕으로 일일 매출내역을 ArrayList로 리턴
-	public ArrayList<매출> 매출검색출력(int 연도, int 월) {	
+	public static ArrayList<매출> 매출검색출력(int 연도, int 월) {	
 		ArrayList<매출> 일일매출 = new ArrayList<>();
 		
 		String 찾을연도 = 연도+"년";	
@@ -46,7 +72,7 @@ public class 컨트롤러 {
 	}
 	
 	// txt파일에서 java로 읽어들이는 메서드
-	public void 매출파일로딩() {
+	public static void 매출파일로딩() {
 		try {	// FileInputStream 때문에 일반예외 발생
 			FileInputStream fileInputStream = new FileInputStream("D:/java/주차장매출.txt");
 			byte[] 임시바이트배열 = new byte[4096];	// 넉넉하게 4KB짜리 임시저장용 바이트형 배열 선언
@@ -64,7 +90,7 @@ public class 컨트롤러 {
 	}	// 매출파일로딩 메서드 END
 	
 	// java에서 txt파일로 내보내는 메서드
-	public void 매출파일저장() {
+	public static void 매출파일저장(String sum) {
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream("D:/java/주차장매출.txt");	// 1. 파일 출력 객체 생성
 			for(매출 tmp : 총매출저장리스트) {
