@@ -3,8 +3,6 @@ package Day01_설계;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import 컨트롤러어.매출;
-
 public class 메인 { // c s
 public static void main(String[] args) { // ms
 	Scanner sc = new Scanner(System.in);

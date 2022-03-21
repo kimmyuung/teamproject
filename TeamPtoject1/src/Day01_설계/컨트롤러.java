@@ -19,7 +19,6 @@ import java.util.Random;
 
 import javax.swing.text.DateFormatter;
 
-import 컨트롤러어.매출;
 
 
 public class 컨트롤러 extends 메인{
