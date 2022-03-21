@@ -29,7 +29,8 @@ public class 컨트롤러 extends 메인{
 	public static String[] 차량등록(String carNumber) { // 차량등록 s
 		Date date = new Date();
 		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh : mm");
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		String 주차시작 = now.format(formatter);
 		for(int i = 0; i<주차타워.length; i++) {
 			if(주차타워[i][0] == null)  주차타워[i][0] = "[ ]";
@@ -59,20 +60,22 @@ public class 컨트롤러 extends 메인{
 	
 	public static int 주차계산 (int 금액) {
 		Date date = new Date();
-		LocalDate now = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh : mm");	
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");	
 		String 출차 = now.format(formatter);
-		String[] 출차times = 출차.split("");
+		String[] 출차times = 출차.split(":");
 		for(int i = 0 ; i < 주차타워.length; i++) {
 			if(주차타워[i][1] != null) {
-		String[] 주차times = 주차타워[i][1].split("");
-		int 주차시간 = Integer.parseInt(주차타워[i][1]);
-		int 출차시간 = Integer.parseInt(출차);
-		int 시간 = 출차시간 / 100 - 주차시간 / 100; // int형으로 변경시 hhmm이므로 시간의 차이
-		int 분 = 출차시간 % 100 - 주차시간 % 100; // 분의 차이 int형으로 변경시 hhmm이므로 분의 차이
-		int 총주차시간 = (시간 * 60) + 분;
-		int 계산비율 = 1000;
-		int 정산금 = 총주차시간 / (10 * 계산비율);
+		String[] 주차times = 주차타워[i][1].split(":");
+		int 주차시 = Integer.parseInt(주차times[0]);
+		int 주차분 = Integer.parseInt(주차times[1]);
+		int 출차시 = Integer.parseInt(출차times[0]);
+		int 출차분 = Integer.parseInt(출차times[1]);
+		int 시간 = 출차시 - 주차시 ; // '시'만 들어있음.
+		int 분 = 출차분 - 주차분 ; // '분'만 들어있음
+		int 총주차시간 = (시간 * 60) + 분;	// 단위 : 분
+		int 정산금 = (총주차시간/10)*1000;	// 30분은 무료라서 총주차시간에서 30분 제외, 10분당이라 10 나누기, 1000원이라 1000 곱하기
+		
 		if (총주차시간 < 30) {정산금 = 0; System.out.println("계산하실 필요없습니다."); 주차타워[i][1] = null;}
 		else if (시간 > 24) {정산금 = 50000; System.out.println("계산하실 금액은 5만원입니다."); 주차타워[i][1] = null;}
 		else if (금액 < 정산금) {System.out.println("금액이 부족합니다 " + (정산금-금액) + "원 더 투입해주세요");}
@@ -81,9 +84,6 @@ public class 컨트롤러 extends 메인{
 		}
 	return 0;
 	}
-	
-	
-	
 	
 	// 연월일을 자체적으로 찍은 뒤 인수로 받은 정산금과 같이 리스트에 저장하는 메서드
 	public static void 정산금누적(int 정산금) {
@@ -154,6 +154,7 @@ public class 컨트롤러 extends 메인{
 				indexCount1++;
 			}
 		}
+		// 4-2 매출금액 기준 오름차순 정렬
 		else {
 			매출 순서변경용임시배열 = new 매출();
 			int indexCount1=0;
