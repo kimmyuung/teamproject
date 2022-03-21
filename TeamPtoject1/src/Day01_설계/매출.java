@@ -1,13 +1,6 @@
-/* 
- * 	1. 파일 저장 경로 : D:\java\주차장매출.txt
- * 	
- * 	2. 컨트롤러로 메서드들 이사시키기
- */
-
 package Day01_설계;
 
 public class 매출 {
-	
 	// 1. 필드
 	private int 매출금액;
 	private String 날짜;
@@ -15,9 +8,9 @@ public class 매출 {
 	private String 연도;
 
 	// 2. 생성자
-	
+		
 	public 매출() { }		// 깡통생성자
-	
+		
 	// 컨트롤러.저장, 로딩 메서드가 사용할 풀 생성자
 	public 매출(int 매출금액, String 날짜, String 월,String 연도) {	
 		this.매출금액 = 매출금액;
@@ -52,11 +45,11 @@ public class 매출 {
 	public String get월() {
 		return 월;
 	}
-
+	
 	public void set월(String 월) {
 		this.월 = 월;
 	}
-	
+		
 	public String get날짜() {
 		return 날짜;
 	}
@@ -65,5 +58,4 @@ public class 매출 {
 		this.날짜 = 날짜;
 	}
 
-	
 }
