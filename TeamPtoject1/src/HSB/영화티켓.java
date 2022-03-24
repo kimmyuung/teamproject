@@ -1,16 +1,16 @@
 package HSB;
 
-public class MovieTicket {
+public class 영화티켓 {
 	private String 영화시간;
 	private String 영화제목;
 	private String 티켓번호;
 	private String 인원수;
 	
-	public MovieTicket() {
+	public 영화티켓() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MovieTicket(String 영화시간, String 영화제목, String 티켓번호, String 인원수) {
+	public 영화티켓(String 영화시간, String 영화제목, String 티켓번호, String 인원수) {
 		super();
 		this.영화시간 = 영화시간;
 		this.영화제목 = 영화제목;
