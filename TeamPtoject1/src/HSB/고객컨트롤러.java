@@ -16,6 +16,13 @@ public class °í°´ÄÁÆ®·Ñ·¯ {
 	public void ÁÂ¼®Ãâ·Â() {
 	int i = 1;
 		for(String temp: ÁÂ¼®) {
+			if(temp.equals("[ x ]")) {
+				System.out.print("[x]");
+				if(i%5==0) {
+					System.out.println("");
+				}		
+			}
+			
 			if(temp.equals("[ ]")) {
 				System.out.printf("["+i+"]",i);
 				if(i%5==0) {
@@ -28,12 +35,8 @@ public class °í°´ÄÁÆ®·Ñ·¯ {
 	}
 	
 	public boolean ÁÂ¼®¼±ÅÃ(int ch1) {
-		
-		
 		for(String temp: ÁÂ¼®) {
 			if(temp.equals("[ ]")) {
-				
-				
 				ÁÂ¼®[(ch1-1)]="[ x ]";
 				
 				return true;
