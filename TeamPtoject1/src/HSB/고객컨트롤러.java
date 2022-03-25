@@ -45,12 +45,16 @@ public class 고객컨트롤러 {
 	
 		int person = (adult+yougth+child+dp);
 		
+		for(int i=0; i<person; i++) {
 			for(String temp: 좌석) {
-				if(1<=person &&temp.equals("[ ]")) {
+				if(1<=person && temp.equals("[ ]")) {
 					좌석[(ch1-1)]="[ x ]";
 					person--;
-				}
+					System.out.println(person);
+					
+				}			
 			}
+		}
 			if(person==0) {
 				return true;
 			}
@@ -80,7 +84,7 @@ public class 고객컨트롤러 {
 	
 	public void 시간() {}//시간 end
 	//v
-	public String 결제(int adult, int yougth , int child , int dp) {
+	public int 금액계산(int adult, int yougth , int child , int dp ) {
 		    int person =(adult+yougth+child+dp);
 		     adult=adult*15000;
 			 yougth=yougth*9000;
@@ -88,16 +92,31 @@ public class 고객컨트롤러 {
 			 dp=dp*8000;
 			int sum=(adult+yougth+child+dp);
 			if(person >=0) { 
-			DecimalFormat df= new DecimalFormat("###,###원");
-			String sum2 = df.format(sum);
-			return sum2;
+			return sum;
 			}else {
-				return null;
+				return 0;
 			}
-	}//결제 end
+	}//금액계산 end
 	
-public void 티켓저장(String title) {
-		영화티켓 영화티켓저장= new 영화티켓(title, null, 티켓발급(), null);
+	public int 결제(int adult, int yougth , int child , int dp , int pay) {
+	     adult=adult*15000;
+		 yougth=yougth*9000;
+		 child=child*5000;
+		 dp=dp*8000;
+		int sum=(adult+yougth+child+dp);
+		if(sum==pay) {
+			return 1;
+		}else if(sum>pay) {
+			return 2;
+		}else if (sum<pay) {
+			return 3;
+		}
+		return 4;
+		
+	}
+	
+	public void 티켓저장(String title) {
+		영화티켓 영화티켓저장= new 영화티켓(title, null, 티켓발급(), 0);
 		movieTicket.add(영화티켓저장);
 	}
 	

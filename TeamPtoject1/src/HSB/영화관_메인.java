@@ -1,5 +1,6 @@
 package HSB;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class 영화관_메인{
@@ -35,7 +36,8 @@ public class 영화관_메인{
 				boolean result=movieController.영화선택(movieTitle);
 				
 				if(result) {
-					System.out.println("시간을 선택해주세요.");
+					System.out.println("시간을 선택해주세요.");		
+					String movieTime = scanner.next();
 					System.out.println("------------------------시간선택----------------------");
 					System.out.println(); //시간 선택창 띄우기
 					System.out.println("----------------------------------------------------");
@@ -61,17 +63,45 @@ public class 영화관_메인{
 						System.out.println("--------------------------------------------------");
 						System.out.print("원하는 좌석을 선택해주세요.  >");
 						int ch1=scanner.nextInt();
+						
+						//좌석선택
 						boolean result2=movieController.좌석선택(adult ,yougth , child ,dp ,ch1);
 						if(result2) {
 							System.out.println("좌석이 선택되었습니다.");
-						String sum=movieController.결제(adult, yougth, child, dp);
-						System.out.println("총 결제 금액 :"+sum);
+						
+						//금액계산
+						int sum=movieController.금액계산(adult, yougth, child, dp);
+						//결제금액 형식 변환
+						DecimalFormat df= new DecimalFormat("###,###원");
+						String sum2 = df.format(sum);
+						System.out.println("총 결제 금액 :"+sum2);
 						System.out.println("결제금액을 입력해주세요.");
 						int pay = scanner.nextInt();
+						
+						//잔액 계산 형식 변환
+						int payBack1=(pay-sum);
+						String payBack =df.format(payBack1);
+						//결제
+						int result3=movieController.결제(adult, yougth, child, dp, pay);
+						if(result3==1) {
+							System.out.println("결제가 완료되었습니다.");
+						}
+						else if(result3==2){
+							System.out.println("결제 금액이 부족합니다.");
+								break;
+						}
+						else if(result3==3){
+							System.out.println("결제가 완료되었습니다.");
+							System.out.println("잔액:"+(payBack));
+							
+						}else {
+							System.out.println("알수없는 행동입니다.");
+								break;
+						}
+						
 						String ticket=movieController.티켓발급();
 						System.out.println("티켓번호 : "+ticket);
-						
-							break;
+						break;
 						}else {
 							System.out.println("좌석선택 실패 !! ");
 						}
