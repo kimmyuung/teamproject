@@ -53,10 +53,10 @@ public class 艙�降�_詭檣{
 					System.out.println("------------------------謝戮摹鷗-----------------------");				
 					while(true) {
 						System.out.println("忙式式式式式式式SCREEN式式式式式式式忖  忙式");
-						System.out.println("戌式式式式式式式式式式式式式式式式式式式式戎  弛e");
-						System.out.println("			弛x");
-						System.out.println("			弛i");
-						System.out.println("			弛t");
+						System.out.println("戌式式式式式式式式式式式式式式式式式式式式戎  弛E");
+						System.out.println("			弛X");
+						System.out.println("			弛I");
+						System.out.println("			弛T");
 						System.out.println("			戌式");
 						movieController.謝戮轎溘(adult, yougth, child, dp);
   						System.out.println("                      忙IN忖");
