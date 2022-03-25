@@ -1,26 +1,32 @@
 package HSB;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class 고객컨트롤러 {
 
 	영화티켓 영화티켓 = new 영화티켓();
 	관리자_메뉴 관리자메뉴 = new 관리자_메뉴();
+	Random random = new Random();
 	static ArrayList<영화티켓> movieTicket = new ArrayList<>();
 	static String [] 좌석 = {"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]",
 							"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]",
 							"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"
 							};
 	
-	
-	public void 좌석출력() {
-	int i = 1;
+	//v
+	public void 좌석출력(int adult, int yougth , int child , int dp) {
+		
+		int i = 1;
+
 		for(String temp: 좌석) {
 			if(temp.equals("[ x ]")) {
 				System.out.print("[x]");
 				if(i%5==0) {
 					System.out.println("");
-				}		
+				}
 			}
 			
 			if(temp.equals("[ ]")) {
@@ -32,23 +38,33 @@ public class 고객컨트롤러 {
 			i++;
 		}
 		return;
-	}
+		
+	}//좌석출력 end
+	//v
+	public boolean 좌석선택(int adult, int yougth , int child , int dp , int ch1 ) {
 	
-	public boolean 좌석선택(int ch1) {
-		for(String temp: 좌석) {
-			if(temp.equals("[ ]")) {
-				좌석[(ch1-1)]="[ x ]";
-				
+		int person = (adult+yougth+child+dp);
+		
+			for(String temp: 좌석) {
+				if(1<=person &&temp.equals("[ ]")) {
+					좌석[(ch1-1)]="[ x ]";
+					person--;
+				}
+			}
+			if(person==0) {
 				return true;
-			}	
-			
-		}
-		return false;
-	}
-	
-	public void 티켓발급() {}//티켓발급 end
-	
-	public void 티켓출력() {}//티켓출력 end
+			}
+			return false;
+	}//좌석선택 end
+	//△
+	public String 티켓발급() {
+		
+		int rd = random.nextInt(10000);
+		DecimalFormat df=new DecimalFormat("0000");
+		String ticketNb = df.format(rd);
+		
+		return ticketNb;
+	}//티켓발급 end
 	
 	public void 예매티켓출력() {}//예매티켓출력 end
 	
@@ -63,13 +79,31 @@ public class 고객컨트롤러 {
 	}//영화선택 end
 	
 	public void 시간() {}//시간 end
+	//v
+	public String 결제(int adult, int yougth , int child , int dp) {
+		    int person =(adult+yougth+child+dp);
+		     adult=adult*15000;
+			 yougth=yougth*9000;
+			 child=child*5000;
+			 dp=dp*8000;
+			int sum=(adult+yougth+child+dp);
+			if(person >=0) { 
+			DecimalFormat df= new DecimalFormat("###,###원");
+			String sum2 = df.format(sum);
+			return sum2;
+			}else {
+				return null;
+			}
+	}//결제 end
 	
-	public void 좌석() {}//좌석 end
+public void 티켓저장(String title) {
+		영화티켓 영화티켓저장= new 영화티켓(title, null, 티켓발급(), null);
+		movieTicket.add(영화티켓저장);
+	}
 	
-	public void 결제() {}//결제 end
 	
-	public void 관리자() {}//관리자 end
-	
+
+
 	
 	
 }
