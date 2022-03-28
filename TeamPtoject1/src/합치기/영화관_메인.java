@@ -136,8 +136,8 @@ public class 영화관_메인{
 			
 			//먹거리 선택 시
 			else if (ch==2) {
-				admincontroller.
-				System.out.println();//현재 먹거리 메뉴 출력
+				movieController.음식점이용();
+				//현재 먹거리 메뉴 출력
 			}//먹거리 선택 end
 			
 			//예매티켓 확인
