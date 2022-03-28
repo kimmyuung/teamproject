@@ -75,7 +75,14 @@ public class 고객컨트롤러 {
 		return ticketNb;
 	}//티켓발급 end
 	
-	public void 예매티켓출력() {}//예매티켓출력 end
+	public String 예매티켓출력(int reser) {
+		
+		int rd = random.nextInt(1000000);
+		DecimalFormat df=new DecimalFormat("0000000");
+		String reservation = df.format(rd);
+		
+		return reservation;
+	}//예매티켓출력 end
 	
 	public boolean 영화선택(String movieTitle) {
 	 

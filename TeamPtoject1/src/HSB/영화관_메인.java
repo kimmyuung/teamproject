@@ -26,7 +26,7 @@ public class 영화관_메인{
 //			Thread.sleep(500);
 //			System.out.println("");
 			System.out.println("---------------------------------------------------");
-			System.out.println("\t\t1.영화보기 2.먹거리선택");
+			System.out.println("\t1.영화티켓발급  2.먹거리선택  3.영화보기");
 			int ch= scanner.nextInt();
 			
 			//영화보기 선택 시
@@ -135,8 +135,15 @@ public class 영화관_메인{
 			//먹거리 선택 시
 			else if (ch==2) {
 				System.out.println();//현재 먹거리 메뉴 출력
-			}//먹거리 선택
-		
+			}//먹거리 선택 end
+			
+			//예매티켓 확인
+			else if(ch==3) {
+				 System.out.println("발급 받으신 예매티켓 번호를 입력하여 주세요.");
+				 int reser = scanner.nextInt();
+				 movieController.예매티켓출력(reser);
+				 
+			}
 			}catch (Exception e) {
 				scanner = new Scanner(System.in);
 			}
