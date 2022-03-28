@@ -44,19 +44,24 @@ public class °í°´ÄÁÆ®·Ñ·¯ {
 	public boolean ÁÂ¼®¼±ÅÃ(int adult, int yougth , int child , int dp , int ch1 ) {
 	
 		int person = (adult+yougth+child+dp);
+	
+	
+		if(ÁÂ¼®[(ch1-1)].equals("[ x ]")) {
+			return false;
+		}
+		
 		
 		for(int i=0; i<person; i++) {
 			for(String temp: ÁÂ¼®) {
 				if(1<=person && temp.equals("[ ]")) {
 					ÁÂ¼®[(ch1-1)]="[ x ]";
 					person--;
-					System.out.println(person);
 					
 				}			
 			}
 		}
 			if(person==0) {
-				return true;
+			return true;
 			}
 			return false;
 	}//ÁÂ¼®¼±ÅÃ end
