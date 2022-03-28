@@ -39,10 +39,11 @@ public class 관리자컨트롤러 {
 		}
 		음식점_클래스 음식 = new 음식점_클래스(먹거리종류, 가격, 재고);
 		상품리스트.add(음식);
+		음식점저장();
 		return true;
 	}
 
-	void save () {
+	void 음식점저장 () {
 		
 			try {
 				// 1. 파일출력 클래스 
@@ -77,6 +78,40 @@ public class 관리자컨트롤러 {
 			
 		}catch( Exception e ) { System.err.println(" 알림]] 파일로드  실패( 관리자에게문의 )"+e);  }
 	}
-	
-
+	boolean 재고입고(String foodname, int 재고) {
+		for(음식점_클래스 temp : 상품리스트) {
+			if(temp.get먹거리종류().equals(foodname)) {
+				temp.set재고(temp.get재고() + 재고);
+				return true;
+			}
+		}
+	return false;
+	}
+	boolean 재고출고(String foodname, int 재고) {
+		for(음식점_클래스 temp : 상품리스트) {
+			if(temp.get먹거리종류().equals(foodname)) {
+				temp.set재고(temp.get재고() - 재고);
+				return true;
+			}
+		}
+	return false;
+	}
+	void 등록영화() {
+		for(관리자_클래스 temp : 영화리스트) {
+			System.out.print(temp.get영화제목() + "\t");
+			System.out.println(temp.get영화시간() + "\t");
+		}
+	}
+	void 등록음식() {
+		for(음식점_클래스 temp : 상품리스트) {
+			System.out.println(temp.get먹거리종류() + "\t");
+			System.out.println(temp.get가격() + "\t");
+		}
+	}
+	boolean 영화와영화시간수정 (String movieName, String movieTime) {
+		return false;
+	}
+	boolean 음식과음식가격수정 () {
+		return false;
+	}
 }
