@@ -134,7 +134,7 @@ public class 영화관_메인{
 			
 			//먹거리 선택 시
 			else if (ch==2) {
-				movieController.
+				
 			}//먹거리 선택 end
 			
 			//예매티켓 확인
