@@ -71,7 +71,7 @@ void 메뉴() {
 					System.out.println("바꿀 영화의 시간을 입력하세요");
 					String movieTime = scanner.next();
 					boolean result = admincontroller.영화와영화시간수정(movieName, movieTime);
-					if(result)
+					if(result) {}
 				}
 				else if(ch2 == 2) {
 					
