@@ -40,7 +40,7 @@ public class 관리자컨트롤러 {
 		return true;
 	}
 
-	void 음식점저장 () {
+	static void  음식점저장 () {
 		
 			try {
 				// 1. 파일출력 클래스 
@@ -55,7 +55,7 @@ public class 관리자컨트롤러 {
 			}catch( Exception e ) {  System.err.println(" 알림]] 파일저장 실패( 관리자에게문의 )"); }
 		
 	}
-	void 음식출력 () {
+	static void  음식출력 () {
 		try {
 			FileInputStream inputStream = new FileInputStream("D:/자바/음식점.txt"); // 1. 파일입력클래스 
 			byte[] bytes = new byte[1000]; // 2. 바이트배열 선언
@@ -71,13 +71,14 @@ public class 관리자컨트롤러 {
 				상품리스트.add(음식점);// 8. 리스트 담기 
 				i++; // 인덱스 증가 
 			}
-			
+			음식점저장 ();
 		}catch( Exception e ) { System.err.println(" 알림]] 파일로드  실패( 관리자에게문의 )"+e);  }
 	}
 	boolean 재고입고(String foodname, int 재고) {
 		for(음식점_클래스 temp : 상품리스트) {
 			if(temp.get먹거리종류().equals(foodname)) {
 				temp.set재고(temp.get재고() + 재고);
+				음식점저장();
 				return true;
 			}
 		}
@@ -87,6 +88,7 @@ public class 관리자컨트롤러 {
 		for(음식점_클래스 temp : 상품리스트) {
 			if(temp.get먹거리종류().equals(foodname)) {
 				temp.set재고(temp.get재고() - 재고);
+				음식점저장();
 				return true;
 			}
 		}
@@ -143,6 +145,7 @@ public class 관리자컨트롤러 {
 			String[] field = temp.split(","); // 6. 문자열 자르기 [ 한줄 [,] -> 각필드 ] 
 			관리자_클래스 영화 = new 관리자_클래스( field[0], field[1]);  // 7. 객체화
 			영화리스트.add(영화);// 8. 리스트 담기 
+			
 			i++; // 인덱스 증가 
 		}
 		

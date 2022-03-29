@@ -3,17 +3,19 @@ package 합치기;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-import HJS.admincontroller;
+
 
 public class 영화관_메인{
-	
+	static Scanner scanner = new Scanner(System.in);
+	static 고객컨트롤러 movieController = new 고객컨트롤러();
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		관리자_메뉴 관리자메뉴 = new 관리자_메뉴();
-		고객컨트롤러 movieController = new 고객컨트롤러();
-		
+		영화관_메인 app = new 영화관_메인();
+		app.메인메뉴();
+	}	
+	static void 메인메뉴() {
+		try {
 		while(true) {
-			try {
+			
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
 			관리자컨트롤러.영화출력();
@@ -140,9 +142,10 @@ public class 영화관_메인{
 				 movieController.예매티켓출력(reser);
 				 
 			}
-			}catch (Exception e) {
-				scanner = new Scanner(System.in);
+			
 			}
+		}catch (Exception e) {
+			scanner = new Scanner(System.in);
 		}
 	}
 

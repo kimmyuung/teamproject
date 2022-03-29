@@ -76,7 +76,7 @@ void 메뉴() {
 					else {
 						System.out.printf("%d\t%10s\t%10s \n", i , temp.get영화제목() ,
 						temp.get영화시간() );
-						i++;
+							i++;
 							}
 				}
 				System.out.println("1. 영화 및 영화시간 수정 2. 영화 및 영화시간 삭제");
@@ -113,28 +113,48 @@ void 메뉴() {
 					if(temp.get먹거리종류() != "null") {
 					System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
 							temp.get가격(), temp.get재고() );
-					index++;}
+					}
+					index++;
 				}
 				int ch2 = scanner.nextInt();
 				if(ch2 == 1) {
+					admincontroller.음식출력();
+					System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
+					for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
+						if(temp.get먹거리종류() != "null") {
+						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
+								temp.get가격(), temp.get재고() );
+						}
+						index++;
+					}
 					System.out.println("수정할 음식 이름을 입력하세요"); String FoodName = scanner.next();
 					System.out.println("수정할 음식 가격을 입력하세요"); int FoodPrice = scanner.nextInt();
 					System.out.println("수정된 음식 이름을 입력하세요"); String FoodName1 = scanner.next();
 					System.out.println("수정된 음식 가격을 입력하세요"); int FoodPrice1 = scanner.nextInt();
 					boolean result = admincontroller.음식과음식가격수정(FoodName, FoodName1, FoodPrice, FoodPrice1);
-					if(result) System.out.println("수정 성공!");
+					if(result) {System.out.println("수정 성공!"); admincontroller.음식점저장();}
 					else System.out.println("수정 실패!");
+					
 				}
 				else if(ch2 == 2) {
+					admincontroller.음식출력();
+					System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
+					for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
+						if(temp.get먹거리종류() != "null") {
+						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
+								temp.get가격(), temp.get재고() );
+						}
+						index++;
+					}
 					System.out.println("삭제할 음식 이름을 입력하세요"); String FoodName = scanner.next();
 					boolean result = admincontroller.음식과가격삭제(FoodName);
-					if(result) System.out.println("삭제 성공!");
+					if(result) {System.out.println("삭제 성공!"); }
 					else System.out.println("삭제 실패!");
 				}
 			}
 			else {System.out.println("숫자를 잘못입력하셨습니다. 다시 입력해주세요");}
 		}else if(ch == 5) {
-			System.out.println("관리자모드를 종료합니다."); scanner.close();	break;
+			System.out.println("관리자모드를 종료합니다."); scanner.close();	영화관_메인.메인메뉴();
 		}else {
 			System.out.println("알 수 없는 행동입니다.");
 		}
@@ -147,6 +167,7 @@ void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 	while(true) {
 	System.out.println("음식점에 오신 걸 환영합니다.");
 	System.out.println("1. 주문          2. 종료");
+	관리자컨트롤러.음식출력();
 	for(음식점_클래스 temp : 관리자컨트롤러.상품리스트) {
 		System.out.println("음식 종류 : "+temp.get먹거리종류());
 		System.out.println("가격 : "+temp.get가격());
