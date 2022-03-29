@@ -12,7 +12,9 @@ public class 관리자_메뉴 {
 
 void 메뉴() {
 	Scanner scanner = new Scanner(System.in);
+	
 	while(true) {
+		
 		관리자컨트롤러 admincontroller = new 관리자컨트롤러();
 		
 		System.out.println("관리자메뉴");
@@ -62,7 +64,7 @@ void 메뉴() {
 			
 			System.out.println("등록된 영화와 영화시간 및 음식 확인 ");
 			
-			System.out.println("1. 등록된 영화 수정 및 삭제 2. 등록된 음식 확인");
+			System.out.println("1. 등록된 영화와 영화시간 확인 2. 등록된 음식 확인");
 			int ch1 = scanner.nextInt();
 			if(ch1 == 1) {
 				int i = 1;
@@ -70,9 +72,12 @@ void 메뉴() {
 				System.out.printf("%s\t%10s\t%10s\t \n","번호","영화","영화시간");
 				 // 리스트내 인덱스
 				for( 관리자_클래스 temp : admincontroller.영화리스트 ) {
-					System.out.printf("%d\t%10s\t%10s \n", i , temp.get영화제목() ,
-							temp.get영화시간() );
-					i++;
+					if(temp.get영화제목().equals(null)) System.out.println();
+					else {
+						System.out.printf("%d\t%10s\t%10s \n", i , temp.get영화제목() ,
+						temp.get영화시간() );
+						i++;
+							}
 				}
 				System.out.println("1. 영화 및 영화시간 수정 2. 영화 및 영화시간 삭제");
 				int ch2 = scanner.nextInt();
@@ -81,7 +86,11 @@ void 메뉴() {
 					String movieName = scanner.next();
 					System.out.println("바꿀 영화의 시간을 입력하세요");
 					String movieTime = scanner.next();
-					boolean result = admincontroller.영화와영화시간수정(movieName, movieTime);
+					System.out.println("수정할 영화 이름을 입력하세요");
+					String movieName1 = scanner.next();
+					System.out.println("수정할 영화 시간을 입력하세요");
+					String movieTime1 = scanner.next();
+					boolean result = admincontroller.영화와영화시간수정(movieName, movieTime, movieName1, movieTime1);
 					if(result) System.out.println("수정 성공!");
 					else System.out.println("수정 실패!");
 				}
@@ -101,9 +110,10 @@ void 메뉴() {
 				System.out.println("1. 음식 및 음식가격 수정 2. 음식 및 음식가격 삭제");
 				System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
 				for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
+					if(temp.get먹거리종류() != "null") {
 					System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
 							temp.get가격(), temp.get재고() );
-					index++;
+					index++;}
 				}
 				int ch2 = scanner.nextInt();
 				if(ch2 == 1) {

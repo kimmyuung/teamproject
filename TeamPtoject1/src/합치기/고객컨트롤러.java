@@ -136,7 +136,14 @@ public class 고객컨트롤러 {
 		관리자메뉴.음식점메뉴();
 	}
 
+	public void 결제취소() {
+		
 
+		for(int i = 0; i < 좌석.length; i++) {
+			좌석[i] = "[ ]";
+		}
+		return;
+	}
 	
 	
 }

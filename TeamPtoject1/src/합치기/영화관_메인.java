@@ -103,7 +103,7 @@ public class 영화관_메인{
 						}
 						else if(result3==2){
 							System.out.println("결제 금액이 부족합니다.");
-								
+							movieController.결제취소();	
 						}
 						else if(result3==3){
 							System.out.println("결제가 완료되었습니다.");

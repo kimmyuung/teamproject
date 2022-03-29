@@ -93,11 +93,11 @@ public class 관리자컨트롤러 {
 	return false;
 	}
 	
-	boolean 영화와영화시간수정 (String MovieName, String MovieTime) {
+	boolean 영화와영화시간수정 (String movieName, String movieTime, String movieName1, String movieTime1) {
 		for(관리자_클래스 temp : 영화리스트) {
-			if(temp.get영화제목().equals(MovieName) && temp.get영화시간().equals(MovieTime)) {
-				temp.set영화제목(MovieName);
-				temp.set영화시간(MovieTime);
+			if(temp.get영화제목().equals(movieName) && temp.get영화시간().equals(movieTime)) {
+				temp.set영화제목(movieName1);
+				temp.set영화시간(movieTime1);
 				System.out.println(1);
 				영화저장();
 				return true;
@@ -151,8 +151,8 @@ public class 관리자컨트롤러 {
 	boolean 영화와시간삭제(String MovieName, String MovieTime) {
 		for(관리자_클래스 temp : 영화리스트) {
 			if(temp.get영화제목().equals(MovieName) && temp.get영화시간().equals(MovieTime)) {
-				temp.set영화시간(null);
-				temp.set영화제목(null);
+				temp.set영화시간("null");
+				temp.set영화제목("null");
 				영화저장();
 				return true;
 			}
