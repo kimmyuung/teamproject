@@ -24,8 +24,6 @@ public class 관리자컨트롤러 {
 		return true;
 
 	}
-
-
 	boolean 음식등록(String 먹거리종류,  int 가격, int 재고) {
 		for(음식점_클래스 temp : 상품리스트) {
 			if(temp.get먹거리종류().equals(먹거리종류)) {
@@ -37,7 +35,6 @@ public class 관리자컨트롤러 {
 		음식점저장();
 		return true;
 	}
-
 	static void  음식점저장 () {
 		
 			try {
@@ -94,7 +91,6 @@ public class 관리자컨트롤러 {
 		}
 	return false;
 	}
-	
 	boolean 영화와영화시간수정 (int x, String movieName1, String movieTime1) {
 		for(관리자_클래스 temp : 영화리스트) {
 			영화리스트.get(x).set영화제목(movieName1);

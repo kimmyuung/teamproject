@@ -172,7 +172,11 @@ static void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 	System.out.println("먹을 음식의 종류를 입력해주세요"); 	String foodName = sc.next();
 	for(음식점_클래스 temp : 관리자컨트롤러.상품리스트) {
 		if(temp.get먹거리종류().equals(foodName)) {
-			System.out.println("상품의 가격 : " + temp.get가격() + "입니다. ");
+			System.out.println("상품의 1개 가격 : " + temp.get가격() + "입니다. ");
+			System.out.println("상품을 몇개 구매하실건지 입력해주세요");
+			int 개수 = sc.nextInt();
+			int sumMoney = temp.get가격() * (개수) ;
+			System.out.println("결제하실 금액은 : " + sumMoney + "원 입니다.");
 			System.out.println("1. 결제     2. 결제 취소"); 
 			int ch1 = sc.nextInt();
 			if(temp.get재고() == 0) {System.out.println("재고가 없습니다. 재입고까지 기다려주세요");}
@@ -181,12 +185,12 @@ static void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 				int money = sc.nextInt();
 				if(temp.get가격() <= money) {
 					System.out.println("결제가 완료되었습니다.");
-					System.out.println((temp.get가격() - money) + "원을 반환합니다.");
+					System.out.println((money - sumMoney) + "원을 반환합니다.");
 					temp.set재고(temp.get재고()-1);
 					break;
 				}
 				else {System.out.println("결제금이 부족합니다. ");
-						System.out.println((temp.get가격() - money) + "원 더 투입해주세요.");}
+						System.out.println((sumMoney - money) + "원 더 투입해주세요.");}
 			}
 			else if(ch1 == 2) {
 				System.out.println("결제를 취소하셨습니다. 처음부터 다시 시도해주세요");
