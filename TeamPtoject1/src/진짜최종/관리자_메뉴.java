@@ -55,7 +55,7 @@ static void 메뉴() {
 			else if(ch1 == 2) {
 				System.out.println("재고를 입고할 먹거리 종류를 입력해주세요"); String foodname = scanner.next();
 				System.out.println("출고할 재고 수를 입력해주세요");	int 재고 = scanner.nextInt();
-				boolean result = admincontroller.재고입고(foodname, 재고);
+				boolean result = admincontroller.재고출고(foodname, 재고);
 				if(result) System.out.println("출고 성공!");
 				else System.out.println("출고 실패!");
 			}

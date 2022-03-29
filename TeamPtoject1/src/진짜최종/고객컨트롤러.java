@@ -7,6 +7,8 @@ import java.util.Random;
 
 
 
+
+
 public class 고객컨트롤러 {
 
 	영화티켓 영화티켓 = new 영화티켓();
@@ -96,20 +98,20 @@ public class 고객컨트롤러 {
 			return false;
 		}//예매티켓출력 end
 	
-	public boolean 영화선택(String movieTitle ,String movieTime) {
-	 
-		if (movieTitle.equals("admin")) 
-		{			
-			System.out.println("Welcome admin!");
-			관리자_메뉴.메뉴();
-		}
-			for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
-				if(temp.get영화제목().equals(movieTitle) && temp.get영화시간().equals(movieTime)) {
-					return true;
-				}
+		public boolean 영화선택(String movieTitle) {
+			 
+			if (movieTitle.equals("admin")) 
+			{			
+				System.out.println("Welcome admin!");
+				관리자_메뉴.메뉴();
 			}
-		return false;
-	}//영화선택 end
+				for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
+					if(temp.get영화제목().equals(movieTitle)) {
+						return true;
+					}
+				}
+			return false;
+		}//영화선택 end
 	
 	
 	public int 금액계산(int adult, int yougth , int child , int dp ) {

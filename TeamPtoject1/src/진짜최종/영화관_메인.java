@@ -40,12 +40,13 @@ public class 영화관_메인{
 			if(ch==1){
 				System.out.println("영화제목을 입력해주세요.");
 				String movieTitle = scanner.next();
-				System.out.println("시간을 선택해주세요.");		
-				String movieTime = scanner.next();
 				
-				boolean result=movieController.영화선택(movieTitle ,movieTime);
+				
+				boolean result=movieController.영화선택(movieTitle );
 				
 				if(result) {
+					System.out.println("시간을 선택해주세요.");		
+					String movieTime = scanner.next();
 					System.out.println("----------------------------------------------------");
 					System.out.println("------------------------인원선택-----------------------");
 					System.out.println("성인인원을 선택해 주세요.");
