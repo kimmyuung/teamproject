@@ -86,13 +86,13 @@ public class 고객컨트롤러 {
 	
 	public boolean 영화선택(String movieTitle) {
 	 
+		if (movieTitle.equals("admin")) 
+		{			
+			System.out.println("Welcome admin!");
+			관리자_메뉴.메뉴();
+		}
 			for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
-				if (movieTitle.equals("admin")) 
-				{			
-					관리자_메뉴.메뉴();
-					return false;
-				}
-				else if(temp.get영화제목().equals(movieTitle)) {
+				if(temp.get영화제목().equals(movieTitle)) {
 					return true;
 				}
 			}

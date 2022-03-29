@@ -173,6 +173,7 @@ static void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 			System.out.println("상품의 가격 : " + temp.get가격() + "입니다. ");
 			System.out.println("1. 결제     2. 결제 취소"); 
 			int ch1 = sc.nextInt();
+			if(temp.재고 == 0) {System.out.println("재고가 없습니다. 재입고까지 기다려주세요");}
 			if(ch1 == 1) {
 				System.out.println("결제를 위해 금액을 입력해주세요");
 				int money = sc.nextInt();

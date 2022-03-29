@@ -22,7 +22,7 @@ public class 관리자컨트롤러 {
 		
 		관리자_클래스 관리자 = new 관리자_클래스(영화이름, 영화시간, null, 0);
 		영화리스트.add(관리자);
-		영화저장();
+		
 		return true;
 
 	}
@@ -36,7 +36,7 @@ public class 관리자컨트롤러 {
 		}
 		음식점_클래스 음식 = new 음식점_클래스(먹거리종류, 가격, 재고);
 		상품리스트.add(음식);
-		음식점저장();
+		
 		return true;
 	}
 
@@ -64,21 +64,21 @@ public class 관리자컨트롤러 {
 			String[] files = file.split("\n"); // 5. 문자열 자르기 [ 한줄씩 [ \n ] -> 1개객체 ] 
 			int i = 0; // 인덱스 용 
 			for( String temp : files ) { // 배열내 문자열 하나씩 꺼내기 
-				if( i+1 == files.length ) { break; }// * 마지막 인덱스[객체] 제외
+				if( i+1 == files.length )  break; // * 마지막 인덱스[객체] 제외
 				String[] field = temp.split(","); // 6. 문자열 자르기 [ 한줄 [,] -> 각필드 ] 
 				음식점_클래스 음식점 = new 음식점_클래스( field[0], Integer.parseInt(field[1]), 
 						Integer.parseInt(field[2]) );  // 7. 객체화
 				상품리스트.add(음식점);// 8. 리스트 담기 
 				i++; // 인덱스 증가 
 			}
-			음식점저장 ();
+			
 		}catch( Exception e ) { System.err.println(" 알림]] 파일로드  실패( 관리자에게문의 )"+e);  }
 	}
 	boolean 재고입고(String foodname, int 재고) {
 		for(음식점_클래스 temp : 상품리스트) {
 			if(temp.get먹거리종류().equals(foodname)) {
 				temp.set재고(temp.get재고() + 재고);
-				음식점저장();
+				
 				return true;
 			}
 		}
@@ -88,7 +88,7 @@ public class 관리자컨트롤러 {
 		for(음식점_클래스 temp : 상품리스트) {
 			if(temp.get먹거리종류().equals(foodname)) {
 				temp.set재고(temp.get재고() - 재고);
-				음식점저장();
+				
 				return true;
 			}
 		}
@@ -97,8 +97,9 @@ public class 관리자컨트롤러 {
 	
 	boolean 영화와영화시간수정 (int x, String movieName1, String movieTime1) {
 		for(관리자_클래스 temp : 영화리스트) {
-			영화리스트.get(x).set영화시간(movieName1);
-			영화리스트.get(x).set영화제목(movieTime1);
+			영화리스트.get(x).set영화제목(movieName1);
+			영화리스트.get(x).set영화시간(movieTime1);
+				
 				return true;
 		}
 		return false;
@@ -109,7 +110,7 @@ public class 관리자컨트롤러 {
 				상품리스트.get(x).set가격(FoodPrice1);
 				상품리스트.get(x).set먹거리종류(FoodName);
 				상품리스트.get(x).set재고(0);
-				음식점저장();
+				
 				return true;
 			
 		}
@@ -138,11 +139,10 @@ public class 관리자컨트롤러 {
 		String[] files = file.split("\n"); // 5. 문자열 자르기 [ 한줄씩 [ \n ] -> 1개객체 ] 
 		int i = 0; // 인덱스 용 
 		for( String temp : files ) { // 배열내 문자열 하나씩 꺼내기 
-			if( i+1 == files.length ) { break; }// * 마지막 인덱스[객체] 제외
+			if( i+1 == files.length )  break; // * 마지막 인덱스[객체] 제외
 			String[] field = temp.split(","); // 6. 문자열 자르기 [ 한줄 [,] -> 각필드 ] 
 			관리자_클래스 영화 = new 관리자_클래스( field[0], field[1]);  // 7. 객체화
 			영화리스트.add(영화);// 8. 리스트 담기 
-			
 			i++; // 인덱스 증가 
 		}
 		
@@ -150,18 +150,21 @@ public class 관리자컨트롤러 {
 	}
 	boolean 영화와시간삭제(int x) {
 		for(관리자_클래스 temp : 영화리스트) {
+			
 			영화리스트.remove(x);
 				영화저장();
 				return true;
-			}
+			} 
 		return false;
 	}
-	boolean 음식과가격삭제(int FoodName) {
+	boolean 음식과가격삭제(int  x) {
 		for(음식점_클래스 temp : 상품리스트) {
-			상품리스트.remove(FoodName);
-				음식점저장();
-				return true;
-		}
+			
+				상품리스트.remove(x);
+					음식점저장();
+					return true;
+				} 
+		
 		return false;
 	}
 }
