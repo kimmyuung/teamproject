@@ -25,13 +25,14 @@ public class 영화관_메인{
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
 			관리자컨트롤러.영화출력();
-			System.out.printf("%10s \t %10s \n", "영화제목", "영화시간");
+			System.out.printf("%10s \t %10s \n", "-영화제목-", "-영화시간-");
 			
 			for( 관리자_클래스 temp : 관리자컨트롤러.영화리스트 ) {
 				System.out.printf("%10s\t%10s \n", temp.get영화제목() ,
 						temp.get영화시간() );
+					
 			}
-			System.out.println("---------------------------------------------------");
+			System.out.println("----------------------------------------------------");
 			System.out.println("\t1.영화티켓발급  2.먹거리선택  3.영화보기");
 			int ch= scanner.nextInt();
 			
@@ -40,7 +41,7 @@ public class 영화관_메인{
 				System.out.println("영화제목을 입력해주세요.");
 				String movieTitle = scanner.next();
 				boolean result=movieController.영화선택(movieTitle);
-				
+			
 				if(result) {
 					System.out.println("시간을 선택해주세요.");		
 					String movieTime = scanner.next();
@@ -132,8 +133,9 @@ public class 영화관_메인{
 						movieController.티켓저장(movieTime, movieTitle , ticket , personSum);
 						}	
 					
-				}else{			
-					System.out.println("wellcome admin");
+				}
+				else{			
+					System.out.println("알 수 없는 행동입니다.");
 				}
 				
 			}//영화 선택
@@ -156,13 +158,13 @@ public class 영화관_메인{
 						if(temp.get티켓번호().equals(reser)) {
 							System.out.println("\t┌────────Movie ticket────────┐");
 							System.out.println("");
-							System.out.println("\t   영화 시간: "+temp.get영화시간());
-							System.out.println("\t------------------------------");
-							System.out.println("\t   영화 제목: "+temp.get영화제목());
-							System.out.println("\t------------------------------");
-							System.out.println("\t   티켓 번호: "+temp.get티켓번호());
-							System.out.println("\t------------------------------");
-							System.out.println("\t   총 인원수: "+temp.get인원수()+"명");
+							System.out.println("\t      영화 제목: "+temp.get영화제목());
+							System.out.println("\t ----------------------------");
+							System.out.println("\t      영화 시간: "+temp.get영화시간());
+							System.out.println("\t ----------------------------");
+							System.out.println("\t      티켓 번호: "+temp.get티켓번호());
+							System.out.println("\t ----------------------------");
+							System.out.println("\t      총 인원수: "+temp.get인원수()+"명");
 							System.out.println("");
 							System.out.println("\t└────────────────────────────┘");
 						}

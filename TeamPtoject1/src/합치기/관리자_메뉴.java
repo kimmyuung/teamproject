@@ -32,8 +32,6 @@ static void 메뉴() {
 				System.out.println("영화 등록 실패.");
 			}
 			
-		}else if(ch == 1) {
-			
 		}else if(ch == 2) {
 			System.out.println("먹거리 종류를 입력하세요");  String foodName = scanner.next();
 			System.out.println("먹거리 가격을 입력하세요"); 	int foodPrice = scanner.nextInt();
