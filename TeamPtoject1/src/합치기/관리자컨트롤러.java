@@ -98,16 +98,19 @@ public class 관리자컨트롤러 {
 			if(temp.get영화제목().equals(MovieName) && temp.get영화시간().equals(MovieTime)) {
 				temp.set영화제목(MovieName);
 				temp.set영화시간(MovieTime);
+				System.out.println(1);
+				영화저장();
 				return true;
 			}
 		}
 		return false;
 	}
-	boolean 음식과음식가격수정 (String FoodName, int FoodPrice) {
+	boolean 음식과음식가격수정 (String FoodName, String FoodName1, int FoodPrice, int FoodPrice1) {
 		for(음식점_클래스 temp : 상품리스트) {
-			if(temp.get먹거리종류().equals(FoodName) ) {
-				temp.set먹거리종류(FoodName);
-				temp.set가격(FoodPrice);
+			if(temp.get먹거리종류().equals(FoodName) && temp.get가격() == FoodPrice) {
+				temp.set먹거리종류(FoodName1);
+				temp.set가격(FoodPrice1);
+				음식점저장();
 				return true;
 			}
 		}
@@ -150,6 +153,7 @@ public class 관리자컨트롤러 {
 			if(temp.get영화제목().equals(MovieName) && temp.get영화시간().equals(MovieTime)) {
 				temp.set영화시간(null);
 				temp.set영화제목(null);
+				영화저장();
 				return true;
 			}
 		}
@@ -161,6 +165,7 @@ public class 관리자컨트롤러 {
 				temp.set먹거리종류(null);
 				temp.set가격(0);
 				temp.set재고(0);
+				음식점저장();
 				return true;
 			}
 		}
