@@ -6,8 +6,11 @@ import java.util.Scanner;
 public class 관리자_메뉴 {
 
 	public static void main(String[] args) {
+		관리자컨트롤러.영화출력();
+		관리자컨트롤러.음식출력();
 		관리자_메뉴 app = new 관리자_메뉴();
 		app.메뉴();
+		
 	}
 
 static void 메뉴() {
@@ -66,7 +69,7 @@ static void 메뉴() {
 			int ch1 = scanner.nextInt();
 			if(ch1 == 1) {
 				int i = 0;
-				admincontroller.영화출력();
+				
 				System.out.printf("\t%10s\t%10s\t \n", "영화","영화시간");
 				 // 리스트내 인덱스
 				for( 관리자_클래스 temp : admincontroller.영화리스트 ) {
@@ -100,23 +103,23 @@ static void 메뉴() {
 			}
 			else if(ch1 == 2) {
 				int index = 1;
-				admincontroller.음식출력();
+				
 				System.out.println("1. 음식 및 음식가격 수정 2. 음식 및 음식가격 삭제");
-				System.out.printf("%d\t%s\t%10s\t%10s\t%s \n", index,"번호","먹거리종류","가격", "재고");
+				System.out.printf("%d\t%10s\t%10s\t%s \n", index,"먹거리종류","가격", "재고");
 				for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
-					if(temp.get먹거리종류() != "null") {
-					System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
+					{
+					System.out.printf("%d\t%10s\t%10s\t%10s \n", index , temp.get먹거리종류() ,
 							temp.get가격(), temp.get재고() );
 					}
 					index++;
 				}
 				int ch2 = scanner.nextInt();
 				if(ch2 == 1) {
-					admincontroller.음식출력();
+					
 					System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
 					for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
-						if(temp.get먹거리종류() != "null") {
-						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
+						{
+						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.get먹거리종류() ,
 								temp.get가격(), temp.get재고() );
 						}
 						index++;
@@ -130,11 +133,11 @@ static void 메뉴() {
 					
 				}
 				else if(ch2 == 2) {
-					admincontroller.음식출력();
+					
 					System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
 					for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
 						if(temp.get먹거리종류() != "null") {
-						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
+						System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.get먹거리종류() ,
 								temp.get가격(), temp.get재고() );
 						}
 						index++;
@@ -173,7 +176,7 @@ static void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 			System.out.println("상품의 가격 : " + temp.get가격() + "입니다. ");
 			System.out.println("1. 결제     2. 결제 취소"); 
 			int ch1 = sc.nextInt();
-			if(temp.재고 == 0) {System.out.println("재고가 없습니다. 재입고까지 기다려주세요");}
+			if(temp.get재고() == 0) {System.out.println("재고가 없습니다. 재입고까지 기다려주세요");}
 			if(ch1 == 1) {
 				System.out.println("결제를 위해 금액을 입력해주세요");
 				int money = sc.nextInt();

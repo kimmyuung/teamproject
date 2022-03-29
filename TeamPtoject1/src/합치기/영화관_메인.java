@@ -17,11 +17,12 @@ public class 영화관_메인{
 		
 		while(true) {
 			try {
+			관리자컨트롤러.영화출력();
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
 			System.out.printf("%10s \t %10s \n", "영화제목", "영화시간");
 			int x = 0;
-			관리자컨트롤러.영화출력();
+			
 			for( 관리자_클래스 temp : 관리자컨트롤러.영화리스트 ) {
 				System.out.printf("%10s\t%10s \n", temp.get영화제목() ,
 						temp.get영화시간() );
