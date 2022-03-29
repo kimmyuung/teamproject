@@ -3,23 +3,30 @@ package 진짜최종;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-import HJS.admincontroller;
+
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 
 
 public class 영화관_메인{
-	
+	static Scanner scanner = new Scanner(System.in);
+	static 고객컨트롤러 movieController = new 고객컨트롤러();
+	영화티켓 영화티켓 = new 영화티켓();
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		관리자_메뉴 관리자메뉴 = new 관리자_메뉴();
-		고객컨트롤러 movieController = new 고객컨트롤러();
-		영화티켓 영화티켓 = new 영화티켓();
-		
+		영화관_메인 app = new 영화관_메인();
+		app.메인메뉴();
+	}	
+	static void 메인메뉴() {
+		try {
 		while(true) {
-			try {
+			
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
 			관리자컨트롤러.영화출력();
 			System.out.printf("%10s \t %10s \n", "영화제목", "영화시간");
+			
 			for( 관리자_클래스 temp : 관리자컨트롤러.영화리스트 ) {
 				System.out.printf("%10s\t%10s \n", temp.get영화제목() ,
 						temp.get영화시간() );
@@ -105,7 +112,7 @@ public class 영화관_메인{
 						}
 						else if(result3==2){
 							System.out.println("결제 금액이 부족합니다.");
-								
+							movieController.결제취소();	
 						}
 						else if(result3==3){
 							System.out.println("결제가 완료되었습니다.");
@@ -118,11 +125,11 @@ public class 영화관_메인{
 						}
 				
 						if(result3==1 || result3==3) {
-							String ticket=movieController.티켓발급();
-							System.out.println("티켓번호 : "+ticket);
-							//티켓 저장
-							movieController.티켓저장(movieTime, movieTitle , ticket , personSum);
+						String ticket=movieController.티켓발급();
+						System.out.println("티켓번호 : "+ticket);
 						
+						//티켓 저장
+						movieController.티켓저장(movieTime, movieTitle , ticket , personSum);
 						}	
 					
 				}else{			
@@ -166,9 +173,9 @@ public class 영화관_메인{
 				}
 				 
 			}
-			}catch (Exception e) {
-				scanner = new Scanner(System.in);
 			}
+		}catch (Exception e) {
+			scanner = new Scanner(System.in);
 		}
 	}
 

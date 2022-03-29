@@ -7,6 +7,8 @@ import java.util.Random;
 
 
 
+
+
 public class 고객컨트롤러 {
 
 	영화티켓 영화티켓 = new 영화티켓();
@@ -18,21 +20,29 @@ public class 고객컨트롤러 {
 							"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"
 							};
 	
-	
+	//v
 	public void 좌석출력(int adult, int yougth , int child , int dp) {
 		
 		int i = 1;
 
 		for(String temp: 좌석) {
 			if(temp.equals("[ x ]")) {
-				System.out.print("[x]");
+				System.out.print("[xx]");
 				if(i%5==0) {
 					System.out.println("");
 				}
 			}
 			
-			if(temp.equals("[ ]")) {
+			if(temp.equals("[ ]") && i<10) {
+				System.out.printf("["+0+i+"]",i);
+				if(i%5==0) {
+					System.out.println("");
+				}		
+			}
+			
+			if(temp.equals("[ ]") && i>=10) {
 				System.out.printf("["+i+"]",i);
+					
 				if(i%5==0) {
 					System.out.println("");
 				}		
@@ -42,7 +52,7 @@ public class 고객컨트롤러 {
 		return;
 		
 	}//좌석출력 end
-	
+	//v
 	public boolean 좌석선택(int adult, int yougth , int child , int dp , int ch1 ) {
 	
 		int person = (adult+yougth+child+dp);
@@ -67,7 +77,7 @@ public class 고객컨트롤러 {
 			}
 			return false;
 	}//좌석선택 end
-	
+	//△
 	public String 티켓발급() {
 		
 		int rd = random.nextInt(10000);
@@ -77,7 +87,7 @@ public class 고객컨트롤러 {
 		return ticketNb;
 	}//티켓발급 end
 	
-	public boolean 예매티켓확인(String reser) {
+   public boolean 예매티켓확인(String reser) {
 		
 		for(영화티켓 temp :movieTicket ) {
 			if(temp.get티켓번호().equals(reser)) {
@@ -90,7 +100,7 @@ public class 고객컨트롤러 {
 	
 	public boolean 영화선택(String movieTitle) {
 	 
-			if(movieTitle.equals("admin")) {
+			if(movieTitle.equals("admin") || movieTitle.equals("ADIMN") || movieTitle.equals("Admin")) {
 				관리자메뉴.메뉴();
 				return false;
 			}
@@ -98,6 +108,8 @@ public class 고객컨트롤러 {
 		return true;
 	}//영화선택 end
 	
+	public void 시간() {}//시간 end
+	//v
 	public int 금액계산(int adult, int yougth , int child , int dp ) {
 		    int person =(adult+yougth+child+dp);
 		     adult=adult*15000;
@@ -133,11 +145,19 @@ public class 고객컨트롤러 {
 		영화티켓 영화티켓저장= new 영화티켓(time, title, ticket, sumPerson);
 		movieTicket.add(영화티켓저장);
 	}//티켓저장
+	
 	public void 음식점이용() {
 		관리자메뉴.음식점메뉴();
 	}
 
+	public void 결제취소() {
+		
 
+		for(int i = 0; i < 좌석.length; i++) {
+			좌석[i] = "[ ]";
+		}
+		return;
+	}
 	
 	
 }
