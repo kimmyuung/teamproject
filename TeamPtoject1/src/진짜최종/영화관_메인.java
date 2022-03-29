@@ -5,34 +5,34 @@ import java.util.Scanner;
 
 
 
-import java.text.DecimalFormat;
-import java.util.Scanner;
-
 
 
 public class 영화관_메인{
 	static Scanner scanner = new Scanner(System.in);
 	static 고객컨트롤러 movieController = new 고객컨트롤러();
-	영화티켓 영화티켓 = new 영화티켓();
 	public static void main(String[] args) {
+		관리자컨트롤러.영화출력();
+		관리자컨트롤러.음식출력();
 		영화관_메인 app = new 영화관_메인();
 		app.메인메뉴();
 	}	
 	static void 메인메뉴() {
-		try {
+		
+		
 		while(true) {
+			try {
 			
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
-			관리자컨트롤러.영화출력();
-			System.out.printf("%10s \t %10s \n", "-영화제목-", "-영화시간-");
+			System.out.printf("%10s \t %10s \n", "영화제목", "영화시간");
+			int x = 0;
 			
 			for( 관리자_클래스 temp : 관리자컨트롤러.영화리스트 ) {
 				System.out.printf("%10s\t%10s \n", temp.get영화제목() ,
 						temp.get영화시간() );
-					
+				x++;
 			}
-			System.out.println("----------------------------------------------------");
+			System.out.println("---------------------------------------------------");
 			System.out.println("\t1.영화티켓발급  2.먹거리선택  3.영화보기");
 			int ch= scanner.nextInt();
 			
@@ -40,11 +40,12 @@ public class 영화관_메인{
 			if(ch==1){
 				System.out.println("영화제목을 입력해주세요.");
 				String movieTitle = scanner.next();
-				boolean result=movieController.영화선택(movieTitle);
-			
+				System.out.println("시간을 선택해주세요.");		
+				String movieTime = scanner.next();
+				
+				boolean result=movieController.영화선택(movieTitle ,movieTime);
+				
 				if(result) {
-					System.out.println("시간을 선택해주세요.");		
-					String movieTime = scanner.next();
 					System.out.println("----------------------------------------------------");
 					System.out.println("------------------------인원선택-----------------------");
 					System.out.println("성인인원을 선택해 주세요.");
@@ -131,11 +132,11 @@ public class 영화관_메인{
 						
 						//티켓 저장
 						movieController.티켓저장(movieTime, movieTitle , ticket , personSum);
+						
 						}	
 					
-				}
-				else{			
-					System.out.println("알 수 없는 행동입니다.");
+				}else{			
+					System.out.println("다시 선택해주세요");
 				}
 				
 			}//영화 선택
@@ -175,9 +176,10 @@ public class 영화관_메인{
 				}
 				 
 			}
+			}catch (Exception e) {
+				scanner = new Scanner(System.in);
 			}
-		}catch (Exception e) {
-			scanner = new Scanner(System.in);
+		
 		}
 	}
 

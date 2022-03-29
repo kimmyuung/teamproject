@@ -1,9 +1,9 @@
-package 진짜최종;
+package HSB;
 
 public class 음식점_클래스 {
-private String 먹거리종류;
-private int 가격;
-private int 재고;
+String 먹거리종류;
+int 가격;
+int 재고;
 public 음식점_클래스(String 먹거리종류, int 가격, int 재고) {
 	super();
 	this.먹거리종류 = 먹거리종류;

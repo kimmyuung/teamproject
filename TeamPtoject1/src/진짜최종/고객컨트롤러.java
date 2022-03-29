@@ -7,10 +7,6 @@ import java.util.Random;
 
 
 
-
-
-
-
 public class 고객컨트롤러 {
 
 	영화티켓 영화티켓 = new 영화티켓();
@@ -22,6 +18,7 @@ public class 고객컨트롤러 {
 							"[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]","[ ]"
 							};
 	
+	//v
 	public void 좌석출력(int adult, int yougth , int child , int dp) {
 		
 		int i = 1;
@@ -53,6 +50,7 @@ public class 고객컨트롤러 {
 		return;
 		
 	}//좌석출력 end
+	//v
 	public boolean 좌석선택(int adult, int yougth , int child , int dp , int ch1 ) {
 	
 		int person = (adult+yougth+child+dp);
@@ -77,7 +75,7 @@ public class 고객컨트롤러 {
 			}
 			return false;
 	}//좌석선택 end
-
+	//△
 	public String 티켓발급() {
 		
 		int rd = random.nextInt(10000);
@@ -87,30 +85,32 @@ public class 고객컨트롤러 {
 		return ticketNb;
 	}//티켓발급 end
 	
-   public boolean 예매티켓확인(String reser) {
-		
-		for(영화티켓 temp :movieTicket ) {
-			if(temp.get티켓번호().equals(reser)) {
-				return true;
-			}
+	 public boolean 예매티켓확인(String reser) {
 			
-		}
-		return false;
-	}//예매티켓출력 end
+			for(영화티켓 temp :movieTicket ) {
+				if(temp.get티켓번호().equals(reser)) {
+					return true;
+				}
+				
+			}
+			return false;
+		}//예매티켓출력 end
 	
-	public boolean 영화선택(String movieTitle) {
-		for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
-			if(movieTitle.equals("admin") || movieTitle.equals("ADMIN") || movieTitle.equals("Admin")) {
-				관리자메뉴.메뉴();
-				return false;
-			}
-			else if(temp.get영화제목().equals(movieTitle)) {
-				return true;
-			}
+	public boolean 영화선택(String movieTitle ,String movieTime) {
+	 
+		if (movieTitle.equals("admin")) 
+		{			
+			System.out.println("Welcome admin!");
+			관리자_메뉴.메뉴();
 		}
-		
-		return true;
+			for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
+				if(temp.get영화제목().equals(movieTitle) && temp.get영화시간().equals(movieTime)) {
+					return true;
+				}
+			}
+		return false;
 	}//영화선택 end
+	
 	
 	public int 금액계산(int adult, int yougth , int child , int dp ) {
 		    int person =(adult+yougth+child+dp);
@@ -160,7 +160,6 @@ public class 고객컨트롤러 {
 		}
 		return;
 	}
-	
 	public void 관리자모드() {
 		관리자메뉴.메뉴();
 	}
