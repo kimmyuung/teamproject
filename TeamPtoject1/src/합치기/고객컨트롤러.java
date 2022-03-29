@@ -86,12 +86,17 @@ public class 고객컨트롤러 {
 	
 	public boolean 영화선택(String movieTitle) {
 	 
-			if(movieTitle.equals("admin")) {
-				관리자메뉴.메뉴();
-				return false;
+			for(관리자_클래스 temp : 관리자컨트롤러.영화리스트) {
+				if (movieTitle.equals("admin")) 
+				{			
+					관리자_메뉴.메뉴();
+					return false;
+				}
+				else if(temp.get영화제목().equals(movieTitle)) {
+					return true;
+				}
 			}
-		
-		return true;
+		return false;
 	}//영화선택 end
 	
 	public void 시간() {}//시간 end
@@ -144,6 +149,8 @@ public class 고객컨트롤러 {
 		}
 		return;
 	}
-	
+	public void 관리자모드() {
+		관리자메뉴.메뉴();
+	}
 	
 }

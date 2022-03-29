@@ -10,7 +10,7 @@ public class 관리자_메뉴 {
 		app.메뉴();
 	}
 
-void 메뉴() {
+static void 메뉴() {
 	Scanner scanner = new Scanner(System.in);
 	
 	while(true) {
@@ -149,7 +149,7 @@ void 메뉴() {
 			}
 			else {System.out.println("숫자를 잘못입력하셨습니다. 다시 입력해주세요");}
 		}else if(ch == 5) {
-			System.out.println("관리자모드를 종료합니다."); scanner.close();	영화관_메인.메인메뉴();
+			System.out.println("관리자모드를 종료합니다."); break;
 		}else {
 			System.out.println("알 수 없는 행동입니다.");
 		}
@@ -157,7 +157,7 @@ void 메뉴() {
 	}
 	
 }
-void 음식점메뉴() { // 고객이 보는 음식점 메뉴
+static void 음식점메뉴() { // 고객이 보는 음식점 메뉴
 	Scanner sc = new Scanner(System.in);
 	while(true) {
 	System.out.println("음식점에 오신 걸 환영합니다.");
