@@ -67,9 +67,9 @@ void 메뉴() {
 			System.out.println("1. 등록된 영화와 영화시간 확인 2. 등록된 음식 확인");
 			int ch1 = scanner.nextInt();
 			if(ch1 == 1) {
-				int i = 1;
+				int i = 0;
 				admincontroller.영화출력();
-				System.out.printf("%s\t%10s\t%10s\t \n","번호","영화","영화시간");
+				System.out.printf("\t%10s\t%10s\t \n", "영화","영화시간");
 				 // 리스트내 인덱스
 				for( 관리자_클래스 temp : admincontroller.영화리스트 ) {
 					if(temp.get영화제목().equals(null)) System.out.println();
@@ -82,24 +82,20 @@ void 메뉴() {
 				System.out.println("1. 영화 및 영화시간 수정 2. 영화 및 영화시간 삭제");
 				int ch2 = scanner.nextInt();
 				if(ch2 == 1) {
-					System.out.println("바꿀 영화의 이름을 입력하세요");
-					String movieName = scanner.next();
-					System.out.println("바꿀 영화의 시간을 입력하세요");
-					String movieTime = scanner.next();
+					System.out.println("수정될 인덱스 번호를 입력하세요");
+					int x = scanner.nextInt();
 					System.out.println("수정할 영화 이름을 입력하세요");
 					String movieName1 = scanner.next();
 					System.out.println("수정할 영화 시간을 입력하세요");
 					String movieTime1 = scanner.next();
-					boolean result = admincontroller.영화와영화시간수정(movieName, movieTime, movieName1, movieTime1);
+					boolean result = admincontroller.영화와영화시간수정(x, movieName1, movieTime1);
 					if(result) System.out.println("수정 성공!");
 					else System.out.println("수정 실패!");
 				}
 				else if(ch2 == 2) {
-					System.out.println("삭제할 영화의 이름을 입력하세요");
-					String movieName = scanner.next();
-					System.out.println("삭제할 영화의 시간을 입력하세요");
-					String movieTime = scanner.next();
-					boolean result = admincontroller.영화와시간삭제(movieName, movieTime);
+					System.out.println("삭제할 영화의 번호를 입력하세요");
+					int x = scanner.nextInt();
+					boolean result = admincontroller.영화와시간삭제(x);
 					if(result) System.out.println("삭제성공");
 					else System.out.println("삭제 실패!");
 				}
@@ -108,7 +104,7 @@ void 메뉴() {
 				int index = 1;
 				admincontroller.음식출력();
 				System.out.println("1. 음식 및 음식가격 수정 2. 음식 및 음식가격 삭제");
-				System.out.printf("%s\t%10s\t%10s\t%s \n","번호","먹거리종류","가격", "재고");
+				System.out.printf("%d\t%s\t%10s\t%10s\t%s \n", index,"번호","먹거리종류","가격", "재고");
 				for( 음식점_클래스 temp : admincontroller.상품리스트 ) {
 					if(temp.get먹거리종류() != "null") {
 					System.out.printf("%d\t%10s\t%10d\t%d \n", index , temp.먹거리종류 ,
@@ -127,11 +123,10 @@ void 메뉴() {
 						}
 						index++;
 					}
-					System.out.println("수정할 음식 이름을 입력하세요"); String FoodName = scanner.next();
-					System.out.println("수정할 음식 가격을 입력하세요"); int FoodPrice = scanner.nextInt();
+					System.out.println("수정할 음식의 번호를 입력하세요"); int x = scanner.nextInt();
 					System.out.println("수정된 음식 이름을 입력하세요"); String FoodName1 = scanner.next();
 					System.out.println("수정된 음식 가격을 입력하세요"); int FoodPrice1 = scanner.nextInt();
-					boolean result = admincontroller.음식과음식가격수정(FoodName, FoodName1, FoodPrice, FoodPrice1);
+					boolean result = admincontroller.음식과음식가격수정(x, FoodName1, FoodPrice1);
 					if(result) {System.out.println("수정 성공!"); admincontroller.음식점저장();}
 					else System.out.println("수정 실패!");
 					
@@ -146,7 +141,7 @@ void 메뉴() {
 						}
 						index++;
 					}
-					System.out.println("삭제할 음식 이름을 입력하세요"); String FoodName = scanner.next();
+					System.out.println("삭제할 음식의 번호를 입력하세요"); int FoodName = scanner.nextInt();
 					boolean result = admincontroller.음식과가격삭제(FoodName);
 					if(result) {System.out.println("삭제 성공!"); }
 					else System.out.println("삭제 실패!");

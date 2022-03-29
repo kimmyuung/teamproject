@@ -13,16 +13,17 @@ public class 영화관_메인{
 		app.메인메뉴();
 	}	
 	static void 메인메뉴() {
+		관리자컨트롤러.영화출력();
 		try {
 		while(true) {
-			
 			System.out.println("");
 			System.out.println("-------------어서오십시오.ezen movie-------------------");
-			관리자컨트롤러.영화출력();
 			System.out.printf("%10s \t %10s \n", "영화제목", "영화시간");
+			int x = 0;
 			for( 관리자_클래스 temp : 관리자컨트롤러.영화리스트 ) {
 				System.out.printf("%10s\t%10s \n", temp.get영화제목() ,
 						temp.get영화시간() );
+				x++;
 			}
 			System.out.println("---------------------------------------------------");
 			System.out.println("\t1.영화티켓발급  2.먹거리선택  3.영화보기");
