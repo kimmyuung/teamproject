@@ -1,19 +1,14 @@
-package Controller.movielist;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+package controller.adminmovie;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
-public class Madd implements Initializable{
-
-	    @FXML
+public class moiveadd {
+	 	@FXML
 	    private Button btnimageupdate;
 
 	    @FXML
@@ -26,7 +21,7 @@ public class Madd implements Initializable{
 	    private RadioButton grade12;
 
 	    @FXML
-	    private Toggle age;
+	    private ToggleGroup age;
 
 	    @FXML
 	    private RadioButton grade15;
@@ -60,15 +55,4 @@ public class Madd implements Initializable{
 	    void imageupdate(ActionEvent event) {
 
 	    }
-	
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
-	}
-	
-	
-	
-	
 }
