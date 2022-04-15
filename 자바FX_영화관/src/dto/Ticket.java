@@ -8,7 +8,9 @@ private int 인원수;
 private String 관이름;
 private String 날짜;
 private String 좌석;
+
 public Ticket() {}
+
 public Ticket(int 가격, String 영화제목, String 좌석번호, int 인원수, String 관이름, String 날짜, String 좌석) {
 	super();
 	this.가격 = 가격;
