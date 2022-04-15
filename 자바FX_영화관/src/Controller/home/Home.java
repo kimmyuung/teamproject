@@ -11,10 +11,16 @@ import javafx.scene.layout.AnchorPane;
 
 public class Home implements Initializable{
 	
+	 @Override
+	 public void initialize(URL arg0, ResourceBundle arg1) {
+	    	
+	    	
+	 }
+	
 	public static Home home;
 	
 	public Home() {
-		
+		home= this;
 	}
 	
     @FXML
@@ -46,10 +52,6 @@ public class Home implements Initializable{
     	//loadpage("/AdminView/theater/theaterlist.fxml);
     }
 	
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    	// TODO Auto-generated method stub
-    	
-    }
+   
 
 }
