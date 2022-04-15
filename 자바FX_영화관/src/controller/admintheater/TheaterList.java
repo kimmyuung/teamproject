@@ -1,4 +1,4 @@
-package controller.theaterlist;
+package controller.admintheater;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class Tlist {
+public class TheaterList {
  
 	@FXML
     private BorderPane borederpane;

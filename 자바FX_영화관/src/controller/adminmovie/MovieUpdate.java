@@ -1,5 +1,6 @@
 package controller.adminmovie;
 
+import controller.Admin_Home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,7 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class movieupdate {
+public class MovieUpdate {
 	@FXML
     private Button btnimageupdate;
 
@@ -43,7 +44,7 @@ public class movieupdate {
 
     @FXML
     void back(ActionEvent event) {
-
+    	Admin_Home.instance.loadpage("/view/AdminView/movie/movielist.fxml");
     }
 
     @FXML

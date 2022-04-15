@@ -1,14 +1,26 @@
 package controller.adminmovie;
 
-import controller.admin_home;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import controller.Admin_Home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
-public class movielist {
+public class MovieList implements Initializable{
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	
+	}
+	
 	@FXML
     private TableView<?> mlist;
 
@@ -26,12 +38,12 @@ public class movielist {
 
     @FXML
     void add(ActionEvent event) {
-    	
+    	Admin_Home.instance.loadpage("/view/AdminView/movie/movieadd.fxml");
     }
 
     @FXML
     void back(ActionEvent event) {
-    	loadpage("/view/Adminview/adminhome.fxml");
+    	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
     }
 
     @FXML
@@ -41,7 +53,7 @@ public class movielist {
 
     @FXML
     void update(ActionEvent event) {
-    	
+    	Admin_Home.instance.loadpage("/view/AdminView/movie/movieupdate.fxml");
     }
     
 }

@@ -7,10 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
-public class admin_main implements Initializable{
+public class Admin_main implements Initializable{
 	
-	public static admin_main instance;
-	public admin_main() {
+	public static Admin_main instance;
+	
+	public Admin_main() {
 		instance = this;
 	}
 	  @FXML private BorderPane mainborderpane;
@@ -18,7 +19,7 @@ public class admin_main implements Initializable{
 @Override
 public void initialize(URL arg0, ResourceBundle arg1) {
 	System.out.println("Main 뷰가 실행되었습니다.");
-	loadpage("/view/Adminview/home/adminhome.fxml");
+	loadpage("/view/AdminView/home/adminhome.fxml");
 }
 public void loadpage(String page) {// 파일 경로를 인수로 받음
 	try {
