@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane fx:id="ahome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="btnmlist" layoutX="78.0" layoutY="566.0" mnemonicParsing="false" onAction="#mlist" prefHeight="106.0" prefWidth="292.0" text="영화목록" />
-      <Button fx:id="btntlist" layoutX="494.0" layoutY="566.0" mnemonicParsing="false" onAction="#tlist" prefHeight="106.0" prefWidth="292.0" text="상영관목록" />
-      <Button fx:id="btnsales" layoutX="914.0" layoutY="566.0" mnemonicParsing="false" onAction="#sales" prefHeight="106.0" prefWidth="292.0" text="매출확인" />
-      <ImageView fitHeight="280.0" fitWidth="406.0" layoutX="437.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
-   </children>
-</AnchorPane>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="145.0" layoutY="584.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="185.0" text="영화목록" />
+            <Button layoutX="548.0" layoutY="584.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="185.0" text="상영관목록" />
+            <Button layoutX="924.0" layoutY="584.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="185.0" text="매출확인" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
