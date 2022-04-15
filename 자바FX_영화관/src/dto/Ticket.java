@@ -16,6 +16,10 @@ public Ticket(int 가격, String 영화제목, int 인원수, String 관이름, String 날짜,
 	this.관이름 = 관이름;
 	this.날짜 = 날짜;
 	this.좌석 = 좌석;
+	
+	
+	
+	
 }
 public int get가격() {
 	return 가격;
