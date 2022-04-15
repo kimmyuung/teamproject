@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnsales" layoutX="1003.0" layoutY="643.0" mnemonicParsing="false" onAction="#sales" prefHeight="51.0" prefWidth="117.0" text="매출 통계" />
+      <Button fx:id="btnsearch" layoutX="1137.0" layoutY="643.0" mnemonicParsing="false" onAction="#search" prefHeight="51.0" prefWidth="117.0" text="매출 검색" />
+      <AreaChart fx:id="todaychart" layoutX="89.0" layoutY="103.0" prefHeight="424.0" prefWidth="650.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </AreaChart>
+   </children>
+</AnchorPane>
