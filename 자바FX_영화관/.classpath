@@ -6,6 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/504/lib/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/lib/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/lib/mail-1.4.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/504/lib/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.base.jar"/>
 	<classpathentry kind="lib" path="C:/Users/504/lib/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.controls.jar"/>
 	<classpathentry kind="lib" path="C:/Users/504/lib/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.fxml.jar"/>
