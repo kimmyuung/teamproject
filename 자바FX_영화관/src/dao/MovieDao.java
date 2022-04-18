@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dto.Movie;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class MovieDao{
 
@@ -13,28 +15,33 @@ public class MovieDao{
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	public static MovieDao productDao = new MovieDao();
+	
+	
+	public static MovieDao movieDao = new MovieDao();
 	
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC","root","1234");
+			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=UTC","root","1234");
 		} catch (Exception e) {
-			System.out.println("[DB연동 실패 ] 위치: dao.MovieDao  "+e);
+			System.out.println("[ DB연동 실패 ] 경로: dao.MovieDao  "+e);
 		}
 	}
 	
 	//1.영화등록
 	public boolean 영화등록(Movie movie) {
-		String sql = "INSERT INTO movie(가격,영화제목,런닝타임) VALUS (?,?,?)";
+		String sql = "INSERT INTO project.movie(mprice,mtitle,mruntime,mgrade,mimage) value (?,?,?,?,?)";
 		try{
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, movie.get가격());
 			ps.setString(2, movie.get영화제목());
-			ps.setString(3, movie.get연령등급());
-			ps.executeQuery();
+			ps.setString(3, movie.get러닝타임());
+			ps.setString(4, movie.get연령등급());
+			ps.setString(5, movie.get이미지());
+			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
+			
 			System.out.println("ERR)) 영화 등록 실패 !!  경로:dao.MovieDao "+ e);
 		}
 		return false;
