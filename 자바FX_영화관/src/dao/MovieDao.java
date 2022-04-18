@@ -22,7 +22,7 @@ public class MovieDao{
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=UTC","root","1234");
+			conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=UTC","root","1234");
 		} catch (Exception e) {
 			System.out.println("[ DB연동 실패 ] 경로: dao.MovieDao  "+e);
 		}
@@ -30,7 +30,7 @@ public class MovieDao{
 	
 	//1.영화등록
 	public boolean 영화등록(Movie movie) {
-		String sql = "INSERT INTO project.movie(mprice,mtitle,mruntime,mgrade,mimage) value (?,?,?,?,?)";
+		String sql = "INSERT INTO project.movie(mprice,mtitle,mruntime,mgrade,mimage) VALUES (?,?,?,?,?)";
 		try{
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, movie.get가격());
@@ -48,13 +48,28 @@ public class MovieDao{
 	}
 	
 	//2.영화수정
-	public void 영화수정() {}
+	public boolean 영화수정(Movie movie) {
+		
+		String sql ="UPDATE movie set mprice =? , mptitle=? , mruntime=? , mgrade=? , mimage=? where mnum=?";
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, movie.get가격());
+			ps.setString(2, movie.get영화제목());
+			ps.setString(3, movie.get러닝타임());
+			ps.setString(4, movie.get연령등급());
+			ps.setString(5, movie.get이미지());
+			ps.setInt(6, movie.get영화번호());
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("ERR)) 영화 수정 실패 !!  경로:dao.MovieDao "+ e);
+		}
+		return false;
+	}
 	
 	//3.영화삭제
 	public void 영화삭제() {}
 	
-	//4.영화 등록 성공여부
-	public boolean 영화등록성공여부() {
-		return false;
-	}
+	//4. 영화리스트 호출
+	public void 영화리스트() {}
 }

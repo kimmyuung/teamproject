@@ -27,7 +27,7 @@ import javafx.scene.control.Alert.AlertType;
 public class MovieAdd implements Initializable {
 	
 	//알람 객체 생성 ( 이유 : 중복사용)
-	
+	Alert alert = new Alert(AlertType.INFORMATION);
 	//무비 이미지 
 	private String mimage =null;
 	
@@ -76,9 +76,6 @@ public class MovieAdd implements Initializable {
 	    private ImageView img;
 	    
 	    @FXML
-	    private Label miribogi;
-
-	    @FXML
 	    void add(ActionEvent event) {
 	    		String mtitle=txtmtitle.getText();
 	    		String mtime = txtmtime.getText();
@@ -98,16 +95,11 @@ public class MovieAdd implements Initializable {
 	    		if(gradeall.isSelected()) {	
 	    			acategory="전체 관람가";
 	    		}
-	    		else if(!(grade12.isSelected() || grade15.isSelected() || gradeadult.isSelected() || gradeall.isSelected())) {
-	    			Alert alert = new Alert(AlertType.ERROR);
-	    			alert.setHeaderText("영화 등급을 선택해야 합니다 !!");
-	    			alert.showAndWait();
-	    		}
 	    		//영화 메소드 객체화
-	    		Movie movie = new Movie(mtitle, mtime, mprice, acategory, mimage);
+	    		Movie movie = new Movie(0, mtitle, mtime, mprice, acategory, mimage);
 	    		
 	    		boolean result = MovieDao.movieDao.영화등록(movie);
-	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		
 	    		if(result) {
 	    			
 	    			alert.setHeaderText("영화 등록 성공 !!");
@@ -137,7 +129,6 @@ public class MovieAdd implements Initializable {
 	    	mimage = file.toURI().toString();
 	    	
 	    	Image image = new Image(mimage);
-	    	miribogi.setText("");
 	    	img.setImage(image);
     		
 	    	

@@ -25,7 +25,7 @@ public class TheaterList {
 
     @FXML
     void mlist(ActionEvent event) {
-
+    	
     }
 
     @FXML
