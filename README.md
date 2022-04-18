@@ -13,35 +13,34 @@
 
 
 
-1. 주제선정 
+주제선정 
 이유 : 저번 콘솔 프로젝트에서 아쉽다고 느낀 조원들이 많았는데 그 부분에 대해 보완을 하여 fx로 구현해보고자 주제를 선정
 
 
 
-2. 주제에 맞는 기능 생각해보기
+주제에 맞는 기능 생각해보기
 
 ![흐름](https://user-images.githubusercontent.com/100548259/163805187-eea74672-4665-462d-ae0d-937634e8b15e.PNG)
 
 
 
-3. 데이터베이스 설계
+데이터베이스 설계
 
 ![db설계](https://user-images.githubusercontent.com/100548259/163805264-1b064871-20f3-4a6f-8552-0fbda9b6cd5a.PNG)
 
 
 
-4. 컨트롤 설계
+ 컨트롤 설계
 
 ![컨트롤](https://user-images.githubusercontent.com/100548259/163805424-65ed3a59-bdb3-40b7-917a-dbb8ae1381f7.PNG)
 
 
 
-5. fx 기초 제작
+fx 기초 제작
 
 ![fx 설계 기초](https://user-images.githubusercontent.com/100548259/163805529-4673ef03-c8c9-4ed9-9634-6eeb47a376c3.PNG)
 
-6. 코드 작성
-
+코드 작성
 
 
 4. 14 목
