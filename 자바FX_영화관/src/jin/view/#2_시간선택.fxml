@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="jin.controller.Time_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="48.0" layoutY="69.0" prefHeight="204.0" prefWidth="527.0" text="#2-2 세트트용 빈 fxml 파일">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnNext" layoutX="391.0" layoutY="744.0" mnemonicParsing="false" onAction="#accNext" prefHeight="97.0" prefWidth="176.0" text="#4로 가기위한 테스트 버튼" />
+   </children>
+</AnchorPane>

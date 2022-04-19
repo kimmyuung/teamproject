@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jin.controller.Seat_choice">
+   <children>
+      <Pane layoutX="10.0" layoutY="14.0" prefHeight="578.0" prefWidth="580.0" style="-fx-border-color: #FE2E2E;" />
+      <Button fx:id="btnBefore" layoutX="64.0" layoutY="765.0" mnemonicParsing="false" onAction="#accBefore" prefHeight="73.0" prefWidth="85.0" text="이전" />
+      <Button fx:id="btnNext" layoutX="452.0" layoutY="765.0" mnemonicParsing="false" onAction="#accNext" prefHeight="73.0" prefWidth="85.0" text="다음" />
+      <Label layoutX="212.0" layoutY="711.0" prefHeight="61.0" prefWidth="59.0" text="가격 :" />
+      <Label layoutX="179.0" layoutY="630.0" prefHeight="86.0" prefWidth="101.0" text="성인 : 1명" />
+      <Label layoutX="339.0" layoutY="630.0" prefHeight="86.0" prefWidth="158.0" text="선택 좌석 : A열 14" />
+      <Label layoutX="281.0" layoutY="711.0" prefHeight="61.0" prefWidth="150.0" text="10000원" />
+   </children>
+</AnchorPane>
