@@ -25,7 +25,7 @@ public class TheaterList {
 
     @FXML
     void add(ActionEvent event) {
-    	
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateradd.fxml");
     }
 
     @FXML
@@ -35,6 +35,6 @@ public class TheaterList {
 
     @FXML
     void update(ActionEvent event) {
-    	
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
     }
 }
