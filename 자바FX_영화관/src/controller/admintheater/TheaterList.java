@@ -1,40 +1,40 @@
 package controller.admintheater;
 
+import controller.Admin_Home;
+import dto.Theater;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class TheaterList {
  
 	@FXML
-    private BorderPane borederpane;
+    private TableView<Theater> mlist;
 
     @FXML
-    private AnchorPane anchorpane;
+    private Button btnadd;
 
     @FXML
-    private Button btnmlist;
+    private Button btnupdate;
 
     @FXML
-    private Button btntlist;
+    private Button btnback;
 
     @FXML
-    private Button btnslist;
-
-    @FXML
-    void mlist(ActionEvent event) {
+    void add(ActionEvent event) {
     	
     }
 
     @FXML
-    void slist(ActionEvent event) {
-
+    void back(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
     }
 
     @FXML
-    void tlist(ActionEvent event) {
-
-    }	
+    void update(ActionEvent event) {
+    	
+    }
 }
