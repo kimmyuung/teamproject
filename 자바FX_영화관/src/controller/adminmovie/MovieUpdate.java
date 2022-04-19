@@ -74,6 +74,7 @@ public class MovieUpdate implements Initializable{
 
     @FXML
     void imageupdate(ActionEvent event) {
+    	
     	FileChooser fileChooser = new FileChooser();
     	
     	fileChooser.getExtensionFilters().add(new ExtensionFilter("이미지파일:image file","*png","*jpg","*jepg","*gif"));
@@ -115,7 +116,8 @@ public class MovieUpdate implements Initializable{
 
     @FXML
     void update(ActionEvent event) {
-       	if(mimage==null) {
+       
+    	if(mimage==null) {
     		mimage= MovieList.select.get이미지();
     	}
     	
@@ -158,7 +160,8 @@ public class MovieUpdate implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
     	
     	Movie movie = MovieList.select;
-    	txtmtime.setText(movie.get영화제목());
     	
+    	txtmtime.setText(movie.get영화제목());
+    
     }
 }
