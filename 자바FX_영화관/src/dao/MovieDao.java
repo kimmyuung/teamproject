@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dto.Movie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -22,11 +24,11 @@ public class MovieDao{
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=UTC","root","1234");
-		} catch (Exception e) {
-			System.out.println("[ DB연동 실패 ] 경로: dao.MovieDao  "+e);
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=Asia/Seoul ",
+					"root", "1234"); // jdbc:mysql:ip주소/port번호
+		} catch(Exception e) {System.out.println(e);}	
 		}
-	}
+	
 	
 	//1.영화등록
 	public boolean 영화등록(Movie movie) {
@@ -68,8 +70,31 @@ public class MovieDao{
 	}
 	
 	//3.영화삭제
-	public void 영화삭제() {}
+	public boolean 영화삭제(int mnum) {
+		String sql = "delete from project.movie where mnum =?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, mnum);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("영화 삭제 실패! " + e);}
+		return false;
+	}
 	
 	//4. 영화리스트 호출
-	public void 영화리스트() {}
+	public ObservableList<Movie> list() {
+		ObservableList<Movie> movielist = FXCollections.observableArrayList();
+		try {
+			String sql = "select * from teamproject.movie order by mnum asc";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Movie movie = new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6));
+				movielist.add(movie);
+			}
+			return movielist;
+		}
+		catch(Exception e) {System.out.println("호출 실패!" + e);}
+	return null;
+	}
 }
