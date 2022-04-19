@@ -6,14 +6,16 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.base.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.controls.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.fxml.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.graphics.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.media.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.swing.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx.web.jar"/>
-	<classpathentry kind="lib" path="D:/openjfx-11_windows-x64_bin-sdk/javafx-sdk-11/lib/javafx-swt.jar"/>
-	<classpathentry kind="lib" path="D:/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/mysqljava/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/504/Desktop/KJH/lib/lib/mail-1.4.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
