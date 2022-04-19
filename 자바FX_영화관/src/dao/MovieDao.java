@@ -20,7 +20,7 @@ public class MovieDao{
 	
 	
 	public static MovieDao movieDao = new MovieDao();
-	
+	// 0. db와의 연동 메소드
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -85,7 +85,7 @@ public class MovieDao{
 	public ObservableList<Movie> list() {
 		ObservableList<Movie> movielist = FXCollections.observableArrayList();
 		try {
-			String sql = "select * from teamproject.movie order by mnum asc";
+			String sql = "select * from project.movie order by mnum asc";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -96,5 +96,24 @@ public class MovieDao{
 		}
 		catch(Exception e) {System.out.println("호출 실패!" + e);}
 	return null;
+	}
+	
+	// 5. 영화이름 중복 체크
+	public boolean mtitlecheck(String mtitle) {
+		try {
+		// 1. SQL 작성
+			// 검색 : select * from 테이블명 where 조건
+		String sql = "select * from project.movie where mtitle = ?";
+		// 2. SQL 조작
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, mtitle);
+		// 3. SQL 실행
+		rs = ps.executeQuery(); // select 실행 -> 검색은 결과물 존재 -> resultset 0
+		// resultSet 처음 기본 값은 : null -> next() -> 결과 레코드
+		// 4. SQL 결과
+		if(rs.next()) return true;
+		
+		} catch(Exception e) {}
+		return false;
 	}
 }

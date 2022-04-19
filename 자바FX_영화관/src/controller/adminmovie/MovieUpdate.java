@@ -3,10 +3,13 @@ package controller.adminmovie;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import controller.Admin_Home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -17,7 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class MovieUpdate {
+public class MovieUpdate implements Initializable{
 	
 	private String mimage =null;
 	
@@ -106,5 +109,11 @@ public class MovieUpdate {
     @FXML
     void update(ActionEvent event) {
 
+    }
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	// TODO Auto-generated method stub
+    	
     }
 }
