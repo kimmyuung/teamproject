@@ -25,7 +25,7 @@ public class TheaterDao {
 	
 	public boolean 상영관등록(Theater theater) {
 		String sql = "INSERT INTO project.theater(tname, tseat) VALUES (?,?)";
-		try{
+		try{sss
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, movie.get가격());
 			ps.setString(2, movie.get영화제목());
