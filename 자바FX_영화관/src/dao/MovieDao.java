@@ -24,7 +24,7 @@ public class MovieDao{
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println(e);}	
 		}
@@ -77,7 +77,7 @@ public class MovieDao{
 			ps.setInt(1, mnum);
 			ps.executeUpdate();
 			return true;
-		}catch(Exception e) {System.out.println("영화 삭제 실패! " + e);}
+		}catch(Exception e) {System.out.println("영화 삭제 실패!  경로:dao.MovieDao  " + e);}
 		return false;
 	}
 	
@@ -94,7 +94,7 @@ public class MovieDao{
 			}
 			return movielist;
 		}
-		catch(Exception e) {System.out.println("호출 실패!" + e);}
+		catch(Exception e) {System.out.println("리스트 호출 실패!  경로:dao.MovieDao  " + e);}
 	return null;
 	}
 	
