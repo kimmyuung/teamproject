@@ -19,11 +19,36 @@ import javafx.scene.image.ImageView;
 
 public class MovieList implements Initializable{
 	
+	public static Movie select;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
+	 ObservableList<Movie> movieList = MovieDao.movieDao.list();
+	 
+	 TableColumn tc = mlist.getColumns().get(0);
+	 tc.setCellValueFactory(new PropertyValueFactory<>("영화번호"));
+	 
+	 tc=mlist.getColumns().get(1);
+	 tc.setCellValueFactory(new PropertyValueFactory<>("연령등급"));
+	 
+	 tc=mlist.getColumns().get(2);
+	 tc.setCellValueFactory(new PropertyValueFactory<>("러닝타임"));
+	 
+	 tc=mlist.getColumns().get(3);
+	 tc.setCellValueFactory(new PropertyValueFactory<>("영화제목"));
+	 
+	 tc=mlist.getColumns().get(4);
+	 tc.setCellValueFactory(new PropertyValueFactory<>("가격"));
+	 
+	 mlist.setItems(movieList);
+	 
+	 mlist.setOnMouseClicked(e-> {
+		 movie=mlist.getSelectionModel().getSelectedItem();
+		 Admin_Home.instance.loadpage("/view/AdminView/movie/movieupdate.fxml");
+	 });
 	}
 	public static dto.Movie movie;
+	
 	@FXML
     private TableView<Movie> mlist;
 

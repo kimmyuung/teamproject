@@ -7,9 +7,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
+import dao.MovieDao;
+import dto.Movie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -21,6 +25,9 @@ import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class MovieUpdate implements Initializable{
+	
+	
+	
 	
 	private String mimage =null;
 	
@@ -108,12 +115,50 @@ public class MovieUpdate implements Initializable{
 
     @FXML
     void update(ActionEvent event) {
-
+       	if(mimage==null) {
+    		mimage= MovieList.select.get이미지();
+    	}
+    	
+    	String acategory = null;
+		
+		if(grade12.isSelected()) {
+			acategory="12세 관람가";
+		}
+		if(grade15.isSelected()) {
+			acategory="15세 관람가";
+		}
+		if(gradeadult.isSelected()) {
+			acategory="청소년 관람불가";
+		}
+		if(gradeall.isSelected()) {	
+			acategory="전체 관람가";
+		}
+		//영화 메소드 객체화
+		Movie updatemovie = new Movie(MovieList.select.get영화번호(),
+				txtmtitle.getText(),
+				txtmtime.getText(),
+				Integer.parseInt(txtprice.getText()),
+				acategory,mimage);
+		
+		boolean result = MovieDao.movieDao.영화등록(updatemovie);
+		
+		if(result) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("영화 수정 성공 !!");
+			alert.showAndWait();
+			Admin_Home.instance.loadpage("/view/AdminView/movie/movielist.fxml");	
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("영화 수정 실패 !!");
+			alert.showAndWait();
+		}
     }
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	// TODO Auto-generated method stub
+    	
+    	Movie movie = MovieList.select;
+    	txtmtime.setText(movie.get영화제목());
     	
     }
 }
