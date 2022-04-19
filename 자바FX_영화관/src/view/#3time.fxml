@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="32.0" layoutY="89.0" prefHeight="73.0" prefWidth="141.0" />
+      <Label layoutX="37.0" layoutY="84.0" prefHeight="73.0" prefWidth="141.0" />
       <Text layoutX="32.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1관">
          <font>
             <Font size="25.0" />
@@ -16,7 +16,7 @@
       </Text>
       <Label layoutX="219.0" layoutY="89.0" prefHeight="73.0" prefWidth="141.0" />
       <Label layoutX="410.0" layoutY="89.0" prefHeight="73.0" prefWidth="141.0" />
-      <Label layoutX="37.0" layoutY="196.0" prefHeight="73.0" prefWidth="141.0" />
+      <Label layoutX="37.0" layoutY="191.0" prefHeight="73.0" prefWidth="141.0" />
       <Text layoutX="32.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2관">
          <font>
             <Font size="25.0" />
@@ -24,7 +24,7 @@
       </Text>
       <Label layoutX="224.0" layoutY="196.0" prefHeight="73.0" prefWidth="141.0" />
       <Label layoutX="415.0" layoutY="196.0" prefHeight="73.0" prefWidth="141.0" />
-      <Label layoutX="41.0" layoutY="318.0" prefHeight="73.0" prefWidth="141.0" />
+      <Label layoutX="37.0" layoutY="305.0" prefHeight="73.0" prefWidth="141.0" />
       <Text layoutX="32.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3관">
          <font>
             <Font size="25.0" />
@@ -32,7 +32,7 @@
       </Text>
       <Label layoutX="228.0" layoutY="318.0" prefHeight="73.0" prefWidth="141.0" />
       <Label layoutX="419.0" layoutY="318.0" prefHeight="73.0" prefWidth="141.0" />
-      <Label layoutX="39.0" layoutY="430.0" prefHeight="73.0" prefWidth="141.0" />
+      <Label layoutX="37.0" layoutY="405.0" prefHeight="73.0" prefWidth="141.0" />
       <Text layoutX="32.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4관">
          <font>
             <Font size="25.0" />
@@ -40,7 +40,7 @@
       </Text>
       <Label layoutX="226.0" layoutY="430.0" prefHeight="73.0" prefWidth="141.0" />
       <Label layoutX="417.0" layoutY="430.0" prefHeight="73.0" prefWidth="141.0" />
-      <Label layoutX="39.0" layoutY="537.0" prefHeight="73.0" prefWidth="141.0" />
+      <Label layoutX="41.0" layoutY="517.0" prefHeight="73.0" prefWidth="141.0" />
       <Text layoutX="32.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5관">
          <font>
             <Font size="25.0" />

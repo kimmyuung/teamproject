@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -10,7 +12,14 @@
    <children>
       <ScrollPane fx:id="scrollpane" layoutX="38.0" layoutY="78.0" prefHeight="620.0" prefWidth="874.0">
          <content>
-            <VBox fx:id="vbox" prefHeight="605.0" prefWidth="861.0" style="-fx-background-color: #ffffff;" />
+            <VBox fx:id="vbox" prefHeight="605.0" prefWidth="861.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/영화로고.jpg" />
+                     </image>
+                  </ImageView>
+               </children></VBox>
          </content>
       </ScrollPane>
       <Label layoutX="38.0" layoutY="14.0" prefHeight="59.0" prefWidth="146.0" text="영화관">
