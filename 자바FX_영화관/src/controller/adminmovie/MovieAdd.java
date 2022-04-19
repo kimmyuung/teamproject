@@ -26,6 +26,8 @@ import javafx.scene.control.Alert.AlertType;
 
 public class MovieAdd implements Initializable {
 	
+	public static MovieAdd movieAdd;
+	
 	//알람 객체 생성 ( 이유 : 중복사용)
 	
 	//무비 이미지 
