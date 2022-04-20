@@ -80,6 +80,8 @@ public class MovieAdd implements Initializable {
 	    @FXML
 	    private Label miribogi;
 
+	    public static String acategory;
+	    
 	    @FXML
 	    void add(ActionEvent event) {
 	    		String mtitle=txtmtitle.getText();
