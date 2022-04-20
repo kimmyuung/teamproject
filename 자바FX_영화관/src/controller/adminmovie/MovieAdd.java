@@ -84,7 +84,7 @@ public class MovieAdd implements Initializable {
 	    
 	    @FXML
 	    void add(ActionEvent event) {
-	    		String mtitle=txtmtitle.getText();
+	    		String mtitle = txtmtitle.getText();
 	    		String mtime = txtmtime.getText();
 	    		int mprice =  Integer.parseInt(txtprice.getText());
 	    		

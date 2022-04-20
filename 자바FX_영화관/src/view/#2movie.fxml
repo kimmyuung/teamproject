@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Movie">
    <children>
       <Button fx:id="btnnext" layoutX="16.0" layoutY="826.0" mnemonicParsing="false" onAction="#accnext" prefHeight="59.0" prefWidth="570.0" text="다음" />
-      <ScrollPane layoutX="16.0" layoutY="14.0" prefHeight="799.0" prefWidth="570.0">
+      <ScrollPane fx:id="scorllpan" layoutX="16.0" layoutY="14.0" prefHeight="799.0" prefWidth="570.0">
          <content>
             <VBox fx:id="vbox" prefHeight="797.0" prefWidth="568.0" />
          </content>
