@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import dto.Movie;
 import dto.Theater;
 
 public class TheaterDao {
@@ -25,13 +23,10 @@ public class TheaterDao {
 	
 	public boolean 상영관등록(Theater theater) {
 		String sql = "INSERT INTO project.theater(tname, tseat) VALUES (?,?)";
-		try{sss
+		try{
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, movie.get가격());
-			ps.setString(2, movie.get영화제목());
-			ps.setString(3, movie.get러닝타임());
-			ps.setString(4, movie.get연령등급());
-			ps.setString(5, movie.get이미지());
+			ps.setString(1, theater.get관이름());
+			ps.setString(2, theater.get관좌석());
 			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
@@ -42,17 +37,14 @@ public class TheaterDao {
 	}
 	
 	//2.영화수정
-	public boolean 영화수정(Movie movie) {
+	public boolean 상영관수정(Theater theater) {
 		
-		String sql ="UPDATE theater set mprice =? , mptitle=? , mruntime=? , mgrade=? , mimage=? where mnum=?";
+		String sql ="UPDATE project.theater set tname=? , tseat=? where tnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, movie.get가격());
-			ps.setString(2, movie.get영화제목());
-			ps.setString(3, movie.get러닝타임());
-			ps.setString(4, movie.get연령등급());
-			ps.setString(5, movie.get이미지());
-			ps.setInt(6, movie.get영화번호());
+			ps.setString(1, theater.get관이름());
+			ps.setString(2, theater.get관좌석());
+			ps.setInt(3, theater.get관번호());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -65,4 +57,4 @@ public class TheaterDao {
 	}
 	
 	
-}
+
