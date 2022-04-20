@@ -12,10 +12,7 @@ import javafx.scene.layout.BorderPane;
 public class TheaterList {
  
 	@FXML
-    private TableView<Theater> mlist;
-
-    @FXML
-    private Button btnadd;
+    private TableView<Theater> tlist;
 
     @FXML
     private Button btnupdate;
@@ -24,8 +21,28 @@ public class TheaterList {
     private Button btnback;
 
     @FXML
-    void add(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateradd.fxml");
+    private Button btnadd50;
+    
+    @FXML
+    private Button btnadd100;
+
+    @FXML
+    private Button btnadd150;
+
+    @FXML
+    void add50(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateraddsmall.fxml");
+    }
+
+    
+    @FXML
+    void add100(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateraddmid.fxml");
+    }
+
+    @FXML
+    void add150(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateraddbig.fxml");
     }
 
     @FXML
@@ -37,4 +54,5 @@ public class TheaterList {
     void update(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
     }
+
 }
