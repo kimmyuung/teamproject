@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Start extends Application{
+public class Admin_Start extends Application{
 @Override
 public void start(Stage stage) throws Exception {
 		// 5. 컨테이너 불러오기

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import dto.Movie;
 import javafx.collections.FXCollections;
@@ -81,15 +82,21 @@ public class MovieDao{
 		return false;
 	}
 	
-	//4. 영화리스트 호출
+	//4. 영화리스트 호출(옵저버리스트)
 	public ObservableList<Movie> list() {
 		ObservableList<Movie> movielist = FXCollections.observableArrayList();
 		try {
-			String sql = "select * from project.movie order by mnum asc";
+			String sql = "select * from project.movie order by mnum desc";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Movie movie = new Movie(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6));
+				Movie movie = new Movie(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getInt(4), 
+						rs.getString(5), 
+						rs.getString(6) );
 				movielist.add(movie);
 			}
 			return movielist;
@@ -115,5 +122,27 @@ public class MovieDao{
 		
 		} catch(Exception e) {}
 		return false;
+	}
+	// 6. Arraylist 리스트 호출
+	public ArrayList<Movie> arrlist() {
+		ArrayList<Movie> movielist = new ArrayList<>();
+		try {
+			String sql = "select * from project.movie order by mnum desc";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Movie movie = new Movie(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getInt(4), 
+						rs.getString(5), 
+						rs.getString(6) );
+				movielist.add(movie);
+			}
+			return movielist;
+		}
+		catch(Exception e) {System.out.println("리스트 호출 실패!  경로:dao.MovieDao  " + e);}
+	return null;
 	}
 }
