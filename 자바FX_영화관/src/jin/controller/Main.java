@@ -56,7 +56,5 @@ public class Main implements Initializable{
 		  
 		  }
 	}
-	public void close() {
-		 window.close();
-	}
+	
 }

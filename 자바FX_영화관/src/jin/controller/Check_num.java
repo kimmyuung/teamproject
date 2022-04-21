@@ -20,16 +20,16 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-//import javafx.scene.layout.BorderPane;
-import jin.application.Start;
+
+
 
 public class Check_num implements Initializable{
 	
-	public static ArrayList<Ticket> tickets = new ArrayList<>(); 
-	public static dto.Ticket ticket = new Ticket(); 
-	static int 성인=0;
-	static int 청소년=0;
-	static int input_value =0;
+	 
+	public static int 성인=0;
+	public static int 청소년=0;
+//	public static int input_value =0;
+	public static int button =0;
     @FXML
     private AnchorPane anchorpane;
     
@@ -206,12 +206,9 @@ public class Check_num implements Initializable{
 
     @FXML
     void accadultex(ActionEvent event) {
+    	button=1;
     	Main.instance.popup();
-    	성인=input_value;
     	lbladult.setText("성인 : "+성인+"명 입니다.");
-    	
-    	
-    	
     }
 
     @FXML
@@ -314,9 +311,8 @@ public class Check_num implements Initializable{
 
     @FXML
     void accyoungex(ActionEvent event) {
-    	
+    	button=2;
     	Main.instance.popup();
-    	청소년=input_value;
     	lblyoung.setText("청소년 : "+청소년+"명 입니다.");
     }
 
@@ -335,27 +331,28 @@ public class Check_num implements Initializable{
 
 	@FXML
     void accNext(ActionEvent event) {
+		System.out.println(성인);
 		Alert alert = new Alert( AlertType.INFORMATION );  
-		if(성인==0 || 청소년==0) {
+		if(성인==0 && 청소년==0) {
     		alert.setHeaderText(" 관람하시는 인원 수를 입력해 주세요");
     		alert.showAndWait();
     		
     	}
 		else {
 			
-			int i=0;
-			
-//			int 성인_관람_가격 = MovieDao.movieDao.list().get(i).get가격();
-			int 성인_관람_가격 = 8000;
-			int total_num = 성인+청소년;
-			// 청소년은 성인 관람가격 의 30% 할인 예정
-			// int 청소년 관람가격 = 성인_관람_가격 *0.7; 
-			for(i=0;i<total_num;i++)	{
-				TicketDao.ticketDao.티켓저장(ticket);
-			}
+//			int i=0;
+//			
+////			int 성인_관람_가격 = MovieDao.movieDao.list().get(i).get가격();
+//			int 성인_관람_가격 = 8000;
+//			int total_num = 성인+청소년;
+//			// 청소년은 성인 관람가격 의 30% 할인 예정
+//			// int 청소년 관람가격 = 성인_관람_가격 *0.7; 
+//			for(i=0;i<total_num;i++)	{
+//				TicketDao.ticketDao.티켓저장(ticket);
+//			}
 				
 			
-			alert.setHeaderText("좌석 선택 메뉴로 이동합니다.");
+			alert.setHeaderText("성인 :"+성인+"명, 청소년 :"+청소년+"명 선택 하셨습니다");
 			alert.showAndWait();
 	    	Main.instance.loadpage("/jin/view/#5_좌석선택.fxml");
 			}
