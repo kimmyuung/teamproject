@@ -1,5 +1,6 @@
 package dto;
 
+
 public class Movie {
 	private int 영화번호;
 	private String 영화제목;

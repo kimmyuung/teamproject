@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
-=======
 import dto.Movie;
->>>>>>> refs/remotes/origin/HSB
 import dto.Theater;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class TheaterDao {
 	
@@ -26,7 +25,7 @@ public class TheaterDao {
 		} catch(Exception e) {System.out.println( "DB연동실패! 경로:dao.TheaterDao " + e);}	
 		}
 	
-	
+	//1. 상영관 호출
 	public boolean 상영관등록(Theater theater) {
 		String sql = "INSERT INTO project.theater(tname, tseat) VALUES (?,?)";
 		try{
@@ -42,24 +41,14 @@ public class TheaterDao {
 		return false;
 	}
 	
-	//2.영화수정
+	//2.상영관수정
 	public boolean 상영관수정(Theater theater) {
 		
-
-		String sql ="UPDATE project.theater set tname=? , tseat=? where tnum=?";
-
 		String sql ="UPDATE theater set tname =? , tseat=?  WHERE tnum=?";
-
 		try {
 			ps=conn.prepareStatement(sql);
-<<<<<<< HEAD
-			ps.setString(1, theater.get관이름());
-			ps.setString(2, theater.get관좌석());
-			ps.setInt(3, theater.get관번호());
-=======
 			ps.setString(1,theater.get관이름());
 			ps.setString(2, theater.get관좌석());
->>>>>>> refs/remotes/origin/HSB
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -67,8 +56,25 @@ public class TheaterDao {
 		}
 		return false;
 	}
-		
+	
+	//3.상영관리스트 호출
+	public ObservableList<Theater> list() {
+		ObservableList<Theater> theaterlist = FXCollections.observableArrayList();
+		try {
+			String sql = "SELECT * FROM project.theater ORDER BY tnum DESC";
+			ps= conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				Theater theater = new Theater(rs.getInt(1) ,rs.getString(2),rs.getString(3));
+				theaterlist.add(theater);
+			}
+			return theaterlist;
+		} catch (Exception e) {
+			System.out.println("ERR)) 상영관 리스트 호출 실패 !!  경로:dao.MovieDao "+ e);
+		}
+		return null;
+	}
 		
 	
 	
-
+}

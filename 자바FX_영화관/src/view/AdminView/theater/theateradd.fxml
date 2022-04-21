@@ -2,56 +2,33 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admintheater.TheaterAdd">
    <children>
-      <Text layoutX="853.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="관 이름  " wrappingWidth="101.00000381469727">
+      <Text layoutX="759.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="관 이름  " wrappingWidth="101.00000381469727">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txttname" layoutX="961.0" layoutY="41.0" prefHeight="28.0" prefWidth="254.0" />
-      <Label layoutX="806.0" layoutY="95.0" prefHeight="37.0" prefWidth="141.0" text="상영관 크기 ">
+      <TextField fx:id="txttname" layoutX="867.0" layoutY="83.0" prefHeight="28.0" prefWidth="254.0" />
+      <Label layoutX="491.0" layoutY="21.0" prefHeight="37.0" prefWidth="141.0" text="상영관 크기 ">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <RadioButton fx:id="small" layoutX="961.0" layoutY="105.0" mnemonicParsing="false" text="소형 ">
-         <toggleGroup>
-            <ToggleGroup fx:id="tsize" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="mid" layoutX="1064.0" layoutY="105.0" mnemonicParsing="false" text="중형" toggleGroup="$tsize" />
-      <RadioButton fx:id="big" layoutX="1168.0" layoutY="105.0" mnemonicParsing="false" text="대형" toggleGroup="$tsize" />
-      <Text layoutX="961.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좌석 :50 석" wrappingWidth="76.99999618530273">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="1064.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좌석 :100 석" wrappingWidth="84.99999618530273">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="1168.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좌석 :150 석" wrappingWidth="85.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
       <Button fx:id="btntadd" layoutX="1050.0" layoutY="669.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="94.0" text="상영관 등록" />
       <Button fx:id="btntback" layoutX="1159.0" layoutY="669.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="94.0" text="등록 취소" />
-      <ScrollPane fx:id="scrollpane" layoutX="94.0" layoutY="172.0" prefHeight="488.0" prefWidth="1146.0">
-         <content>
-            <VBox fx:id="vbox" prefHeight="492.0" prefWidth="1147.0" />
-         </content>
-      </ScrollPane>
+      <Label layoutX="625.0" layoutY="34.0" prefHeight="21.0" prefWidth="149.0" text="(최대 좌석:200석)">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="thpane" layoutX="139.0" layoutY="119.0" prefHeight="533.0" prefWidth="895.0" />
+      <Button fx:id="btnupdate" layoutX="942.0" layoutY="669.0" mnemonicParsing="false" onAction="#update" prefHeight="37.0" prefWidth="94.0" text="좌석 수정" />
+      
    </children>
 </AnchorPane>
