@@ -1,6 +1,7 @@
 package controller.adminmovie;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import controller.Admin_Home;
 import dao.MovieDao;
@@ -10,7 +11,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +24,7 @@ import javafx.scene.image.ImageView;
 public class MovieList implements Initializable{
 	
 	public static Movie select;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -43,11 +48,11 @@ public class MovieList implements Initializable{
 	 mlist.setItems(movieList);
 	 
 	 mlist.setOnMouseClicked(e-> {
-		 movie=mlist.getSelectionModel().getSelectedItem();
-		 Admin_Home.instance.loadpage("/view/AdminView/movie/movieupdate.fxml");
+		 select=mlist.getSelectionModel().getSelectedItem();
+		 
 	 });
 	}
-	public static dto.Movie movie;
+	
 	
 	@FXML
     private TableView<Movie> mlist;
@@ -76,7 +81,16 @@ public class MovieList implements Initializable{
 
     @FXML
     void delete(ActionEvent event) {
-    	
+    		Alert alert = new Alert(AlertType.CONFIRMATION) ;
+    			alert.setHeaderText("정말 삭제하시겠습니까?");
+    			Optional<ButtonType> optional = alert.showAndWait();
+	    		if(optional.get()== ButtonType.OK) {
+	    			boolean result=MovieDao.movieDao.영화삭제(MovieList.select.get영화번호());
+	    			if(result) {
+	    				Admin_Home.instance.loadpage("/view/AdminView/movie/movielist.fxml");
+	    			}
+	    		}
+    		
     }
 
     @FXML

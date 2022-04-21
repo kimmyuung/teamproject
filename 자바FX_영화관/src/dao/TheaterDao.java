@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
+=======
+import dto.Movie;
+>>>>>>> refs/remotes/origin/HSB
 import dto.Theater;
 
 public class TheaterDao {
@@ -12,12 +16,14 @@ public class TheaterDao {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public static TheaterDao theaterDao = new TheaterDao();
+	
 	public TheaterDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
-		} catch(Exception e) {System.out.println(e);}	
+		} catch(Exception e) {System.out.println( "DB연동실패! 경로:dao.TheaterDao " + e);}	
 		}
 	
 	
@@ -31,7 +37,7 @@ public class TheaterDao {
 			return true;
 		}catch (Exception e) {
 			
-			System.out.println("ERR)) 영화 등록 실패 !!  경로:dao.MovieDao "+ e);
+			System.out.println("ERR)) 상영관 등록 실패 !!  경로:dao.TheaterDao "+ e);
 		}
 		return false;
 	}
@@ -39,22 +45,30 @@ public class TheaterDao {
 	//2.영화수정
 	public boolean 상영관수정(Theater theater) {
 		
+
 		String sql ="UPDATE project.theater set tname=? , tseat=? where tnum=?";
+
+		String sql ="UPDATE theater set tname =? , tseat=?  WHERE tnum=?";
+
 		try {
 			ps=conn.prepareStatement(sql);
+<<<<<<< HEAD
 			ps.setString(1, theater.get관이름());
 			ps.setString(2, theater.get관좌석());
 			ps.setInt(3, theater.get관번호());
+=======
+			ps.setString(1,theater.get관이름());
+			ps.setString(2, theater.get관좌석());
+>>>>>>> refs/remotes/origin/HSB
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
-			System.out.println("ERR)) 영화 수정 실패 !!  경로:dao.MovieDao "+ e);
+			System.out.println("ERR)) 상영관 수정 실패 !!  경로:dao.MovieDao "+ e);
 		}
 		return false;
 	}
 		
 		
-	}
 	
 	
 
