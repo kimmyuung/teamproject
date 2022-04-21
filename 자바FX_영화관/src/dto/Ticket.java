@@ -1,10 +1,10 @@
-	package dto;
+package dto;
 
 public class Ticket {
 private int 가격;
-private String 영화제목;
+private String 영화제목; 
 private int 인원수;
-private String 관이름;
+private String 관이름; 
 private String 날짜;
 private String 좌석;
 public Ticket() {}
