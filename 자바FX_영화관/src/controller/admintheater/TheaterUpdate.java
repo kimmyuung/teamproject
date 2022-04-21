@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
+import dao.TheaterDao;
+import dto.Theater;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,18 +26,6 @@ public class TheaterUpdate implements Initializable {
     private TextField txttname;
 
     @FXML
-    private RadioButton small;
-
-    @FXML
-    private ToggleGroup tsize;
-
-    @FXML
-    private RadioButton mid;
-
-    @FXML
-    private RadioButton big;
-
-    @FXML
     private Button btntupdate;
 
     @FXML
@@ -45,12 +35,13 @@ public class TheaterUpdate implements Initializable {
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
     }
-
+    
     @FXML
     void update(ActionEvent event) {
-
+  //  	Theater updatetheater = new Theater(TheaterList.select.get°ü¹øÈ£(),txttname,);
     }
-	
+
+  
 
 
 }

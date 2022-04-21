@@ -58,7 +58,7 @@ public class TheaterList implements Initializable{
 
     @FXML
     void add(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateraddbig.fxml");
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theateradd.fxml");
     }
 
     @FXML

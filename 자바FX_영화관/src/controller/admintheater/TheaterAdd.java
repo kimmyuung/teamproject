@@ -72,6 +72,7 @@ public class TheaterAdd implements Initializable {
      	if(result ) {
      		alert.setHeaderText("상영관 등록 성공 !!");
 			alert.showAndWait();
+			Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
      	}else {
      		alert.setHeaderText("상영관 등록 실패 !!");
 			alert.showAndWait();
