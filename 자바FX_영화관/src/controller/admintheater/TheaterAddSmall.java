@@ -2,7 +2,6 @@ package controller.admintheater;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import controller.Admin_Home;
 import dao.TheaterDao;
 import dto.Theater;
@@ -12,15 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-
 
 public class TheaterAddSmall implements Initializable{
 
@@ -30,17 +25,16 @@ public class TheaterAddSmall implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 		
-			
+			seatshow();
 			
 			
 		}
-		
+
+		@FXML
+	    private AnchorPane thpane;
 
 	    @FXML
 	    private GridPane seat;
-
-	    @FXML
-	    private VBox vbox;
 
 	    @FXML
 	    private TextField txttname;
@@ -79,21 +73,24 @@ public class TheaterAddSmall implements Initializable{
 	    	
 	    	gridPane.setPadding(new Insets(10));
 	    	
-	    	gridPane.setHgap(5);
-	    	gridPane.setVgap(5);
+	    	gridPane.setHgap(30);
+	    	gridPane.setVgap(30);
 	    	
 	    	int i = 0;
 	    	for(int row=0; row<50/5; row++) {
-	    		for(int col=0; col<5; col++) {
+	    		for(int col=0; col<10; col++) {
 	    			
-	    			ToggleButton button = new ToggleButton();	    			
+	    			ToggleButton button = new ToggleButton();
+	    			button.setPrefWidth(30);
+	    			button.setPrefHeight(30);
+	   
+	    		
 	    			
 	    			gridPane.add(button, col, row);
 	    			i++;
 	    		}
 	    	}
-	    vbox.getChildren().add(gridPane);	
-	    	
+	    	thpane.getChildren().add(gridPane);	
 	    }
 	
 	    

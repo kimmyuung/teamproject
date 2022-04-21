@@ -9,12 +9,15 @@ import dto.Theater;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+
 
 
 public class TheaterAddBig implements Initializable {
@@ -22,15 +25,15 @@ public class TheaterAddBig implements Initializable {
 	Alert alert = new Alert(AlertType.INFORMATION);
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
+		seatshow();
 		
 	}
 	
 	@FXML
+	private AnchorPane thpane;
+	
+	@FXML
     private GridPane seat;
-
-    @FXML
-    private VBox vbox;
 
     @FXML
     private TextField txttname;
@@ -40,6 +43,8 @@ public class TheaterAddBig implements Initializable {
 
     @FXML
     private Button btntback;
+    
+ 
 
     @FXML
     void add(ActionEvent event) {
@@ -63,5 +68,55 @@ public class TheaterAddBig implements Initializable {
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
     }
+
+    public void seatshow() {
+	   	
+		   GridPane gridPane = new GridPane();
+	    	
+	    	gridPane.setPadding(new Insets(10));
+	    	
+	    	gridPane.setHgap(10);
+	    	gridPane.setVgap(10);
+	  
+	    	int i = 0;
+	    	
+	    	for(int row=0; row<150/15; row++) {
+	    		int j=1;
+	    		for(int col=0; col<15; col++) {
+	    			
+	    			ToggleButton button = new ToggleButton();
+	    			button.setPrefWidth(40);
+	    			button.setPrefHeight(40);
+	    			//좌석 번호 정렬
+	    			if(row==0) {button.setText("A"+j);}
+	    			if(row==1) {button.setText("B"+j);}
+	    			if(row==2) {button.setText("C"+j);}
+	    			if(row==3) {button.setText("D"+j);}
+	    			if(row==4) {button.setText("E"+j);}
+	    			if(row==5) {button.setText("F"+j);}
+	    			if(row==6) {button.setText("G"+j);}
+	    			if(row==7) {button.setText("H"+j);}
+	    			if(row==8) {button.setText("I"+j);}
+	    			if(row==9) {button.setText("J"+j);}
+	    			if(row==10) {button.setText("K"+j);}
+	    			if(row==11) {button.setText("L"+j);}
+	    			if(row==12) {button.setText("N"+j);}
+	    			if(row==13) {button.setText("M"+j);}
+	    			if(row==14) {button.setText("O"+j);}
+	    			if(row==15) {button.setText("P"+j);}
+	    			
+	    			
+	    			gridPane.add(button, col, row);
+	    			i++;
+	    			j++;
+	    			
+	    			
+	    		
+	    			
+	    		}
+	    	}
+	    	thpane.getChildren().add(gridPane);	
+	    }
+
 
 }
