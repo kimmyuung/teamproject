@@ -40,14 +40,15 @@ public class InfoDao {
 		return false;
 	}
 	
-	public ObservableList<Info> Infolist(){
+	public ObservableList<Info> Infolist(String name){
 		
 		ObservableList<Info> infolist = FXCollections.observableArrayList();
 		
 		try {
 			
-			String sql = "select * from info order by num desc";
+			String sql = "select * from info where movie=? order by num asc ";
 			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {

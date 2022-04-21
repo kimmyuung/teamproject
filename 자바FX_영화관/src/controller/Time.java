@@ -3,17 +3,34 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dao.InfoDao;
+import dao.MovieDao;
 import dto.Info;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Time implements Initializable {
 
-	
+    @FXML
+    private Button back;
+
+    @FXML
+    private Button next;
+    
+    @FXML
+    void btnback(ActionEvent event) {
+    	Main.main.loadpage("/view/#2movie.fxml");
+    }
+
+    @FXML
+    void btnnext(ActionEvent event) {
+//    	Main.main.loadpage("/view/#4");
+    }
 
     @FXML
     private TableView<Info> table;
@@ -22,7 +39,7 @@ public class Time implements Initializable {
    
 	   public void Infoshow() {
     	
-    	ObservableList<Info> infolist = InfoDao.infoDao.Infolist();
+    	ObservableList<Info> infolist = InfoDao.infoDao.Infolist(Movie.select.get영화제목());
     	
     	TableColumn tc = table.getColumns().get(0);
     	tc.setCellValueFactory(new PropertyValueFactory<>("num"));
@@ -48,7 +65,11 @@ public class Time implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		Infoshow();
+		
+		
+		
 	}
 	
 }
