@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admintheater.TheaterAddBig">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admintheater.TheaterAdd">
    <children>
       <Text layoutX="759.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="관 이름  " wrappingWidth="101.00000381469727">
          <font>
@@ -22,12 +22,13 @@
       </Label>
       <Button fx:id="btntadd" layoutX="1050.0" layoutY="669.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="94.0" text="상영관 등록" />
       <Button fx:id="btntback" layoutX="1159.0" layoutY="669.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="94.0" text="등록 취소" />
-      <Label layoutX="621.0" layoutY="33.0" prefHeight="21.0" prefWidth="149.0" text="(대형: 좌석 150석)">
+      <Label layoutX="625.0" layoutY="34.0" prefHeight="21.0" prefWidth="149.0" text="(최대 좌석:200석)">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="thpane" layoutX="256.0" layoutY="124.0" prefHeight="533.0" prefWidth="895.0" />
+      <AnchorPane fx:id="thpane" layoutX="139.0" layoutY="119.0" prefHeight="533.0" prefWidth="895.0" />
+      <Button fx:id="btnupdate" layoutX="942.0" layoutY="669.0" mnemonicParsing="false" onAction="#update" prefHeight="37.0" prefWidth="94.0" text="좌석 수정" />
       
    </children>
 </AnchorPane>

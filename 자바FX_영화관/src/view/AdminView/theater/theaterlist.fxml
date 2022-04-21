@@ -15,11 +15,9 @@
             <TableColumn prefWidth="128.0" text="좌석 개수" />
         </columns>
       </TableView>
-      <Button fx:id="btnadd150" layoutX="641.0" layoutY="528.0" mnemonicParsing="false" onAction="#add150" prefHeight="67.0" prefWidth="136.0" text="상영관 등록(150석)" />
-      <Button fx:id="btnupdate" layoutX="641.0" layoutY="610.0" mnemonicParsing="false" onAction="#update" prefHeight="67.0" prefWidth="136.0" text="상영관 수정" />
+      <Button fx:id="btnadd" layoutX="785.0" layoutY="603.0" mnemonicParsing="false" onAction="#add" prefHeight="67.0" prefWidth="136.0" text="상영관 등록" />
+      <Button fx:id="btnupdate" layoutX="941.0" layoutY="603.0" mnemonicParsing="false" onAction="#update" prefHeight="67.0" prefWidth="136.0" text="상영관 수정" />
       <ImageView fitHeight="269.0" fitWidth="520.0" layoutX="709.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btnback" layoutX="1100.0" layoutY="603.0" mnemonicParsing="false" onAction="#back" prefHeight="67.0" prefWidth="136.0" text="뒤로 가기" />
-      <Button fx:id="btnadd100" layoutX="641.0" layoutY="450.0" mnemonicParsing="false" onAction="#add100" prefHeight="67.0" prefWidth="136.0" text="상영관 등록(100석)" />
-      <Button fx:id="btnadd50" layoutX="641.0" layoutY="367.0" mnemonicParsing="false" onAction="#add50" prefHeight="67.0" prefWidth="136.0" text="상영관 등록(50석)" />
    </children>
 </AnchorPane>

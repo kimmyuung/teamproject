@@ -24,7 +24,8 @@ public void save() {}
 public void load() {}
 public void saleplus() {}
 
-//9. 전체 수 반환
+
+	//1. 전체 수 반환
 	public Map<String, Integer> bdatetotal(String table, String date) {
 		try {
 			Map<String, Integer> map = new HashMap<>();
