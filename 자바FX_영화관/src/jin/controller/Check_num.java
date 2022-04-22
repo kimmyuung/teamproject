@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import dao.MovieDao;
-import dao.TicketDao;
-import dto.Movie;
-import dto.Ticket;
+//import dao.MovieDao;
+//import dao.TicketDao;
+//import dto.Movie;
+//import dto.Ticket;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
