@@ -1,9 +1,12 @@
 package controller.admintheater;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
+import controller.adminmovie.MovieList;
+import dao.MovieDao;
 import dao.TheaterDao;
 import dto.Movie;
 import dto.Theater;
@@ -11,7 +14,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,6 +27,8 @@ import javafx.scene.layout.BorderPane;
 public class TheaterList implements Initializable{
 	
 	public static Theater select;
+	
+	Alert alert = new Alert(AlertType.CONFIRMATION);
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -69,8 +77,17 @@ public class TheaterList implements Initializable{
     }
 
     @FXML
-    void update(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
+    void delete(ActionEvent event) {
+    	alert.setHeaderText("정말 삭제하시겠습니까?");
+		Optional<ButtonType> optional = alert.showAndWait();
+		if(optional.get()== ButtonType.OK) {
+			boolean result=TheaterDao.theaterDao.상영관삭제(TheaterList.select.get관번호());
+			if(result) {
+				alert.setHeaderText("삭제되었습니다.");
+				alert.showAndWait();
+				Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
+			}
+		}
     }
 
 }

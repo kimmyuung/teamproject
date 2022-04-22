@@ -19,6 +19,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+
+
 //2. 좌석이 줄어들면 그 수만큼 그걸 DB에 적용
 
 public class TheaterAdd implements Initializable {
@@ -54,6 +56,7 @@ public class TheaterAdd implements Initializable {
     
    
     static ArrayList<String> cn = new ArrayList<>();
+    
    
     private static int count;
     
@@ -70,7 +73,14 @@ public class TheaterAdd implements Initializable {
     	String tname =txttname.getText();
     	int tseat = 200 - count;
     	
-      theater = new Theater(0, tname, Integer.toString(tseat), cn); 
+    	String str="";
+    	for(String temp: cn) {
+    		str+=temp+",";
+    	}
+    	
+    
+    	
+      theater = new Theater(0, tname, Integer.toString(tseat), str ); 
      	System.out.println(tseat);
      	boolean result=TheaterDao.theaterDao.상영관등록(theater);
      	

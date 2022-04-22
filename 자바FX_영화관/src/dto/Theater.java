@@ -1,23 +1,23 @@
 package dto;
 
-import java.util.ArrayList;
+
 
 public class Theater {
 private int 관번호;
 private String 관이름;
 private String 관좌석;
-private ArrayList<String> txy;
+private String 관좌표;
 
 public Theater() {}
 
 
 
-public Theater(int 관번호, String 관이름, String 관좌석, ArrayList<String> txy) {
+public Theater(int 관번호, String 관이름, String 관좌석,String 관좌표) {
 	super();
 	this.관번호 = 관번호;
 	this.관이름 = 관이름;
 	this.관좌석 = 관좌석;
-	this.txy = txy;
+	this.관좌표 = 관좌표;
 }
 
 
@@ -40,14 +40,16 @@ public void set관좌석(String 관좌석) {
 	this.관좌석 = 관좌석;
 }
 
-
-public ArrayList<String> getTxy() {
-	return txy;
+public String get관좌표() {
+	return 관좌표;
 }
 
-public void setTxy(ArrayList<String> txy) {
-	this.txy = txy;
+public void set관좌표(String 관좌표) {
+	this.관좌표 = 관좌표;
 }
+
+
+
 
 
 
