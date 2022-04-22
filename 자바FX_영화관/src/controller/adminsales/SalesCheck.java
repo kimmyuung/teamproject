@@ -1,6 +1,8 @@
 package controller.adminsales;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
@@ -15,7 +17,11 @@ public class SalesCheck implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String today= dateFormat.format(date);
 		
+		lbltoday.setText(today+"");
 	}
 
 	@FXML
