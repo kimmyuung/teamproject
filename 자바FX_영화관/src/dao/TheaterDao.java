@@ -27,11 +27,12 @@ public class TheaterDao {
 	
 	//1. 상영관 호출
 	public boolean 상영관등록(Theater theater) {
-		String sql = "INSERT INTO project.theater(tname, tseat) VALUES (?,?)";
+		String sql = "INSERT INTO project.theater(tname, tseat, txy) VALUES (?,?,?)";
 		try{
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, theater.get관이름());
 			ps.setString(2, theater.get관좌석());
+		//	ps.setArray(3, theater.getTxy());
 			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
@@ -65,8 +66,8 @@ public class TheaterDao {
 			ps= conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				Theater theater = new Theater(rs.getInt(1) ,rs.getString(2),rs.getString(3));
-				theaterlist.add(theater);
+			//	Theater theater = new Theater(rs.getInt(1) ,rs.getString(2),rs.getString(3) , rs.getString(4));
+			//	theaterlist.add(theater);
 			}
 			return theaterlist;
 		} catch (Exception e) {

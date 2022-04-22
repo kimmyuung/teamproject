@@ -22,17 +22,19 @@ import javafx.scene.layout.GridPane;
 //2. 좌석이 줄어들면 그 수만큼 그걸 DB에 적용
 
 public class TheaterAdd implements Initializable {
-
+	
 	Alert alert = new Alert(AlertType.INFORMATION);
+	
+	public static TheaterAdd theaterAdd = new TheaterAdd();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		seatshow();
 		
-	
+		seatshow();
 	
 	}
 	
-	
+	static String x;
 	 
 	@FXML
 	private AnchorPane thpane;
@@ -50,23 +52,26 @@ public class TheaterAdd implements Initializable {
     private Button btnupdate;
     
     
-    
+   
+    static ArrayList<String> cn = new ArrayList<>();
+   
     private static int count;
+    
     //좌석 수정
     @FXML
     void update(ActionEvent event) {
     	seatshow();
     }
-    
+    public static Theater theater;
+   
     //좌석 등록
     @FXML
     void add(ActionEvent event) {
     	String tname =txttname.getText();
+    	int tseat = 200 - count;
     	
-    	int tseat = 200 - count;	//좌석 개수
-    	System.out.println(count);
-     	Theater theater = new Theater(0, tname, Integer.toString(tseat)); 
-     	
+      theater = new Theater(0, tname, Integer.toString(tseat), cn); 
+     	System.out.println(tseat);
      	boolean result=TheaterDao.theaterDao.상영관등록(theater);
      	
      	if(result ) {
@@ -87,7 +92,7 @@ public class TheaterAdd implements Initializable {
     public void seatshow() {
 	   	
 		   GridPane gridPane = new GridPane();
-	    	
+	    
 	    	gridPane.setPadding(new Insets(10));
 	    	
 	    	gridPane.setHgap(10);
@@ -121,12 +126,12 @@ public class TheaterAdd implements Initializable {
 	    			gridPane.add(button, col, row);
 	    			i++;
 	    			j++;
-	   
-	    			
+
 	    			button.setOnMouseClicked(e -> {
-		    				
+		    			x = button.getId();
 		    			if(button.isSelected()) {
-		    					
+		    				cn.add(x);
+		    				System.out.println(cn);
 		    				button.setVisible(false); 
 		    				count++;
 		    			}

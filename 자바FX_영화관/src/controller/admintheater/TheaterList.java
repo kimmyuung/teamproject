@@ -36,6 +36,8 @@ public class TheaterList implements Initializable{
 		tc=tlist.getColumns().get(2);
 		tc.setCellValueFactory(new PropertyValueFactory<>("°üÁÂ¼®"));
 		
+		
+		
 		tlist.setItems(theaterlist);
 		
 		tlist.setOnMouseClicked(e-> {

@@ -3,6 +3,8 @@ package dto;
 public class Sales {
 private int 매출;
 private String 날짜;
+
+
 public Sales() {}
 public Sales(int 매출, String 날짜) {
 	super();
