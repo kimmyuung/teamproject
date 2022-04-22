@@ -66,6 +66,8 @@ public class TheaterList implements Initializable{
     @FXML
     private Button btnadd;
 
+    
+    
     @FXML
     void add(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theateradd.fxml");
@@ -75,7 +77,12 @@ public class TheaterList implements Initializable{
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
     }
-
+    
+    @FXML
+    void update(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
+    }
+    
     @FXML
     void delete(ActionEvent event) {
     	alert.setHeaderText("정말 삭제하시겠습니까?");

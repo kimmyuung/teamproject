@@ -51,6 +51,7 @@ public class TheaterDao {
 			ps.setString(1,theater.get관이름());
 			ps.setString(2, theater.get관좌석());
 			ps.setString(3, theater.get관좌표());
+			ps.setInt(4, theater.get관번호());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -90,5 +91,18 @@ public class TheaterDao {
 		return false;
 	}
 	
-	
+	//5. 좌석리스트 호출
+	public String 좌석호출() {
+		String str = "";
+		try {
+			String sql = "SELECT txy FROM project.theater order by tnum";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				str += rs.getString(1) + ",";
+			}
+			return str;
+		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
+		return null;
+	}
 }
