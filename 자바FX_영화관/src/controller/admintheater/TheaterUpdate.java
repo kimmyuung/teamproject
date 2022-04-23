@@ -21,7 +21,24 @@ import javafx.scene.layout.GridPane;
 
 public class TheaterUpdate implements Initializable {
 	
-	  @FXML
+		static String x;
+	    
+		private static int count;
+	    
+		static ArrayList<String> cn = new ArrayList<>();
+	    
+		Alert alert = new Alert(AlertType.INFORMATION);
+	
+		
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			Theater theater = TheaterList.select;
+			txttname.setText(TheaterList.select.get관이름());
+			updateseatshow();
+		}
+		
+		@FXML
 	    private TextField txttname;
 
 	   	@FXML
@@ -63,18 +80,8 @@ public class TheaterUpdate implements Initializable {
 				alert.showAndWait();
 		   	}
 	    }
-	    static String x;
-	    private static int count;
-	    static ArrayList<String> cn = new ArrayList<>();
-	Alert alert = new Alert(AlertType.INFORMATION);
+	   
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		Theater theater = TheaterList.select;
-		txttname.setText(TheaterList.select.get관이름());
-		updateseatshow();
-	}
 	
 	public void updateseatshow() {
 	   	
@@ -95,6 +102,7 @@ public class TheaterUpdate implements Initializable {
 	    			ToggleButton button = new ToggleButton();
 	    			button.setPrefWidth(40);
 	    			button.setPrefHeight(40);
+	    			
 	    			//좌석 번호 정렬
 	    			if(row==0) {button.setText("A"+j); 	}
 	    			if(row==1) {button.setText("B"+j); 	}
@@ -107,10 +115,14 @@ public class TheaterUpdate implements Initializable {
 	    			if(row==8) {button.setText("I"+j); 	}
 	    			if(row==9) {button.setText("J"+j); 	}
 	    	
-	    			if(button.getId().equals(gridPane)) {
-	    				
-	    			}
-	    			ArrayList<String> seats= new ArrayList<>();
+	    			
+	    			
+	    			
+	    		
+//	    			if(button.getId().equals(gridPane)) {
+//	    				button.setVisible(false);
+//	    			}
+//	    			ArrayList<String> seats= new ArrayList<>();
 	    			
 	    			gridPane.add(button, col, row);
 	    			i++;
@@ -120,7 +132,6 @@ public class TheaterUpdate implements Initializable {
 		    			x = button.getId();
 		    			if(button.isSelected()) {
 		    				cn.add(x);
-		    				System.out.println(cn);
 		    				button.setVisible(false); 
 		    				count++;
 		    			}
