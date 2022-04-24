@@ -64,16 +64,16 @@ public class TheaterAdd implements Initializable {
     //좌석 수정
     @FXML
     public void update(ActionEvent event) {
-    	
-  
+    	//카운트 되돌리기
+    	count=0;
     	//아크로보드 전체 지우기 (중복 방지)
     	thpane.getChildren().clear();
     	//seatshow 다시 구현
     	seatshow();
     	//영화관 수정 버튼 클릭 후 배열 내 정보 삭제 ( 중복 방지 )
     	cn.clear();
-    	//카운트 되돌리기
-    	count=0;
+    	
+    
     	
     }
     
@@ -98,6 +98,8 @@ public class TheaterAdd implements Initializable {
     	theater = new Theater(0, tname, Integer.toString(tseat), str ); 
     	//영화관 등록후 배열 내 정보 삭제 ( 중복 방지 )
     	cn.clear();
+    	//영화관 등록 후 좌석 카운트 수 초기화
+    	count=0;
     	
     	
     	
@@ -162,6 +164,8 @@ public class TheaterAdd implements Initializable {
 	    			gridPane.add(button, col, row);
 	    			i++;
 	    			j++;
+	    			
+	    			
 	    			//버튼 클릭시 해당 id값 안보이게 설정
 	    			button.setOnMouseClicked(e -> {
 		    			x = button.getId();
