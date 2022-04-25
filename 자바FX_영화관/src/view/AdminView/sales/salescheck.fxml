@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:controller="controller.adminsales.SalesCheck" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnback" layoutX="1138.0" layoutY="659.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="111.0" text="뒤로가기" />
+      <Button fx:id="btnsearch" layoutX="1015.0" layoutY="659.0" mnemonicParsing="false" onAction="#search" prefHeight="37.0" prefWidth="111.0" text="매출 검색" />
+      <Button fx:id="btnchart" layoutX="891.0" layoutY="659.0" mnemonicParsing="false" onAction="#chart" prefHeight="37.0" prefWidth="111.0" text="매출 통계" />
+      <LineChart fx:id="chart" layoutX="82.0" layoutY="89.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label layoutX="114.0" layoutY="74.0" text="오늘의 매출" />
+      <Label fx:id="lbltoday" layoutX="284.0" layoutY="67.0" text="세팅장소" />
+   </children>
+</AnchorPane>
