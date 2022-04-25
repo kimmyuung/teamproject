@@ -33,7 +33,7 @@ public class MovieSelect implements Initializable {
     void accnext(ActionEvent event) {
     	Main.main.loadpage("/view/#3time.fxml");
     }
-	 void show() {
+	 public void show() {
 		 
 	    	if(vbox.getChildren().isEmpty() == false) { // .isEmpty() : 해당 객체내 비어있는지 확인[vbox 내 비어있는지 확인]
 	    		// vbox내 객체가 비어있지 않으면

@@ -25,13 +25,13 @@ public class InfoDao {
 		} catch(Exception e) {System.out.println(e);}	
 	}
 	
-	public boolean 시간등록(Info info) {
+	public boolean 시간등록(String title, String time, String tname) {
 		try {
 			String sql = "insert into project.info(movie,time,name)values(?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, info.getMovie());
-			ps.setString(2, info.getTime());
-			ps.setString(3, info.getName());
+			ps.setString(1, title);
+			ps.setString(2, time);
+			ps.setString(3, tname);
 			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
