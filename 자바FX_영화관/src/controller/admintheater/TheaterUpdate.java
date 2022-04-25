@@ -127,19 +127,16 @@ public class TheaterUpdate implements Initializable {
 	    	
 	    
 	    			ArrayList<String> seats= new ArrayList<>();			
-	    			String str=TheaterDao.theaterDao.좌석호출();
+	    			String str=TheaterDao.theaterDao.좌석호출(TheaterList.select.get관번호());
 	    		
 	    			
 	    			//수정 필요
 	    			//1.길이 재 설정 
+	    			
 	    			//2.선택한 값만큼만 좌석좌표 불러오기
-	    			for(int a=0; a<23; a++) {
-	    				
-	    				
+	    			for(int a=0; a<(200-Integer.parseInt(TheaterList.select.get관좌석() )); a++) {
 	    				String seat= str.toString().split(",")[a];
 	    				seats.add(seat);
-	    				System.out.println(seats);
-	    				
 	    				if(button.getId().equals(seat)) {
 	    					button.setVisible(false);
 	    				

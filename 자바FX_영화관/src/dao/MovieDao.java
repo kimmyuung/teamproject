@@ -24,7 +24,7 @@ public class MovieDao{
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println(e);}	
 		}

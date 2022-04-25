@@ -20,7 +20,7 @@ public class TheaterDao {
 	public TheaterDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println( "DB연동실패! 경로:dao.TheaterDao " + e);}	
 		}
@@ -45,7 +45,7 @@ public class TheaterDao {
 	//2.상영관수정
 	public boolean 상영관수정(Theater theater) {
 		
-		String sql ="UPDATE theater set tname =?,tseat=?, txy=?  WHERE tnum=?";
+		String sql ="UPDATE theater set tname =? , tseat=? txy=?  WHERE tnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,theater.get관이름());
@@ -55,7 +55,7 @@ public class TheaterDao {
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
-			System.out.println("ERR)) 상영관 수정 실패 !!  경로:dao.TheaterDao "+ e);
+			System.out.println("ERR)) 상영관 수정 실패 !!  경로:dao.MovieDao "+ e);
 		}
 		return false;
 	}
@@ -73,7 +73,7 @@ public class TheaterDao {
 			}
 			return theaterlist;
 		} catch (Exception e) {
-			System.out.println("ERR)) 상영관 리스트 호출 실패 !!  경로:dao.TheaterDao "+ e);
+			System.out.println("ERR)) 상영관 리스트 호출 실패 !!  경로:dao.MovieDao "+ e);
 		}
 		return null;
 	}
@@ -92,19 +92,18 @@ public class TheaterDao {
 	}
 	
 	//5. 좌석리스트 호출
-	public String 좌석호출() {
+	public String 좌석호출(int tnum) {
 		String str = "";
 		try {
-			String sql = "SELECT txy FROM project.theater order by tnum";
+			String sql = "SELECT txy FROM project.theater where tnum=?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, tnum);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				str += rs.getString(1) + ",";
 			}
 			return str;
-		}catch(Exception e) { 
-			System.out.println("상영관 좌석 리스트 호출실패 !! 경로:dao.theaterDao : " + e);
-			}
+		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
 		return null;
 	}
 }
