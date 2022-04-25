@@ -1,13 +1,13 @@
 package dto;
 
-public class Record {
+public class Runmovie {
 private String 상영영화;
 private String 상영시간;
 private String 관이름;
 
-public Record() {}
+public Runmovie() {}
 
-public Record(String 상영영화, String 상영시간, String 관이름) {
+public Runmovie(String 상영영화, String 상영시간, String 관이름) {
 	super();
 	this.상영영화 = 상영영화;
 	this.상영시간 = 상영시간;

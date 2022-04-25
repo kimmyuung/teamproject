@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admintheater.Runmovieadd">
+   <children>
+      <Text layoutX="791.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="관 이름 :   " wrappingWidth="158.00000381469727">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnupdate" layoutX="960.0" layoutY="597.0" mnemonicParsing="false" onAction="#update" prefHeight="37.0" prefWidth="114.0" text="상영 영화 수정" />
+      <Button fx:id="btntback" layoutX="1101.0" layoutY="597.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="94.0" text="등록 취소" />
+      <Button fx:id="btnrmovieadd" layoutX="808.0" layoutY="597.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="124.0" text="상영 영화 등록" />
+      <TableView fx:id="mlist" layoutX="50.0" layoutY="111.0" prefHeight="541.0" prefWidth="685.0">
+        <columns>
+          <TableColumn prefWidth="91.0" text="영화 이름" />
+          <TableColumn prefWidth="214.0" text="상영관 스케줄" />
+            <TableColumn prefWidth="166.0" text="영화 등급" />
+            <TableColumn prefWidth="145.0" text="영화 가격" />
+            <TableColumn prefWidth="68.0" text="러닝타임" />
+            <TableColumn prefWidth="83.0" text="영화 장르" />
+        </columns>
+      </TableView>
+      <Label fx:id="lbltname" layoutX="1004.0" layoutY="177.0" prefHeight="21.0" prefWidth="141.0" text="관 이름 세팅" />
+      <Text layoutX="844.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="스케줄표 작성시 유의사항" wrappingWidth="368.00000381469727">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="timebar" layoutX="791.0" layoutY="462.0" onMouseClicked="#listopen" prefHeight="37.0" prefWidth="399.0" />
+      <Text layoutX="795.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="현재 상영 중이 영화가 있다면 겹치는 시간대에 상영영화를 등록 하는 것은 불가능합니다." wrappingWidth="418.00000381469727">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      
+   </children>
+</AnchorPane>

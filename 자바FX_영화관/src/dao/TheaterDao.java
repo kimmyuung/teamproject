@@ -79,7 +79,32 @@ public class TheaterDao {
 		}
 		return null;
 	}
-		
+	public boolean 상영관삭제(int tnum) {
+		String sql = "delete from project.theater where tnum =?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, tnum);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("상영관 삭제 실패!  경로:dao.TheaterDao  " + e);}
+		return false;
+	}
+	
+	//5. 좌석리스트 호출
+	public String 좌석호출(int tnum) {
+		String str = "";
+		try {
+			String sql = "SELECT txy FROM project.theater where tnum=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, tnum);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				str += rs.getString(1) + ",";
+			}
+			return str;
+		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
+		return null;
+	}
 	
 	
 }
