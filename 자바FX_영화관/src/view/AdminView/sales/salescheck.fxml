@@ -20,7 +20,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label layoutX="114.0" layoutY="74.0" text="오늘의 매출: " />
-      <Label fx:id="lbltoday" layoutX="186.0" layoutY="74.0" text="세팅장소" />
+      <Label layoutX="114.0" layoutY="74.0" text=" 총 매출(일): " />
+      <Label fx:id="lbltoday" layoutX="185.0" layoutY="74.0" text="세팅장소" />
    </children>
 </AnchorPane>
