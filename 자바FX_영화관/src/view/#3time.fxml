@@ -14,8 +14,9 @@
         <columns>
             <TableColumn prefWidth="78.0" text="번호" />
           <TableColumn minWidth="0.0" prefWidth="439.0" text="영화" />
-            <TableColumn prefWidth="190.0" text="시간" />
-            <TableColumn prefWidth="164.0" text="관" />
+            <TableColumn prefWidth="124.0" text="시간" />
+            <TableColumn prefWidth="135.0" text="관" />
+            <TableColumn prefWidth="95.0" text="등급" />
         </columns>
       </TableView>
       <Button fx:id="accback" layoutX="14.0" layoutY="799.0" mnemonicParsing="false" onAction="#btnback" prefHeight="94.0" prefWidth="118.0" style="-fx-background-color: #00ff0000;" text="◀">

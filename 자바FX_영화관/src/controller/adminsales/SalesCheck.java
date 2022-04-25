@@ -1,20 +1,40 @@
 package controller.adminsales;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
+import dao.SalesDao;
+import dao.TheaterDao;
+import dto.Sales;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Line;
 
 public class SalesCheck implements Initializable {
 	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		 Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String today= dateFormat.format(date);
+		lbltoday.setText(today+"");
+		
+		//계열 생성
+		XYChart.Series series = new XYChart.Series<>();
+		
+		Map<String, Integer> map= SalesDao.salesDao.bdatetotal("sales","sdate");
+		
 		
 	}
 
@@ -28,7 +48,7 @@ public class SalesCheck implements Initializable {
     private Button btnchart;
 
     @FXML
-    private LineChart<?, ?> chart;
+    private LineChart<Date,Sales> chart;
 
     @FXML
     private Label lbltoday;
@@ -36,6 +56,7 @@ public class SalesCheck implements Initializable {
     @FXML
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
+  
     }
 
     @FXML
@@ -49,4 +70,5 @@ public class SalesCheck implements Initializable {
     }	
 	
 	
+   
 }

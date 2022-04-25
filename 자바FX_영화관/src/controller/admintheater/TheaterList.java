@@ -5,7 +5,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
+import controller.adminmovie.MovieList;
+import dao.MovieDao;
 import dao.TheaterDao;
+import dto.Movie;
 import dto.Theater;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,11 +21,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class TheaterList implements Initializable{
 	
-public static Theater select;
+	public static Theater select;
 	
 	Alert alert = new Alert(AlertType.CONFIRMATION);
 	
@@ -39,8 +43,6 @@ public static Theater select;
 		
 		tc=tlist.getColumns().get(2);
 		tc.setCellValueFactory(new PropertyValueFactory<>("관좌석"));
-		
-		
 		
 		tlist.setItems(theaterlist);
 		
@@ -62,13 +64,23 @@ public static Theater select;
     @FXML
     private Button btnadd;
 
-    
+    @FXML
+    private Button btnadd1;
+
+    @FXML
+    private Button btnupdate1;
+
+    @FXML
+    private Button btndelete1;
     
     @FXML
     void add(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theateradd.fxml");
     }
+    @FXML
+    void add1(ActionEvent event) {
 
+    }
     @FXML
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
@@ -78,7 +90,10 @@ public static Theater select;
     void update(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
     }
-    
+    @FXML
+    void update1(ActionEvent event) {
+
+    }
     @FXML
     void delete(ActionEvent event) {
     	alert.setHeaderText("정말 삭제하시겠습니까?");
@@ -92,5 +107,9 @@ public static Theater select;
 			}
 		}
     }
-  
+    @FXML
+    void delete1(ActionEvent event) {
+
+    }
+
 }

@@ -54,6 +54,8 @@ public class Time implements Initializable {
     	tc=table.getColumns().get(3);
     	tc.setCellValueFactory(new PropertyValueFactory<>("name"));
     	
+    	tc=table.getColumns().get(4);
+    	tc.setCellFactory(new PropertyValueFactory<>("grade"));
     	table.setItems(infolist);
     	
     	table.setOnMouseClicked( e -> {

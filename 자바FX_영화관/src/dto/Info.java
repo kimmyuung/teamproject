@@ -6,15 +6,25 @@ public class Info {
 	private String movie;
 	private String time;
 	private String name;
-	
+	private String grade;
 	public Info() {}
 
-	public Info(int num, String movie, String time, String name) {
+	public Info(int num, String movie, String time, String name, String grade) {
 		super();
 		this.num = num;
 		this.movie = movie;
 		this.time = time;
 		this.name = name;
+		this.grade = grade;
+	}
+
+	
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
 	public int getNum() {

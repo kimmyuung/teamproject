@@ -164,4 +164,8 @@ public class MovieUpdate implements Initializable{
     	txtmtime.setText(movie.get영화제목());
     
     }
+    
+    
+    
+    
 }

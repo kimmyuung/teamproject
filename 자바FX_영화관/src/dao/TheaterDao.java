@@ -27,11 +27,12 @@ public class TheaterDao {
 	
 	//1. 상영관 호출
 	public boolean 상영관등록(Theater theater) {
-		String sql = "INSERT INTO project.theater(tname, tseat) VALUES (?,?)";
+		String sql = "INSERT INTO project.theater(tname, tseat, txy) VALUES (?,?,?)";
 		try{
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, theater.get관이름());
 			ps.setString(2, theater.get관좌석());
+			ps.setString(3, theater.get관좌표());
 			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
@@ -44,11 +45,13 @@ public class TheaterDao {
 	//2.상영관수정
 	public boolean 상영관수정(Theater theater) {
 		
-		String sql ="UPDATE theater set tname =? , tseat=?  WHERE tnum=?";
+		String sql ="UPDATE theater set tname =? , tseat=? txy=?  WHERE tnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,theater.get관이름());
 			ps.setString(2, theater.get관좌석());
+			ps.setString(3, theater.get관좌표());
+			ps.setInt(4, theater.get관번호());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -65,12 +68,7 @@ public class TheaterDao {
 			ps= conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				Theater theater = new Theater
-								(rs.getInt(1) ,
-								rs.getString(2),
-								rs.getString(3),
-								rs.getString(4)
-										);
+				Theater theater = new Theater(rs.getInt(1) ,rs.getString(2),rs.getString(3) , rs.getString(4));
 				theaterlist.add(theater);
 			}
 			return theaterlist;
@@ -79,6 +77,9 @@ public class TheaterDao {
 		}
 		return null;
 	}
+		
+	//4.상영관 삭제
+	
 	public boolean 상영관삭제(int tnum) {
 		String sql = "delete from project.theater where tnum =?";
 		try {
@@ -105,6 +106,4 @@ public class TheaterDao {
 		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
 		return null;
 	}
-	
-	
 }
