@@ -20,7 +20,7 @@ public class TheaterDao {
 	public TheaterDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println( "DB연동실패! 경로:dao.TheaterDao " + e);}	
 		}
@@ -65,7 +65,12 @@ public class TheaterDao {
 			ps= conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				Theater theater = new Theater(rs.getInt(1) ,rs.getString(2),rs.getString(3));
+				Theater theater = new Theater
+								(rs.getInt(1) ,
+								rs.getString(2),
+								rs.getString(3),
+								rs.getString(4)
+										);
 				theaterlist.add(theater);
 			}
 			return theaterlist;

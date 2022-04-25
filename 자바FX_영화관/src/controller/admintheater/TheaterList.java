@@ -28,13 +28,15 @@ public class TheaterList implements Initializable{
 		ObservableList<Theater> theaterlist=TheaterDao.theaterDao.list();
 		
 		TableColumn tc = tlist.getColumns().get(0);
-		tc.setCellValueFactory(new PropertyValueFactory<>("관번호"));
+		tc.setCellValueFactory(new PropertyValueFactory<>(""));
 		
 		tc=tlist.getColumns().get(1);
-		tc.setCellValueFactory(new PropertyValueFactory<>("관이름"));
+		tc.setCellValueFactory(new PropertyValueFactory<>(""));
 		
 		tc=tlist.getColumns().get(2);
-		tc.setCellValueFactory(new PropertyValueFactory<>("관좌석"));
+		tc.setCellValueFactory(new PropertyValueFactory<>(""));
+		
+		
 		
 		tlist.setItems(theaterlist);
 		
