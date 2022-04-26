@@ -85,9 +85,25 @@ public class Movietime implements Initializable{
 			 });
 			 
 			
-			 //초이스박스 시간 선택
-			 for(int i=0 ; i<24; i++) 	{timestartbar.getItems().add(Integer.toString(i));}
-			 for(int j=0; j<12; j++) 	{timestartbar2.getItems().add(Integer.toString((j*5)));}
+			 //초이스박스 값 넣기 (시간 선택)
+			 for(int i=0 ; i<24; i++) 	{
+				 if(i<10) {
+					 timestartbar.getItems().add("0"+Integer.toString(i));
+					 
+				 }else {
+					 timestartbar.getItems().add(Integer.toString(i));
+				 }
+				 
+			
+			 }
+			 //초이스 박스  값넣기 (분 선택) 
+			 for(int j=0; j<12; j++){
+				 if(j<2) {
+					 timestartbar2.getItems().add("0"+Integer.toString(j*5));
+				 }else{
+					 timestartbar2.getItems().add(Integer.toString((j*5)));
+				 } 
+			 }
 	
 			 
 			 
@@ -98,35 +114,47 @@ public class Movietime implements Initializable{
 				 shour.clear();
 				 shour.add(starth);	
 				 str = starth +":";
-				hh=Integer.parseInt(timestartbar.getValue());
+				
+				 hh=Integer.parseInt(timestartbar.getValue());
+				
 				//시간 변환메소드 실행
 				endtime();
 				
 				int hsum=(h+hh);
 				int msum=(m+mm);
-				int mremain=(msum-60);
 				int hremain=(hsum-24);
-				
-				lblendhh.setText(hsum+"");
-				lblendh.setText(hsum+"");
-				lblendmm.setText(msum+"");
-				lblendm.setText(msum+"");
-				System.out.println(mremain);
+				int mremain=(msum-60);
+				if(hsum<10){
+					lblendhh.setText(Integer.parseInt("0")+""+hsum);
+					lblendh.setText(Integer.parseInt("0")+""+hsum);
+				}else {
+					lblendh.setText(""+hsum);
+					lblendhh.setText(""+hsum);
+				}
+			
 				//60분이 넘어가면 
 				if(msum>60) {
-					lblendmm.setText(mremain+"");
-					lblendm.setText(mremain+"");
-					hsum+=1;
-					lblendhh.setText(hsum+"");
-					lblendh.setText(hsum+"");
 					//시간에 +1
-					if(hsum>24) {
+					hsum+=1;
+					if(hsum<10){
+						lblendhh.setText(Integer.parseInt("0")+""+hsum);
+						lblendh.setText(Integer.parseInt("0")+""+hsum);
+					}else {
+						lblendh.setText(""+hsum);
+						lblendhh.setText(""+hsum);
+					}
+				}
+				if(hsum>24) {
+					if(hremain<10) {
+						lblendh.setText(Integer.parseInt("0")+""+hremain);
+						lblendhh.setText(Integer.parseInt("0")+""+hremain);
+					}else {
 						lblendh.setText(hremain+"");
 						lblendhh.setText(hremain+"");
 					}
 				}
 			 });
-			 
+			
 			 //초이스박스 (분) 단위 이벤트 리스너
 			 timestartbar2.setOnAction((event)->{
 				 lblstartm.setText(timestartbar2.getValue());
@@ -135,38 +163,64 @@ public class Movietime implements Initializable{
 				 smin.add(startm);
 				 str += startm;
 				 mm=Integer.parseInt(timestartbar2.getValue());
-				 lblendmm.setText((m+mm)+"");
-				 lblendm.setText((m+mm)+"");
+				
 				 
 				 endtime();
-					
+				 
 				 int hsum=(h+hh);
 				 int msum=(m+mm);
-				 int mremain=(msum-60);
 				 int hremain=(hsum-24);
+				 int mremain=(msum-60);
+				 
+				
+				if(msum<10) {
+					 lblendmm.setText(Integer.parseInt("0")+""+msum);
+					 lblendm.setText(Integer.parseInt("0")+""+msum);
+				}else {
+					 lblendmm.setText(""+msum);
+					 lblendm.setText(""+msum);
+				}
+				if(hsum<10){
+					lblendhh.setText(Integer.parseInt("0")+""+hsum);
+					lblendh.setText(Integer.parseInt("0")+""+hsum);
+				}else {
+					lblendh.setText(""+hsum);
+					lblendhh.setText(""+hsum);
+				}
 				 
 				 if(msum>60) {
-					lblendmm.setText(mremain+"");
-					lblendm.setText(mremain+"");
-					hsum+=1;
-					lblendhh.setText(hsum+"");
-					lblendh.setText(hsum+"");
-					if(hsum>24) {
-						lblendh.setText(hremain+"");
-						lblendhh.setText(hremain+"");
-					}
+					 hsum+=1;
+						if(mremain<10) {
+							 lblendmm.setText(Integer.parseInt("0")+""+mremain);
+							 lblendm.setText(Integer.parseInt("0")+""+mremain);
+						}else {
+							 lblendmm.setText(""+mremain);
+							 lblendm.setText(""+mremain);
+						}
+						if(hsum<10){
+							lblendhh.setText(Integer.parseInt("0")+""+hsum);
+							lblendh.setText(Integer.parseInt("0")+""+hsum);
+						}else {
+							lblendh.setText(""+hsum);
+							lblendhh.setText(""+hsum);
+						}
+					
 				 }
-				 
+				 if(hsum>24) {
+						if(hremain<10) {
+							lblendh.setText(Integer.parseInt("0")+""+hremain);
+							lblendhh.setText(Integer.parseInt("0")+""+hremain);
+						}else {
+							lblendh.setText(hremain+"");
+							lblendhh.setText(hremain+"");
+						}
+					 	
+					}
 				 
 			 });
 			 //초이스박스 시간/분 단위 합친 값 하나의 배열로 저장
 			 time.add(str);
-			 
-			//런닝타임 인트로 변환
-			
-			
-			 
-			
+			 	
 		}
 	    
 	
@@ -229,6 +283,7 @@ public class Movietime implements Initializable{
 	    @FXML
 	    void back(ActionEvent event) {
 	    	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
+	    	
 	    }	
 	    
 	    @FXML

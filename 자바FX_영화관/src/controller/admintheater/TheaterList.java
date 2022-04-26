@@ -68,9 +68,9 @@ public class TheaterList implements Initializable{
 
     @FXML
     private Button btntimeadd;
-
+    
     @FXML
-    private Button btntimeupdate;
+    private Button btnlistshow;
     
     @FXML
     void add(ActionEvent event) {
@@ -83,10 +83,6 @@ public class TheaterList implements Initializable{
     }
 
     @FXML
-    void timeupdate(ActionEvent event) {
-    	
-    }
-    @FXML
     void back(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/home/adminhome.fxml");
     }
@@ -94,6 +90,11 @@ public class TheaterList implements Initializable{
     @FXML
     void update(ActionEvent event) {
     	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterupdate.fxml");
+    }
+    
+    @FXML
+    void listshow(ActionEvent event) {
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theatertime.fxml");
     }
     
     @FXML

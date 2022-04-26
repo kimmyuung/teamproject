@@ -20,7 +20,7 @@ public class InfoDao {
 	public InfoDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println(e);}	
 	}
@@ -61,35 +61,14 @@ public class InfoDao {
 				infolist.add(info);
 			}
 			return infolist;
-		}catch (Exception e) {}
+		}catch (Exception e) {
+			System.out.println("인포 리스트 호출 실패 !! 경로 : dao.infoDao :"+e);
+		}
 		return null;
 	
 	}
 	
-	public ObservableList<Info> infos(){
-		
-		ObservableList<Info> infolist = FXCollections.observableArrayList();
-		
-		try {
-			
-			String sql = "select * from info order by num asc ";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				Info info = new Info(
-					rs.getInt(1),
-					rs.getString(2),
-					rs.getString(3),
-					rs.getString(4),
-					rs.getString(5));
-				infolist.add(info);
-			}
-			return infolist;
-		}catch (Exception e) {}
-		
-		return null;
-	}
+
 	
 	public String time() {
 		String str = ""; //null
@@ -102,7 +81,9 @@ public class InfoDao {
 				str += rs.getString(1) +",";	
 			}
 			return str;
-		}catch (Exception e) {}
+		}catch (Exception e) {
+			System.out.println("인포 시간 실패 !! 경로 : dao.infoDao :"+e);
+		}
 		return null;
 		
 	}

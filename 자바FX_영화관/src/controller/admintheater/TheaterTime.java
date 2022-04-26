@@ -34,7 +34,7 @@ public class TheaterTime implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/theater/movietime.fxml");
+    	Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
     }
 	
 	
