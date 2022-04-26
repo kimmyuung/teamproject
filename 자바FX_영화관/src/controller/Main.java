@@ -42,7 +42,7 @@ public class Main implements Initializable {
 	public void popup() { // 새창 띄우기
 		
 		  try{
-		    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/인원수입력.fxml"));
+		    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/insertpeople.fxml"));
 		    Parent root = (Parent) loader.load();
 		    Stage stage = new Stage();
 		    stage.setTitle("관람 인원 수 입력");

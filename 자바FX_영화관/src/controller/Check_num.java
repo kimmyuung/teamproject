@@ -1,13 +1,16 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import dao.MemberDao;
+
 import dao.MovieDao;
 import dao.TicketDao;
-import dto.Member;
+
 import dto.Ticket;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -304,40 +307,12 @@ public class Check_num implements Initializable{
 			alert.setHeaderText("성인 : "+성인+" 명,  청소년 : "+청소년+" 명 선택 하셨습니다");
 			alert.showAndWait();
 			int total_num= 성인+청소년;
-			int i = 0; int j= 0;
-			for( i=0;i<=성인;i++) {
-				
-				
-				Ticket ticket = new Ticket(10000*total_num, null, total_num, null, null, null);
-				boolean result = TicketDao.ticketDao.티켓저장(ticket);
-			}
-			for(j=0;j<=청소년;j++) {
-				
-			}
 			
 			
-			TicketDao.ticketDao.티켓저장(true);
+			
 			
 			// 1. 회원가입 메소드 ( 인수 : db에 넣을 아이디,비밀번호,이메일,주소 )
-			public boolean ticketing(Ticket ticket ) { 
-				try {
-					// 1. SQL 작성  [ 회원번호(자동번호=auto) 제외한 모든 필드 삽입 ]
-					String sql = "insert into ticket(ticket_title,ticket_name,ticket_price,ticket_seat,ticket_date)values(?,?,?,?,?)";
-					// 2. SQL 조작
-					ps = con.prepareStatement(sql); // PreparedStatement 인터페이스내 연결된 db에 sql 넣기
-					ps.setInt( 1 , ticket.get가격()); // 1번 ? 에 아이디 넣어주기
-					ps.setString( 2 , ticket.get영화제목() ); // 2번 ? 에 비밀번호 넣어주기
-//					ps.setString( 3 , ticket.getMemail() ); // 3번 ? 에 이메일 넣어주기
-//					ps.setString( 4 , ticket.getMaddress() ); // 4번 ? 에 주소 넣어주기
-//					ps.setInt( 5 , ticket.getMpoint() ); // 5번 ? 에 포인트 넣어주기
-					
-					// 3. SQL 실행 
-					ps.executeUpdate(); // insert 실행 -> 삽입 결과물 X -> resultset X
-					return true; // * 성공시 
-				}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
-				return false; // * 실패시
-			}
-			
+		
 			
 	    	Main.main.loadpage("/view/#5seat.fxml");
 			}
