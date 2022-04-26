@@ -70,16 +70,5 @@ public class SalesCheck implements Initializable {
   
     }
 
-    @FXML
-    void chart(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/sales/salesstats.fxml");
-    }
-
-    @FXML
-    void search(ActionEvent event) {
-    	Admin_Home.instance.loadpage("/view/AdminView/sales/salessearch.fxml");
-    }	
-	
-	
    
 }

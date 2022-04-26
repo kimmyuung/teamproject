@@ -27,6 +27,14 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class MovieUpdate implements Initializable{
 	
 	
+	 @Override
+	    public void initialize(URL arg0, ResourceBundle arg1) {
+	    	
+	    	Movie movie = MovieList.select;
+	    	
+	    	txtmtitle.setText(movie.get영화제목());
+	    	
+	    }
 	
 	
 	private String mimage =null;
@@ -142,7 +150,7 @@ public class MovieUpdate implements Initializable{
 				Integer.parseInt(txtprice.getText()),
 				acategory,mimage);
 		
-		boolean result = MovieDao.movieDao.영화등록(updatemovie);
+		boolean result = MovieDao.movieDao.영화수정(updatemovie);
 		
 		if(result) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -156,14 +164,7 @@ public class MovieUpdate implements Initializable{
 		}
     }
     
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    	
-    	Movie movie = MovieList.select;
-    	
-    	txtmtime.setText(movie.get영화제목());
-    
-    }
+   
     
     
     
