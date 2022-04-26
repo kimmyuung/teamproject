@@ -25,13 +25,14 @@ public class InfoDao {
 		} catch(Exception e) {System.out.println(e);}	
 	}
 	
-	public boolean 시간등록(Info info) {
+	public boolean 시간등록(String title, String time, String tname, String grade) {
 		try {
-			String sql = "insert into project.info(movie,time,name)values(?,?,?)";
+			String sql = "insert into project.info(movie,time,name,grade)values(?,?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, info.getMovie());
-			ps.setString(2, info.getTime());
-			ps.setString(3, info.getName());
+			ps.setString(1, title);
+			ps.setString(2, time);
+			ps.setString(3, tname);
+			ps.setString(4, grade);
 			ps.executeUpdate();
 			return true;
 		}catch (Exception e) {
@@ -40,15 +41,14 @@ public class InfoDao {
 		return false;
 	}
 	
-	public ObservableList<Info> Infolist(String name){
+	public ObservableList<Info> Infolist(){
 		
 		ObservableList<Info> infolist = FXCollections.observableArrayList();
 		
 		try {
 			
-			String sql = "select * from info where movie=? order by num asc ";
+			String sql = "select * from info order by num asc ";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, name);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -56,16 +56,62 @@ public class InfoDao {
 					rs.getInt(1),
 					rs.getString(2),
 					rs.getString(3),
-					rs.getString(4));
+					rs.getString(4),
+						rs.getString(5));
 				infolist.add(info);
 			}
 			return infolist;
+		}catch (Exception e) {}
+		return null;
+	
+	}
+	
+	public ObservableList<Info> infos(){
+		
+		ObservableList<Info> infolist = FXCollections.observableArrayList();
+		
+		try {
+			
+			String sql = "select * from info order by num asc ";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Info info = new Info(
+					rs.getInt(1),
+					rs.getString(2),
+					rs.getString(3),
+					rs.getString(4),
+					rs.getString(5));
+				infolist.add(info);
+			}
+			return infolist;
+		}catch (Exception e) {}
+		
+		return null;
+	}
+	
+	public String time() {
+		String str = ""; //null
+		try {
+			
+			String spl = "select time from info order by num";
+			ps = con.prepareStatement(spl);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				str += rs.getString(1) +",";	
+			}
+			return str;
 		}catch (Exception e) {}
 		return null;
 		
 	}
 	
 }
+
+
+
+
 
 
 

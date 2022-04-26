@@ -29,7 +29,4 @@ public void loadpage(String page) {// 파일 경로를 인수로 받음
 	// 컨테이너 가운데에 다른 페이지 넣기
 	}catch(Exception e) {System.out.println("페이지 연결 실패!" + e);}
 }
-public static void main(String[] args) {
-	
-}
 }

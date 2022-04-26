@@ -21,6 +21,10 @@ public class Movie implements Initializable {
 
 	public static dto.Movie select;
 	
+	
+	
+	
+	
     @FXML
     private Button btnnext;
 
@@ -33,7 +37,7 @@ public class Movie implements Initializable {
     void accnext(ActionEvent event) {
     	Main.main.loadpage("/view/#3time.fxml");
     }
-	 void show() {
+	void show() {
 		 
 	    	if(vbox.getChildren().isEmpty() == false) { // .isEmpty() : 해당 객체내 비어있는지 확인[vbox 내 비어있는지 확인]
 	    		// vbox내 객체가 비어있지 않으면
@@ -52,16 +56,16 @@ public class Movie implements Initializable {
 
 	    			// 3. 반복문 
 	    			int i = 0 ; // 인덱스용 변수
-	    			for( int row = 0 ; row < mlist.size()/3  ; row++ ) { // 행
-	    				for( int col = 0 ; col<3 ; col++ ) { // 열
+	    			for( int row = 0 ; row < mlist.size()/2  ; row++ ) { // 행
+	    				for( int col = 0 ; col<2 ; col++ ) { // 열
 	    					
 	    					// 1. 이미지
 
 	    					ImageView imageView = new ImageView( new Image(mlist.get(i).get이미지() ) );
 	    						
 	    						// *이미지 사이즈 
-	    						imageView.setFitWidth(150);		// 이미지 가로길이 
-	    						imageView.setFitHeight(150); 	// 이미지 세로길이
+	    						imageView.setFitWidth(390);		// 이미지 가로길이 
+	    						imageView.setFitHeight(390); 	// 이미지 세로길이
 	    					// 2. 버튼 생성 ( 버튼에 이미지 넣기 )
 	    						Button button = new Button( null , imageView );
 	    						// *버튼 배경제거 [ transparent : 투명색 ]
@@ -86,8 +90,8 @@ public class Movie implements Initializable {
 	    			}
 	    			
 	    			// * 3배수의 나머지값
-	    			int row = mlist.size() / 3;		// 행
-	    			int remain = mlist.size() % 3 ;	// 마지막행의 나머지 
+	    			int row = mlist.size() / 2;		// 행
+	    			int remain = mlist.size() % 2 ;	// 마지막행의 나머지 
 	    			if( remain != 0  ) { // 나머지가 존재하면 
 	    				for( int col = 0 ; col<remain ; col++ ) { // 열
 	    						ImageView imageView = new ImageView( new Image(mlist.get(i).get이미지() ) );

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import controller.adminmovie.MovieList;
 import dto.Movie;
@@ -17,7 +18,7 @@ public class MovieDao{
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	
+	private static ArrayList<String> timelist;
 	
 	
 	public static MovieDao movieDao = new MovieDao();
@@ -116,5 +117,22 @@ public class MovieDao{
 		
 		} catch(Exception e) {}
 		return false;
+	}
+	public ArrayList<String> timelist() {
+		ObservableList<Movie> movielist = FXCollections.observableArrayList();
+		
+		try {
+			String sql = "select mruntime from project.movie order by mnum asc";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String time = rs.getString(1);
+				timelist.add(time);
+			}
+			
+			return timelist;
+		}
+		catch(Exception e) {System.out.println("리스트 호출 실패!  경로:dao.MovieDao  " + e);}
+	return null;
 	}
 }
