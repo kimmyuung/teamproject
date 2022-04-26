@@ -86,7 +86,7 @@ public class Movietime implements Initializable{
 			 
 			
 			 //초이스박스 시간 선택
-			 for(int i=1 ; i<25; i++) 	{timestartbar.getItems().add(Integer.toString(i));}
+			 for(int i=0 ; i<24; i++) 	{timestartbar.getItems().add(Integer.toString(i));}
 			 for(int j=0; j<12; j++) 	{timestartbar2.getItems().add(Integer.toString((j*5)));}
 	
 			 
@@ -212,13 +212,14 @@ public class Movietime implements Initializable{
 	    @FXML
 	    void add(ActionEvent event) {
 	    	
-	    	
+	 
 	    	boolean result =InfoDao.infoDao.시간등록(select.get영화제목(), str, TheaterList.select.get관이름(), select.get연령등급());
-	    	
+
 	    	if(result) {
 	    		alert.setHeaderText("시간등록성공!!");
 	    		alert.showAndWait();
-	    		Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
+	    		Admin_Home.instance.loadpage("/view/AdminView/theater/theatertime.fxml");
+	    		
 	    	}else {	
 	    		alert.setHeaderText("시간등록실패!!");
 	    		alert.showAndWait();
@@ -243,12 +244,9 @@ public class Movietime implements Initializable{
 	    	int hour= (runtime/60);
 			int min = (runtime%60);
 			
-			
 			h=hour;
 			m=min;
-			
-			
-			
+
 	    }
     
    

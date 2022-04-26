@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import dto.Info;
 import dto.Movie;
 import dto.Theater;
 import javafx.collections.FXCollections;
@@ -106,4 +108,6 @@ public class TheaterDao {
 		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
 		return null;
 	}
+	
+	
 }
