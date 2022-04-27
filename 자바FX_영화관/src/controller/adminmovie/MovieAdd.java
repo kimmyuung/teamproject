@@ -34,7 +34,7 @@ public class MovieAdd implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-	
+
 	}
 	
 	
@@ -77,12 +77,18 @@ public class MovieAdd implements Initializable {
 	    
 	    @FXML
 	    void add(ActionEvent event) {
+	    	try {
 	    		String mtitle=txtmtitle.getText();
 	    		String mtime = txtmtime.getText();
-	    		int mprice =  Integer.parseInt(txtprice.getText());
-	    		
 	    		String acategory = null;
+	  
+	    		//유효성검사를 하기위한 인트 변환
+	    
+	    		int mprice =  Integer.parseInt(txtprice.getText());
+	    		int anytime	=Integer.parseInt(mtime);
 	    		
+	    		
+	    		System.out.println(mprice +10);
 	    		if(grade12.isSelected()) {
 	    			acategory="12세 관람가";
 	    		}
@@ -101,7 +107,6 @@ public class MovieAdd implements Initializable {
 	    		boolean result = MovieDao.movieDao.영화등록(movie);
 	    		
 	    		if(result) {
-	    			
 	    			alert.setHeaderText("영화 등록 성공 !!");
 	    			alert.showAndWait();
 	    			Admin_Home.instance.loadpage("/view/AdminView/movie/movielist.fxml");	
@@ -109,6 +114,13 @@ public class MovieAdd implements Initializable {
 	    			alert.setHeaderText("영화 등록 실패 !!");
 					alert.showAndWait();
 	    		}
+				
+			} catch (Exception e) {
+				alert.setHeaderText("런닝타입 혹은 가격 올바른 기입방식으로 입력하여 주십시오.");
+    			alert.showAndWait();
+    			return;
+			}
+	    		
 	    
 	    }
 

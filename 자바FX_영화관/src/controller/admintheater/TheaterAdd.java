@@ -102,6 +102,7 @@ public class TheaterAdd implements Initializable {
     	count=0;
     	
     	
+    
     	
      
      	boolean result=TheaterDao.theaterDao.상영관등록(theater);

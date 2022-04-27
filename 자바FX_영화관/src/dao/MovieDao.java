@@ -24,7 +24,7 @@ public class MovieDao{
 	public MovieDao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul ",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/project?serverTimezone=Asia/Seoul ",
 					"root", "1234"); // jdbc:mysql:ip주소/port번호
 		} catch(Exception e) {System.out.println(e);}	
 		}
@@ -113,7 +113,11 @@ public class MovieDao{
 		// 4. SQL 결과
 		if(rs.next()) return true;
 		
-		} catch(Exception e) {}
+		} catch(Exception e) {
+			System.out.println("영화이름 중복체크 실패 !! 경로:Dao.MovieDao  : "+e);
+		}
 		return false;
 	}
+	
+	
 }
