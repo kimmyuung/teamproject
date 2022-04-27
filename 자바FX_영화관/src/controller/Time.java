@@ -31,6 +31,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 public class Time implements Initializable {
 
@@ -48,6 +52,9 @@ public class Time implements Initializable {
     	Main.main.loadpage("/view/#2movie.fxml");
     }
 
+    @FXML
+    private MediaView miediaview;
+    
     @FXML
     void btnnext(ActionEvent event) {
 //    	Main.main.loadpage("/view/#4");
@@ -80,12 +87,12 @@ public class Time implements Initializable {
     	tc.setCellValueFactory(new PropertyValueFactory<>("grade"));
     	
     	table.setItems(infolist);
-    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // 원하는 시간
     	
-    	Date now = new Date();   
+    	Date now = new Date(); // 현재 날짜와 시간을 나타냄
     	//for(String)
     	
-    	table.setOnMouseClicked( e -> {
+    	table.setOnMouseClicked( e -> { // 테이블 클릭
     		
     		info = table.getSelectionModel().getSelectedItem();
     		String str = InfoDao.infoDao.time(); //상영 시작 시간
@@ -94,14 +101,12 @@ public class Time implements Initializable {
         		String[] cut = info.getTime().split(":");  // 영화 시작 시간들을 쪼갬
         		String nowTime = sdf.format(now); // 지금 시간을 표시형식 변경
 				String[] now_intime = nowTime.split(":"); // 지금 시간 시간과 분으로 쪼갬
-				int nowtime_hour = Integer.parseInt(now_intime[0]); 
-				int nowtime_min = Integer.parseInt(now_intime[1]);
-				int intime_hour = Integer.parseInt(cut[0]);
-				int intime_min = Integer.parseInt(cut[1]);
+				int nowtime_hour = Integer.parseInt(now_intime[0]); // now_intime 배열의 인덱스에 0번째 (이곳 : x)
+				int nowtime_min = Integer.parseInt(now_intime[1]); // now_intime 배열의 인덱스에 1번째 (x : 이곳)
+				int intime_hour = Integer.parseInt(cut[0]); // cut 배열의 인덱스에 0번째 (이곳 : x)
+				int intime_min = Integer.parseInt(cut[1]); // cut 배열의 인덱스에 1번째 (x : 이곳)
 				
-				
-        		
-				int runtime_min = Integer.parseInt(Movie.select.get러닝타임()); 
+				int runtime_min = Integer.parseInt(Movie.select.get러닝타임()); // 러닝타임이 string여서 integer로 변경
 				int outhour = intime_hour;
 				int outmin = (intime_min+runtime_min); // 러닝타임
 				for(int j = 0; j < outmin/60; j++)
@@ -144,6 +149,20 @@ public class Time implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		Media media = new Media(getClass().getResource("/img/비디오2.mp4").toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(media);
+		miediaview.setMediaPlayer(mediaPlayer);
+		mediaPlayer.play();
+		
+		mediaPlayer.setOnEndOfMedia(new Runnable() {
+			
+			@Override
+			public void run() {
+				mediaPlayer.seek(Duration.ZERO);
+				
+			}
+		});
 		
 		Image image = new Image(Movie.select.get이미지().toString());  
 		imageview.setImage(image);
