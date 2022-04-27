@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
+import controller.admintheater.TheaterList;
 import dao.MovieDao;
 import dao.TicketDao;
 
@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
@@ -32,7 +33,7 @@ public class Check_num implements Initializable{
 	 
 	public static int 성인=0;
 	public static int 청소년=0;
-//	public static int input_value =0;
+	public static int total_num=0;
 	public static int button =0;
 	static ArrayList<Ticket> ticket = new ArrayList<>();
 	
@@ -291,28 +292,10 @@ public class Check_num implements Initializable{
     	}
 		else {
 			
-//			int i=0;
-//			
-////			int 성인_관람_가격 = MovieDao.movieDao.list().get(i).get가격();
-//			int 성인_관람_가격 = 8000;
-//			int total_num = 성인+청소년;
-//			// 청소년은 성인 관람가격 의 30% 할인 예정
-//			// int 청소년 관람가격 = 성인_관람_가격 *0.7; 
-//			for(i=0;i<total_num;i++)	{
-//				TicketDao.ticketDao.티켓저장(ticket);
-//			}
-			
-			//public Ticket(int 가격, String 영화제목, int 인원수, String 관이름, String 날짜, String 좌석) {	
-			
+//		
 			alert.setHeaderText("성인 : "+성인+" 명,  청소년 : "+청소년+" 명 선택 하셨습니다");
 			alert.showAndWait();
-			int total_num= 성인+청소년;
-			
-			
-			
-			
-			// 1. 회원가입 메소드 ( 인수 : db에 넣을 아이디,비밀번호,이메일,주소 )
-		
+			total_num = 성인+청소년;
 			
 	    	Main.main.loadpage("/view/#5seat.fxml");
 			}
@@ -325,7 +308,11 @@ public class Check_num implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		if (Time.info.get연령등급().equals("청소년 관람불가")) {
+		Image image = new Image(Movie.select.get이미지().toString());  
+		viewimg.setImage(image);
+		
+		
+		if (Time.info.getGrade().equals("청소년 관람불가")) {
 			lblyoung.setText("청소년은 관람할 수 없습니다.");
 			
 			btnyoung0.setDisable(true);

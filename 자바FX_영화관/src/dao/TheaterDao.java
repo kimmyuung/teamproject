@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import dto.Info;
 import dto.Movie;
 import dto.Theater;
 import javafx.collections.FXCollections;
@@ -45,7 +47,7 @@ public class TheaterDao {
 	//2.상영관수정
 	public boolean 상영관수정(Theater theater) {
 		
-		String sql ="UPDATE theater set tname =? , tseat=? txy=?  WHERE tnum=?";
+		String sql ="UPDATE theater set tname =? , tseat=?, txy=?  WHERE tnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,theater.get관이름());
@@ -101,9 +103,32 @@ public class TheaterDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				str += rs.getString(1) + ",";
+				
 			}
 			return str;
 		}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
 		return null;
 	}
+	//6. (고객용)좌석리스트 호출
+		public String 상영관좌석호출(String tname) {
+			String str = "";
+			try {
+				String sql = "SELECT txy FROM project.theater where tname=?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, tname);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					str += rs.getString(1) + ",";
+					
+				}
+				return str;
+			}catch(Exception e) { System.out.println("상영관 좌석 리스트 호출" + e);}
+			return null;
+		}
+	
+		
+		
+		
+		
+	
 }

@@ -52,7 +52,7 @@ public class MovieDao{
 	//2.영화수정
 	public boolean 영화수정(Movie movie) {
 		
-		String sql ="UPDATE movie set mprice =? , mptitle=? , mruntime=? , mgrade=? , mimage=? where mnum=?";
+		String sql ="UPDATE movie set mprice =? , mtitle=? , mruntime=? , mgrade=? , mimage=? where mnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, movie.get가격());
@@ -113,7 +113,11 @@ public class MovieDao{
 		// 4. SQL 결과
 		if(rs.next()) return true;
 		
-		} catch(Exception e) {}
+		} catch(Exception e) {
+			System.out.println("영화이름 중복체크 실패 !! 경로:Dao.MovieDao  : "+e);
+		}
 		return false;
 	}
+	
+	
 }

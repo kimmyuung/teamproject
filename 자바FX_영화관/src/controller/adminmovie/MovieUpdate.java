@@ -142,7 +142,7 @@ public class MovieUpdate implements Initializable{
 				Integer.parseInt(txtprice.getText()),
 				acategory,mimage);
 		
-		boolean result = MovieDao.movieDao.영화등록(updatemovie);
+		boolean result = MovieDao.movieDao.영화수정(updatemovie);
 		
 		if(result) {
 			Alert alert = new Alert(AlertType.INFORMATION);

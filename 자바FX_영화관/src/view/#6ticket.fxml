@@ -7,11 +7,41 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Ticket_processing">
    <children>
-      <Label layoutX="239.0" layoutY="28.0" prefHeight="152.0" prefWidth="243.0" text="영화 표">
+      <Label layoutX="258.0" layoutY="40.0" prefHeight="57.0" prefWidth="211.0" text="OGV">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="enter" layoutX="222.0" layoutY="720.0" mnemonicParsing="false" onAction="#accenter" prefHeight="88.0" prefWidth="156.0" text="확인" />
+      <Button fx:id="enter" layoutX="222.0" layoutY="720.0" mnemonicParsing="false" onAction="#accenter" prefHeight="88.0" prefWidth="156.0" text="출력" />
+      <Label fx:id="lbltitle" layoutX="75.0" layoutY="156.0" prefHeight="36.0" prefWidth="459.0" text="영화 제목 :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblname" layoutX="75.0" layoutY="220.0" prefHeight="36.0" prefWidth="459.0" text="상영관 :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbltime" layoutX="75.0" layoutY="284.0" prefHeight="36.0" prefWidth="459.0" text="상영 시작 시간 :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblmember" layoutX="75.0" layoutY="352.0" prefHeight="36.0" prefWidth="459.0" text="관람 인원 :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblseat" layoutX="75.0" layoutY="426.0" prefHeight="36.0" prefWidth="459.0" text="좌석 : ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblprice" layoutX="75.0" layoutY="543.0" prefHeight="36.0" prefWidth="459.0" text="가격 : ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

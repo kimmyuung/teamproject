@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controller.Admin_Home;
-import controller.Main;
 import dao.TheaterDao;
 import dto.Theater;
 import javafx.css.Size;
@@ -30,11 +29,7 @@ public class TheaterUpdate implements Initializable {
 		static ArrayList<String> cn = new ArrayList<>();
 	    
 		Alert alert = new Alert(AlertType.INFORMATION);
-		
-		public static TheaterUpdate theaterUpdate;
-		public TheaterUpdate(){
-			theaterUpdate = this;
-		}
+	
 		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
@@ -138,7 +133,6 @@ public class TheaterUpdate implements Initializable {
 	    			//수정 필요
 	    			//1.길이 재 설정 
 	    			
-	    			//2.선택한 값만큼만 좌석좌표 불러오기
 	    			for(int a=0; a<(200-Integer.parseInt(TheaterList.select.get관좌석() )); a++) {
 	    				String seat= str.toString().split(",")[a];
 	    				seats.add(seat);
@@ -146,7 +140,8 @@ public class TheaterUpdate implements Initializable {
 	    					button.setVisible(false);
 	    				
 	    				}
-	    			}
+	    			}	//2.선택한 값만큼만 좌석좌표 불러오기
+	    		
 
 	    			gridPane.add(button, col, row);
 	    			i++;

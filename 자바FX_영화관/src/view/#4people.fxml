@@ -74,7 +74,6 @@
          <font>
             <Font size="20.0" />
          </font></ToggleButton>
-      <Label layoutX="38.0" layoutY="14.0" prefHeight="57.0" prefWidth="299.0" text="#4 인원 선택 " />
       <ImageView fx:id="viewimg" fitHeight="343.0" fitWidth="559.0" layoutX="21.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
       <ToggleButton fx:id="btnadultex" layoutX="427.0" layoutY="479.0" mnemonicParsing="false" onAction="#accadultex" prefHeight="45.0" prefWidth="78.0" text="직접 입력" toggleGroup="$Adult_Num">
          <font>
@@ -89,5 +88,6 @@
             <Font size="13.0" />
          </font>
       </ToggleButton>
+      <Label layoutX="215.0" layoutY="14.0" prefHeight="32.0" prefWidth="346.0" text="관람하시는 인원을 입력해 주세요" />
    </children>
 </AnchorPane>
