@@ -144,8 +144,9 @@ public class Movietime implements Initializable{
 						lblendhh.setText(""+hsum);
 					}
 				}
-				if(hsum>24) {
+				if(hsum>=24) {
 					if(hremain<10) {
+						
 						lblendh.setText(Integer.parseInt("0")+""+hremain);
 						lblendhh.setText(Integer.parseInt("0")+""+hremain);
 					}else {
@@ -180,23 +181,18 @@ public class Movietime implements Initializable{
 					 lblendmm.setText(""+msum);
 					 lblendm.setText(""+msum);
 				}
-				if(hsum<10){
-					lblendhh.setText(Integer.parseInt("0")+""+hsum);
-					lblendh.setText(Integer.parseInt("0")+""+hsum);
-				}else {
-					lblendh.setText(""+hsum);
-					lblendhh.setText(""+hsum);
-				}
+
 				 
 				 if(msum>60) {
 					 hsum+=1;
-						if(mremain<10) {
+					 if(mremain<10) {
 							 lblendmm.setText(Integer.parseInt("0")+""+mremain);
 							 lblendm.setText(Integer.parseInt("0")+""+mremain);
 						}else {
 							 lblendmm.setText(""+mremain);
 							 lblendm.setText(""+mremain);
 						}
+					 	
 						if(hsum<10){
 							lblendhh.setText(Integer.parseInt("0")+""+hsum);
 							lblendh.setText(Integer.parseInt("0")+""+hsum);
@@ -204,19 +200,19 @@ public class Movietime implements Initializable{
 							lblendh.setText(""+hsum);
 							lblendhh.setText(""+hsum);
 						}
-					
+						
+						 if(hsum>=24) {
+							 hremain+=1;
+								if(hremain<10) {
+									lblendh.setText(Integer.parseInt("0")+""+hremain);
+									lblendhh.setText(Integer.parseInt("0")+""+hremain);
+								}else {
+									lblendh.setText(hremain+"");
+									lblendhh.setText(hremain+"");
+								}
+							}
+						
 				 }
-				 if(hsum>24) {
-						if(hremain<10) {
-							lblendh.setText(Integer.parseInt("0")+""+hremain);
-							lblendhh.setText(Integer.parseInt("0")+""+hremain);
-						}else {
-							lblendh.setText(hremain+"");
-							lblendhh.setText(hremain+"");
-						}
-					 	
-					}
-				 
 			 });
 			 //초이스박스 시간/분 단위 합친 값 하나의 배열로 저장
 			 time.add(str);
