@@ -47,7 +47,8 @@ public class TheaterDao {
 	//2.상영관수정
 	public boolean 상영관수정(Theater theater) {
 		
-		String sql ="UPDATE theater set tname =? , tseat=? txy=?  WHERE tnum=?";
+
+		String sql ="UPDATE project.theater set tname=?,tseat=?,txy=? WHERE tnum=?";
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1,theater.get관이름());
@@ -57,7 +58,7 @@ public class TheaterDao {
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
-			System.out.println("ERR)) 상영관 수정 실패 !!  경로:dao.MovieDao "+ e);
+			System.out.println("ERR)) 상영관 수정 실패 !!  경로:dao.TheaterDao "+ e);
 		}
 		return false;
 	}

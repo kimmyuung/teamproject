@@ -29,6 +29,7 @@ public class TheaterUpdate implements Initializable {
 		static ArrayList<String> cn = new ArrayList<>();
 	    
 		Alert alert = new Alert(AlertType.INFORMATION);
+		
 	
 		
 		@Override
@@ -56,22 +57,22 @@ public class TheaterUpdate implements Initializable {
 
 	    @FXML
 	    void add(ActionEvent event) {
-	    
+
+	    	Theater updatetheater = TheaterList.select;
+	    	
+	    	boolean result =TheaterDao.theaterDao.상영관수정(updatetheater);
 	    	
 	    	
-	    	Theater updatetheater = TheaterAdd.theater;
-		    
-	    	boolean result =TheaterDao.theaterDao.상영관수정(updatetheater);	    	
-		  
-		   	
-		   	if(result) {
+	    	if(result) {
+	    		
 		   		alert.setHeaderText("상영관 수정 성공 !!");
 				alert.showAndWait();
-		   		
+				Admin_Home.instance.loadpage("/view/AdminView/theater/theaterlist.fxml");
 		   	}else {
 		   		alert.setHeaderText("상영관 등록 실패 !!");
 				alert.showAndWait();
 		   	}
+		   	
 	    }
 
 	    @FXML
@@ -91,6 +92,7 @@ public class TheaterUpdate implements Initializable {
 	    	cn.clear();
 	    }
 	   
+	    
 	
 	
 	public void updateseatshow() {
@@ -130,8 +132,7 @@ public class TheaterUpdate implements Initializable {
 	    			String str=TheaterDao.theaterDao.좌석호출(TheaterList.select.get관번호());
 	    		
 	    			
-	    			//수정 필요
-	    			//1.길이 재 설정 
+	    			 
 	    			
 	    			//2.선택한 값만큼만 좌석좌표 불러오기
 	    			for(int a=0; a<(200-Integer.parseInt(TheaterList.select.get관좌석() )); a++) {
@@ -151,7 +152,6 @@ public class TheaterUpdate implements Initializable {
 		    			x = button.getId();
 		    			if(button.isSelected()) {
 		    				cn.add(x);
-		    			
 		    				button.setVisible(false); 
 		    				count++;
 		    			}

@@ -41,9 +41,7 @@ public class TheaterAdd implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		seatshow();
-		
-		
-	
+
 	}
 	 
 	@FXML

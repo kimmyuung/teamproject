@@ -6,7 +6,7 @@
 
 <BorderPane fx:id="borederpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Admin_Home">
    <center>
-      <AnchorPane fx:id="anchorpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorpane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnmlist" layoutX="86.0" layoutY="581.0" mnemonicParsing="false" onAction="#mlist" prefHeight="80.0" prefWidth="172.0" text="영화 목록" />
             <Button fx:id="btntlist" layoutX="554.0" layoutY="581.0" mnemonicParsing="false" onAction="#tlist" prefHeight="80.0" prefWidth="172.0" text="상영관 목록" />

@@ -84,7 +84,7 @@ public class Movietime implements Initializable{
 				 
 			 });
 			 
-			
+////
 			 //초이스박스 값 넣기 (시간 선택)
 			 for(int i=0 ; i<24; i++) 	{
 				 if(i<10) {
@@ -211,12 +211,10 @@ public class Movietime implements Initializable{
 									lblendhh.setText(hremain+"");
 								}
 							}
-						
 				 }
 			 });
 			 //초이스박스 시간/분 단위 합친 값 하나의 배열로 저장
 			 time.add(str);
-			 	
 		}
 	    
 	
@@ -262,9 +260,10 @@ public class Movietime implements Initializable{
 	    @FXML
 	    void add(ActionEvent event) {
 	    	
+	    	
 	 
 	    	boolean result =InfoDao.infoDao.시간등록(select.get영화제목(), str, TheaterList.select.get관이름(), select.get연령등급());
-
+	    
 	    	if(result) {
 	    		alert.setHeaderText("시간등록성공!!");
 	    		alert.showAndWait();

@@ -28,7 +28,8 @@ public class MovieList implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	 ObservableList<Movie> movieList = MovieDao.movieDao.list();
+		
+	ObservableList<Movie> movieList = MovieDao.movieDao.list();
 	 
 	 TableColumn tc = mlist.getColumns().get(0);
 	 tc.setCellValueFactory(new PropertyValueFactory<>("영화번호"));
@@ -51,8 +52,13 @@ public class MovieList implements Initializable{
 		 select=mlist.getSelectionModel().getSelectedItem();
 		 
 	 });
+	 
+	 Image image = new Image ("/img/로고.png");
+	 img.setImage(image);
 	}
 	
+	@FXML
+	private ImageView img;
 	
 	@FXML
     private TableView<Movie> mlist;

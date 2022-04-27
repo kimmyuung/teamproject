@@ -21,6 +21,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -33,6 +35,9 @@ public class TheaterList implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		 Image image = new Image ("/img/·Î°í.png");
+		 img.setImage(image);
+		
 		ObservableList<Theater> theaterlist=TheaterDao.theaterDao.list();
 		
 		TableColumn tc = tlist.getColumns().get(0);
@@ -44,14 +49,15 @@ public class TheaterList implements Initializable{
 		tc=tlist.getColumns().get(2);
 		tc.setCellValueFactory(new PropertyValueFactory<>("°üÁÂ¼®"));
 		
-		
-		
+
 		tlist.setItems(theaterlist);
 		
 		tlist.setOnMouseClicked(e-> {
 			select= tlist.getSelectionModel().getSelectedItem();
 		});
 	
+		
+		
 	}
  
 	@FXML
@@ -71,6 +77,9 @@ public class TheaterList implements Initializable{
     
     @FXML
     private Button btnlistshow;
+    
+    @FXML
+    private ImageView img;
     
     @FXML
     void add(ActionEvent event) {

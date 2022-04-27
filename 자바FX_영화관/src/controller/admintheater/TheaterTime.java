@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class TheaterTime implements Initializable {
 
@@ -31,6 +33,9 @@ public class TheaterTime implements Initializable {
 
     @FXML
     private TableView<Info> tlist;
+    
+    @FXML
+    private ImageView img;
 
     @FXML
     void back(ActionEvent event) {
@@ -41,6 +46,9 @@ public class TheaterTime implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		 Image image = new Image ("/img/·Î°í.png");
+		 img.setImage(image);
 		
 		ObservableList<Info> info = InfoDao.infoDao.Infolist();
 		
